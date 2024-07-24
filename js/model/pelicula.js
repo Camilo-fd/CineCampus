@@ -69,4 +69,39 @@ export class pelicula extends connect{
             await this.conexion.close()
         }
     }
+
+    // Permitir la consulta de información detallada sobre una película específica, incluyendo sinopsis.
+
+    async getMovisId(id){
+        try {
+            await this.conexion.connect()
+
+            let dataMovis = await this.collection.aggregate(
+                [
+                    {
+                        $match: {
+                            _id: id        
+                        }
+                    },
+                    {
+                        $project: {
+                            id: 1,
+                            titulo: 1,
+                            genero: 1,
+                            duracion: 1,
+                            horarios: 1,
+                            sinopsis: 1
+                        }
+                    }
+                ]
+            ).toArray()
+
+            return dataMovis
+
+        } catch (error) {
+            return { error: error.toString() }
+        } finally {
+            await this.conexion.close()
+        }
+    }
 }
