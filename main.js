@@ -14,3 +14,12 @@ import { usuario } from "./js/model/usuario.js";
 // let ObjPelicula = new pelicula()
 // console.log(await ObjPelicula.getMovisId(new ObjectId("64b5f1234567890123456789")));
 // ObjPelicula.destructor()
+
+// let objBoleto = new boleto();
+// console.log(await objBoleto.buyTicketMovis({
+//     pelicula_id: 2,
+//     proyeccion_id: 2,
+//     fechaCompra: "2025-01-12",
+//     usuario_id: 1,
+//     asiento_id: 3   
+// }));
