@@ -28,6 +28,23 @@ export class boleto extends connect{
         return data
     }
 
+    /**
+         * This function is responsible for buying a movie ticket for a VIP user.
+         * It performs several validations and operations related to the ticket purchase.
+         *
+         * @param {Object} objecto - The object containing the necessary data for the ticket purchase.
+         * @param {number} objecto.pelicula_id - The ID of the movie.
+         * @param {number} objecto.proyeccion_id - The ID of the projection.
+         * @param {number} objecto.usuario_id - The ID of the user.
+         * @param {Array<number>} objecto.asiento_id - The IDs of the seats.
+         * @param {number} objecto.precio - The price of the ticket.
+         * @param {string} objecto.fechaCompra - The date of the ticket purchase in the format YYYY-MM-DD.
+         * @param {string} objecto.estado - The state of the ticket (e.g., "reservado", "comprado", "rechazado").
+         *
+         * @returns {Object} - An object containing either a success message or an error message.
+         * @returns {Object.message} - A success message indicating that the ticket was successfully purchased.
+         * @returns {Object.error} - An error message indicating that an error occurred during the ticket purchase.
+     */
     async buyTicketMovis(objecto) {
         try {
             await this.conexion.connect();
@@ -83,62 +100,58 @@ export class boleto extends connect{
                 return { error: "Membresía vencida" }
             }
 
-            // Verifico que el asiento exista, que este disponible y que concuerde con la pelicula 
-            let dataAsiento = await this.db.collection("asientos").findOne({id: objecto.asiento_id})
-            if (!dataAsiento) {
-                return { error: "Asiento no existente" };
-            }
-            if (dataAsiento.proyeccion_id !== dataProyeccion.id) {
-                return { error: "El asiento no corresponde a la proyección seleccionada" };
-            }
-            if (dataAsiento.estado !== "disponible") {
-                return { error: "El asiento no está disponible" };
-            }
-
-            // Verifico los asientos
+            // Verifico que el asiento exista, que esté disponible y que concuerde con la proyección
             for (let asientoId of objecto.asiento_id) {
                 let dataAsiento = await this.db.collection("asientos").findOne({id: asientoId});
                 if (!dataAsiento) {
-                    return { error: `Asiento no existente ${dataAsiento}`};
+                    return { error: `Asiento no existente ${asientoId}` };
                 }
                 if (dataAsiento.proyeccion_id !== dataProyeccion.id) {
-                    return { error: "El asiento no corresponde a la proyección seleccionada" };
+                    return { error: `El asiento ${dataAsiento.id} no corresponde a la proyección seleccionada` };
                 }
                 if (dataAsiento.estado !== "disponible") {
-                    return { error: "El asiento no está disponible" };
+                    return { error: `El asiento ${dataAsiento} no está disponible` };
                 }
             }
 
             let descuento = objecto.precio * (dataUsuario.tarjeta_VIP.descuento / 100)
-            let descuentoAplicado = objecto.precio - descuento
+            let precioDescuentoAplicado = objecto.precio - descuento
 
+            
             // Nuevo documenbto de boleto
             let nuevoBoleto = {
                 id: newIdBoleto,
                 proyeccion_id: objecto.proyeccion_id,
                 usuario_id: objecto.usuario_id,
-                asientos: [objecto.asiento_id],
+                asientos: objecto.asiento_id,
                 precio: objecto.precio,
-                descuento_aplicado: descuentoAplicado,
+                descuento_aplicado: dataUsuario.tarjeta_VIP.descuento,
                 fecha_compra: new Date(objecto.fechaCompra),
                 estado: objecto.estado
             }
             
-            // await this.collection.insertOne(nuevoBoleto)
-
-            // Nuevo documento de pago
+            await this.collection.insertOne(nuevoBoleto)
+            
+            // Actualizamos el estado del asiento
+            for (let asiento of objecto.asiento_id){
+                await this.db.collection('asientos').updateOne(
+                    {id: asiento},
+                    {$set:{estado: "ocupado"}});
+              }
+            
+            // // Nuevo documento de pago
             let nuevoPago = {
                 id: newIdPago,
                 boleto_id: newIdBoleto,
-                monto: 15000,
+                pago_total: precioDescuentoAplicado,
                 metodo_pago: "efectivo",
                 estado: "completado",
-                fecha_transaccion: new Date()
             }
 
-            // if (objecto.estado !== "reservado" || objecto.estado !== "rechazado") {
-            //     await this.db.collection("pagos").insertOne(nuevoPago)
-            // }
+            // Inserta el nuevo documento de pago
+            if (objecto.estado !== "reservado" || objecto.estado !== "rechazado") {
+                await this.db.collection("pagos").insertOne(nuevoPago)
+            }
 
             return { message: "Boleto realizado" }
 
