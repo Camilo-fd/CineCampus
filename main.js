@@ -33,3 +33,12 @@ import { usuario } from "./js/model/usuario.js";
 //     asiento_id: [1]
 // }));
 // objAsiento.destructor()
+
+// let objBoleto = new boleto();
+// console.log(await objBoleto.reserveSeats({
+//     proyeccion_id: 1,
+//     usuario_id: 1,
+//     asiento_id: [1, 7],
+//     estado: "reservado"
+// }));
+// objBoleto.destructor()
