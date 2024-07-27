@@ -161,4 +161,39 @@ export class boleto extends connect{
             await this.conexion.close();
         }
     }
+
+    // Permitir la selección y reserva de asientos para una proyección específica.
+
+    async reserveSeats(objecto) {
+        try {
+            await this.conexion.connect()
+
+            // Genero el nuevo id del boleto
+            const [dataBoleto] = await this.collection.find({}).sort({ id: -1 }).limit(1).toArray();
+            const newIdBoleto = dataBoleto.id + 1;
+
+            // Verifico si existe la proyeccion
+            let dataProyeccion = await this.db.collection("proyecciones").findOne({id: objecto.proyeccion_id})
+            if (!dataProyeccion) {
+                return { error: "No exite proyeccion"}
+            }
+
+            // Verifico si existe el usuario
+            let dataUsuario = await this.db.collection("usuarios").findOne({id: objecto.usuario_id})
+            if (!dataUsuario) {
+                return { error: "Usuario no existente" }
+            }
+
+            //Verifico si existen los asientos de la proyeccion
+            let dataAsientos = await this.db.collection("asientos").findOne({proyeccion_id: objecto.proyeccion_id})
+            if (!dataAsientos || dataAsientos.length === 0) {
+                return { error: "No existen asientos disponibles para la proyeccion" }
+            }
+
+        } catch (error) {
+            return { error: error.toString() };
+        } finally {
+            await this.conexion.close()
+        }
+    }
 }
