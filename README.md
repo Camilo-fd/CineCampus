@@ -367,3 +367,97 @@ objBoleto.destructor();
 { message: 'Boleto realizado' }
 ```
 
+
+
+## Caso 4: Verificación de Disponibilidad de Asientos
+
+### Descripción
+
+Este código muestra un método asíncrono en JavaScript que utiliza MongoDB para verificar la disponibilidad de asientos para una proyección específica. La función valida los datos de entrada, verifica la existencia de la proyección y los asientos, y devuelve una lista de asientos disponibles o un mensaje de error si no hay asientos disponibles.
+
+### Método checkSeatAvailability(object)
+Este método es parte de una clase `(Asiento)` que interactúa con la base de datos MongoII. La función realiza las siguientes operaciones:
+
+**Conexión a la base de datos**: Se utiliza `await this.conexion.connect()` para establecer la conexión antes de ejecutar consultas.
+
+**Validación de IDs**: Se verifica que `proyeccion_id` sea un entero y que todos los `asiento_id` sean enteros. Si no es así, se retorna un mensaje de error.
+
+**Verificación de existencia de la proyección**: Se comprueba que la proyección exista en la base de datos.
+
+**Verificación de disponibilidad de asientos**: Se verifica la existencia de cada asiento y su correspondencia con la proyección. Se agrega a la lista de asientos disponibles aquellos que estén en estado `"disponible"`.
+
+**Resultado**: Si hay asientos disponibles, se devuelve una lista de estos. Si no, se devuelve un mensaje de error indicando que no hay asientos disponibles.
+
+**Manejo de errores y cierre de conexión**: Se utiliza un bloque `try-catch-finally` para manejar errores y asegurar que la conexión a la base de datos se cierre correctamente después de ejecutar la consulta.
+
+### Uso del método
+Se instancia un objeto de la clase `Asiento (let objAsiento = new Asiento())`, y se llama al método `checkSeatAvailability(objecto)` utilizando `await` para esperar la resolución de la promesa devuelta por el método.
+
+```javascript
+let objAsiento = new asiento()
+console.log(await objAsiento.checkSeatAvailability({
+    proyeccion_id: 1,
+    asiento_id: [1]
+}));
+objAsiento.destructor()
+```
+
+### Ejemplo de uso
+
+```javascript
+async checkSeatAvailability(object) {
+        try {
+            await this.conexion.connect()
+
+            if (!Number.isInteger(object.proyeccion_id)) {
+                return { error: 'El valor proyeccion_id debe ser un entero' };
+            }
+            let asientosString = [];
+            for (let tipoAsiento of object.asiento_id) {
+                if (!Number.isInteger(tipoAsiento)) {
+                    asientosString.push(`El asiento #${tipoAsiento} debe ser un entero`);
+                }
+            }
+            
+            if (asientosString.length > 0) {
+                return asientosString;
+            }
+
+            let dataProyeccion = await this.db.collection("proyecciones").findOne({id: object.proyeccion_id})
+            if (!dataProyeccion) {
+                return { error: `No existe la proyeccion #${object.proyeccion_id}` }
+            }
+
+            let availableSeats = [];
+            for (let asientoId of object.asiento_id) {
+                let dataAsiento = await this.collection.findOne({ id: asientoId });
+                if (!dataAsiento) {
+                    continue;
+                }
+                if (dataAsiento.proyeccion_id !== object.proyeccion_id) {
+                    continue;
+                }
+                if (dataAsiento.estado === "disponible") {
+                    availableSeats.push(`Asiento #${dataAsiento.id}`);
+                }
+            }
+    
+            if (availableSeats.length > 0) {
+                return {Disponibles: availableSeats};
+            } else {
+                return { error: 'No hay asientos disponibles' };
+            }
+
+        } catch (error) {
+            return { error: error.toString() }
+        } finally {
+            await this.conexion.close()
+        }
+    }
+```
+
+### Return
+
+```javascript
+{ Disponibles: [ 'Asiento #1' ] }
+```

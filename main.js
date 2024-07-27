@@ -26,3 +26,10 @@ import { usuario } from "./js/model/usuario.js";
 //     estado: "pagado"  
 // }));
 // objBoleto.destructor()
+
+// let objAsiento = new asiento()
+// console.log(await objAsiento.checkSeatAvailability({
+//     proyeccion_id: 1,
+//     asiento_id: [1]
+// }));
+// objAsiento.destructor()
