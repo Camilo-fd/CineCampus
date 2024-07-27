@@ -25,3 +25,10 @@ import { usuario } from "./js/model/usuario.js";
 //     precio: 15000,
 //     estado: "pagado"  
 // }));
+
+// let objAsiento = new asiento()
+// console.log(await objAsiento.checkSeatAvailability({
+//     proyeccion_id: 1,
+//     asiento_id: [1]
+// }));
+// objAsiento.destructor()
