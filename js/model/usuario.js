@@ -221,4 +221,41 @@ export class usuario extends connect{
             await this.conexion.close()
         }
     }
+
+    // Permitir la consulta de todos los usuarios del sistema, con la posibilidad de filtrar por rol (VIP, estándar o administrador).
+
+    /**
+         * Retrieves a list of users from the database based on the specified role.
+         * If no role is provided, all users will be returned.
+         *
+         * @param {string} rol - The role of the users to retrieve. It can be "VIP", "estandar", or "administrador".
+         *
+         * @returns {Promise<Object[]>} - A promise that resolves to an array of user objects.
+         * If no users are found with the specified role, the promise will resolve to an error object with the message "No se encontraron usuarios con el rol especificado".
+         * If an error occurs during the database operation, the promise will resolve to an error object with the error message.
+     */
+    async getUsersByRole(rol) {
+        try {
+            await this.conexion.connect();
+
+            // Crear el objeto de consulta
+            let query = {};
+            if (rol) {
+                query.rol = rol;  // Se agrega el rol al objeto de consulta
+            }
+
+            // Busca usuarios que coincidan con la consulta
+            let dataUsuarios = await this.collection.find(query).toArray();
+            if (dataUsuarios.length === 0) {
+                return { error: "No se encontraron usuarios con el rol especificado" };
+            }
+
+            return dataUsuarios
+
+        } catch (error) {
+            return { error: error.toString() }
+        } finally {
+            await this.conexion.close();
+        }
+    }
 }
