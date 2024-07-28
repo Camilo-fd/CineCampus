@@ -915,3 +915,94 @@ async getUserById(id) {
 }
 ```
 
+
+
+## Caso Uso 10: 
+
+### Descripción
+
+Este código muestra un método asíncrono en JavaScript que utiliza MongoDB para actualizar el rol de un usuario. Si el nuevo rol es "vip", también se le asigna una tarjeta VIP con una fecha de expiración y un descuento. La función maneja la conexión a la base de datos, realiza la actualización del usuario y gestiona los errores potenciales.
+
+### Método updateUserRole(objecto)
+
+Este método es parte de una clase (`Usuario`) que interactúa con la base de datos MongoII. La función realiza las siguientes operaciones:
+
+1. **Conexión a la base de datos:** Se utiliza `await this.conexion.connect()` para establecer la conexión antes de ejecutar consultas.
+2. **Verificación del usuario:** Se utiliza `this.collection.findOne({ id: objecto.usuario_id })` para buscar un documento de usuario en la colección que coincida con el ID proporcionado. Si el usuario no se encuentra, se devuelve un mensaje de error.
+3. **Preparación del objeto de actualización:** Si el nuevo rol es "vip", se genera un nuevo número VIP, se establece la fecha de expiración de la tarjeta VIP y se crea el objeto `tarjeta_VIP`. Este objeto se añade al campo de actualización.
+4. **Actualización del usuario:** Se utiliza `this.collection.updateOne({ id: objecto.usuario_id }, { $set: NuevoCampo })` para actualizar el documento del usuario con el nuevo rol y, si es necesario, la tarjeta VIP.
+5. **Manejo de errores:** Si ocurre un error durante la operación, se maneja y se devuelve el mensaje de error correspondiente.
+6. **Cierre de conexión:** Se asegura que la conexión a la base de datos se cierre correctamente después de ejecutar la consulta mediante el bloque `finally`.
+
+### Uso del método
+
+Se instancia un objeto de la clase `Usuario` (`let objUsuario = new Usuario(conexion)`), y se llama al método `updateUserRole(objecto)` utilizando `await` para esperar la resolución de la promesa devuelta por el método.
+
+```javascript
+let objUsuario = new usuario();
+console.log(await objUsuario.updateUserRole({
+    usuario_id: 4,
+    nuevoRol: "vip"
+}));
+objUsuario.destructor()
+```
+
+### Ejemplo de uso
+
+```javascript
+async updateUserRole(objecto) {
+        try {
+            await this.conexion.connect()
+
+            // Verifico el usuario
+            let dataUsuario = await this.collection.findOne({ id: objecto.usuario_id });
+            if (!dataUsuario) {
+                return { error: "Usuario no encontrado" };
+            }
+
+            // Inicializa el objeto de actualización
+            const NuevoCampo = { rol: objecto.nuevoRol };
+
+            // Verifica si el nuevo rol es "vip"
+            if (objecto.nuevoRol === "vip") {
+                // Creo el nuevo número VIP
+                const dataNumeroVip = await this.collection.find({}).sort({ tarjeta_VIP: -1 }).limit(1).toArray();
+                const numeroVip = dataNumeroVip.length > 0 ? dataNumeroVip[0].tarjeta_VIP.numero + 1 : 1;
+    
+                // Creo la fecha de expiración de la tarjeta VIP
+                const fechaExpiracion = new Date();
+                fechaExpiracion.setFullYear(fechaExpiracion.getFullYear() + 1);
+    
+                // Nueva tarjeta VIP
+                const tarjeta_VIP = {
+                    fecha_expiracion: fechaExpiracion,
+                    numero: numeroVip,
+                    descuento: 10
+                };
+    
+                // Añade el campo tarjeta_VIP a updateFields
+                NuevoCampo.tarjeta_VIP = tarjeta_VIP;
+            }
+    
+            // Actualiza el usuario con el nuevo rol y, si es necesario, la tarjeta VIP
+            await this.collection.updateOne(
+                { id: objecto.usuario_id },
+                { $set: NuevoCampo }
+            );
+    
+            return { message: "Rol actualizado correctamente" };
+
+        } catch (error) {
+            return { error: error.toString() }
+        } finally {
+            await this.conexion.close()
+        }
+    }
+```
+
+### Return
+
+```
+{ message: "Rol actualizado correctamente" }
+```
+
