@@ -577,3 +577,76 @@ async reserveSeats(objecto) {
 }
 ```
 
+
+
+## Caso 6: Cancelación de Reservación de Asientos
+
+### Descripción
+
+Este código muestra un método asíncrono en JavaScript que utiliza MongoDB para cancelar una reserva de asientos para una proyección específica. La función valida la existencia de la reserva, verifica que esté en estado "reservado" y actualiza el estado de los asientos a "disponible" antes de eliminar la reserva de la base de datos.
+
+### Método cancelSeatReservation(objecto)
+
+Este método es parte de una clase (`Boleto`) que interactúa con la base de datos MongoII. La función realiza las siguientes operaciones:
+
+1. **Conexión a la base de datos:** Se utiliza `await this.conexion.connect()` para establecer la conexión antes de ejecutar consultas.
+2. **Verificación de existencia de la reserva:** Se comprueba que la reserva exista en la base de datos utilizando el ID del boleto proporcionado.
+3. **Verificación del estado de la reserva:** Se asegura de que la reserva esté en estado `"reservado"` antes de proceder a la cancelación.
+4. **Actualización del estado de los asientos:** Se actualiza el estado de cada asiento a` "disponible"` si están asociados con la reserva.
+5. **Eliminación de la reserva:** Se elimina el documento de la reserva de la base de datos.
+6. **Resultado:** Se devuelve un mensaje indicando que la reserva ha sido cancelada con éxito, o un mensaje de error si la reserva no se puede cancelar.
+7. **Manejo de errores y cierre de conexión:** Se utiliza un bloque `try-catch-finally` para manejar errores y asegurar que la conexión a la base de datos se cierre correctamente después de ejecutar la consulta.
+
+### Uso del método
+
+Se instancia un objeto de la clase `Boleto` (`let objBoleto = new Boleto()`), y se llama al método `cancelSeatReservation(objecto)` utilizando `await` para esperar la resolución de la promesa devuelta por el método.
+
+```javascript
+let objBoleto = new boleto();
+console.log(await objBoleto.cancelSeatReservation({
+    boleto_id: 6
+}));
+objBoleto.destructor()
+```
+
+### Ejemplo de uso
+
+```javascript
+async cancelSeatReservation(objecto) {
+    try {
+        await this.conexion.connect()
+
+        let dataBoleto = await this.collection.findOne({id: objecto.boleto_id});
+        if (!dataBoleto) {
+            return { error: "Reserva no encontrada" };
+        }
+
+        if (dataBoleto.estado === "reservado") {
+            for (let asiento of dataBoleto.asientos) {
+                await this.db.collection("asientos").updateOne(
+                    { id: asiento, proyeccion_id: dataBoleto.proyeccion_id },
+                    { $set: { estado: "disponible" } }
+                );
+            }
+        } else {
+            return { error: "No se puede cancelar una reserva que no esté en estado reservado" };
+        }
+
+        await this.collection.deleteOne({ id: objecto.boleto_id });
+
+        return "Cancelada la reserva"
+
+    } catch (error) {
+        return { error: error.toString() }
+    } finally {
+        await this.conexion.close();
+    }
+}
+```
+
+### Return
+
+```javascript
+{ message: "Cancelada la reserva" }
+```
+
