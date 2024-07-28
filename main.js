@@ -47,3 +47,7 @@ import { usuario } from "./js/model/usuario.js";
 //     boleto_id: 6
 // }));
 // objBoleto.destructor()
+
+// let objBoleto = new boleto();
+// console.log(await objBoleto.verifyVIPCard(1));
+// objBoleto.destructor()
