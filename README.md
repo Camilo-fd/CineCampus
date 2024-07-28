@@ -1006,3 +1006,79 @@ async updateUserRole(objecto) {
 { message: "Rol actualizado correctamente" }
 ```
 
+
+
+## Caso Uso 11: Listar Usuarios
+
+### Descripción
+
+Este código muestra un método asíncrono en JavaScript que utiliza MongoDB para obtener usuarios según su rol. La función maneja la conexión a la base de datos, realiza la consulta para encontrar los usuarios con el rol especificado y gestiona los errores potenciales.
+
+### Método getUsersByRole(rol)
+
+Este método es parte de una clase (`Usuario`) que interactúa con la base de datos MongoII. La función realiza las siguientes operaciones:
+
+1. **Conexión a la base de datos:** Se utiliza `await this.conexion.connect()` para establecer la conexión antes de ejecutar consultas.
+2. **Creación del objeto de consulta:** Si se proporciona un rol, se añade al objeto de consulta `query`.
+3. **Búsqueda de usuarios:** Se utiliza `this.collection.find(query).toArray()` para buscar documentos de usuario en la colección que coincidan con la consulta. Si no se encuentran usuarios, se devuelve un mensaje de error.
+4. **Manejo de errores y cierre de conexión:** Se utiliza un bloque `try-catch-finally` para manejar errores y asegurar que la conexión a la base de datos se cierre correctamente después de ejecutar la consulta.
+
+### Uso del método
+
+Se instancia un objeto de la clase `Usuario` (`let objUsuario = new Usuario(conexion)`), y se llama al método `getUsersByRole(rol)` utilizando `await` para esperar la resolución de la promesa devuelta por el método.
+
+```javascript
+let objUsuario = new usuario();
+console.log(await objUsuario.getUsersByRole("estandar"));
+objUsuario.destructor()
+```
+
+### Ejemplo de uso
+
+```javascript
+async getUsersByRole(rol) {
+    try {
+        await this.conexion.connect();
+
+        // Crear el objeto de consulta
+        let query = {};
+        if (rol) {
+            query.rol = rol;  // Se agrega el rol al objeto de consulta
+        }
+
+        // Busca usuarios que coincidan con la consulta
+        let dataUsuarios = await this.collection.find(query).toArray();
+        if (dataUsuarios.length === 0) {
+            return { message: "No se encontraron usuarios con el rol especificado" };
+        }
+
+        return dataUsuarios
+
+    } catch (error) {
+        return { error: error.toString() }
+    } finally {
+        await this.conexion.close();
+    }
+}
+```
+
+### Return
+
+```javascript
+[
+  {
+    _id: new ObjectId('64b5f1234567890123456809'),
+    id: 1,
+    nombre: 'Ana García',
+    email: 'ana.garcia@email.com',
+    contrasena: 'hash_contraseña_1',
+    rol: 'vip',
+    tarjeta_VIP: {
+      fecha_expiracion: 2025-12-31T00:00:00.000Z,
+      numero: 1,
+      descuento: 10
+    }
+  }
+]
+```
+

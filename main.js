@@ -71,3 +71,7 @@ import { usuario } from "./js/model/usuario.js";
 //     nuevoRol: "vip"
 // }));
 // objUsuario.destructor()
+
+// let objUsuario = new usuario();
+// console.log(await objUsuario.getUsersByRole("vip"));
+// objUsuario.destructor()
