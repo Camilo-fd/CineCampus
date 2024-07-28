@@ -461,3 +461,119 @@ async checkSeatAvailability(object) {
 ```javascript
 { Disponibles: [ 'Asiento #1' ] }
 ```
+
+
+
+## Caso 5: Reserva de Asientos
+
+### Descripción
+
+Este código muestra un método asíncrono en JavaScript que utiliza MongoDB para reservar asientos para una proyección específica. La función valida los datos de entrada, verifica la existencia de la proyección, el usuario y los asientos, y actualiza el estado de los asientos a "reservado" si están disponibles.
+
+### Método reserveSeats(objecto)
+
+Este método es parte de una clase `(Asiento)` que interactúa con la base de datos MongoII. La función realiza las siguientes operaciones:
+
+1. **Conexión a la base de datos:** Se utiliza `await this.conexion.connect()` para establecer la conexión antes de ejecutar consultas.
+2. **Generación de ID de boleto:** Se obtiene el último ID de boleto de la colección `asientos` y se genera un nuevo ID incrementando en 1. Si no hay boletos, se empieza con el ID 1.
+3. **Verificación de existencia de la proyección:** Se comprueba que la proyección exista en la base de datos.
+4. **Verificación de existencia del usuario:** Se comprueba que el usuario exista en la base de datos.
+5. **Verificación de disponibilidad de asientos:** Se verifica la existencia de cada asiento y su correspondencia con la proyección, y se asegura de que estén en estado `"disponible"`.
+6. **Actualización del estado de los asientos:** Si todos los asientos están disponibles, se actualiza su estado a `"reservado"`.
+7. **Inserción de la reserva:** Se crea un nuevo documento de reserva con la información proporcionada y se inserta en la colección `asientos`.
+8. **Resultado:** Si los asientos se reservan con éxito, se devuelve un mensaje de éxito y los asientos reservados. Si no, se devuelve un mensaje de error indicando que no hay suficientes asientos disponibles.
+9. **Manejo de errores y cierre de conexión:** Se utiliza un bloque `try-catch-finally` para manejar errores y asegurar que la conexión a la base de datos se cierre correctamente después de ejecutar la consulta.
+
+### Uso del método
+
+Se instancia un objeto de la clase `Asiento` (`let objAsiento = new Asiento()`), y se llama al método `reserveSeats(objecto)` utilizando `await` para esperar la resolución de la promesa devuelta por el método.
+
+```javascript
+let objBoleto = new boleto();
+console.log(await objBoleto.reserveSeats({
+    proyeccion_id: 1,
+    usuario_id: 1,
+    asiento_id: [1, 7],
+    estado: "reservado"
+}));
+objBoleto.destructor()
+```
+
+### Ejemplo de uso
+
+```javascript
+async reserveSeats(objecto) {
+    try {
+        await this.conexion.connect();
+
+        // Genero el nuevo id del boleto
+        const [dataBoleto] = await this.collection.find({}).sort({ id: -1 }).limit(1).toArray();
+        const newIdBoleto = dataBoleto ? dataBoleto.id + 1 : 1;
+
+        // Verifico si existe la proyección
+        let dataProyeccion = await this.db.collection("proyecciones").findOne({ id: objecto.proyeccion_id });
+        if (!dataProyeccion) {
+            return { error: "No existe la proyección" };
+        }
+
+        // Verifico si existe el usuario
+        let dataUsuario = await this.db.collection("usuarios").findOne({ id: objecto.usuario_id });
+        if (!dataUsuario) {
+            return { error: "Usuario no existente" };
+        }
+
+        // Verifico si existen los asientos de la proyección y si están disponibles
+        let availableSeats = [];
+        for (let asiento of objecto.asiento_id) {
+            let dataAsiento = await this.db.collection("asientos").findOne({
+                id: asiento,
+                proyeccion_id: objecto.proyeccion_id
+            });
+
+            if (!dataAsiento) {
+                return { error: `El asiento #${asiento} no existe para la proyección` };
+            }
+
+            if (dataAsiento.estado === "disponible") {
+                availableSeats.push(`Asiento #${dataAsiento.id}`);
+            }
+        }
+
+        // Actualizo el estado a reservado de los asientos
+        if (availableSeats.length === objecto.asiento_id.length) {
+            for (let asiento of objecto.asiento_id) {
+                await this.db.collection("asientos").updateOne(
+                    { id: asiento, proyeccion_id: objecto.proyeccion_id },
+                    { $set: { estado: "reservado" } }
+                );
+            }
+
+            // Nuevo documento de reserva
+            let nuevoReserva = {
+                id: newIdBoleto,
+                proyeccion_id: objecto.proyeccion_id,
+                usuario_id: objecto.usuario_id,
+                asientos: objecto.asiento_id,
+                estado: "reservado"
+            }
+
+            // Inserta el nuevo documento de reserva
+            await this.collection.insertOne(nuevoReserva);
+
+            return { 
+                message: 'Asientos reservados con éxito', 
+                Reservados: availableSeats 
+            };
+
+        } else {
+            return { error: 'No hay suficientes asientos disponibles' };
+        }
+
+    } catch (error) {
+        return { error: error.toString() };
+    } finally {
+        await this.conexion.close();
+    }
+}
+```
+
