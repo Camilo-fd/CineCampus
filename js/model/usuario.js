@@ -158,4 +158,67 @@ export class usuario extends connect{
             await this.conexion.close()
         }
     }
+
+    // Permitir la actualización del rol de un usuario (por ejemplo, cambiar de usuario estándar a VIP, o viceversa).
+
+    /**
+        This function updates the role of a user in the database.
+        If the new role is "VIP", it also creates a new VIP card for the user.
+        @param {Object} objecto - The object containing the user's ID and the new role.
+        @param {number} objecto.usuario_id - The unique identifier of the user.
+        @param {string} objecto.nuevoRol - The new role for the user. It can be "VIP", "estandar", or "administrador".
+        @returns {Promise
+        <Object>
+        } - A promise that resolves to an object containing either a success message or an error message.
+        @returns {Object.message} - A success message indicating that the user's role was updated correctly.
+        @returns {Object.error} - An error message indicating that an error occurred during the role update process.
+    */
+    async updateUserRole(objecto) {
+        try {
+            await this.conexion.connect()
+
+            // Verifico el usuario
+            let dataUsuario = await this.collection.findOne({ id: objecto.usuario_id });
+            if (!dataUsuario) {
+                return { error: "Usuario no encontrado" };
+            }
+
+            // Inicializa el objeto de actualización
+            const NuevoCampo = { rol: objecto.nuevoRol };
+
+            // Verifica si el nuevo rol es "vip"
+            if (objecto.nuevoRol === "vip") {
+                // Creo el nuevo número VIP
+                const dataNumeroVip = await this.collection.find({}).sort({ tarjeta_VIP: -1 }).limit(1).toArray();
+                const numeroVip = dataNumeroVip.length > 0 ? dataNumeroVip[0].tarjeta_VIP.numero + 1 : 1;
+    
+                // Creo la fecha de expiración de la tarjeta VIP
+                const fechaExpiracion = new Date();
+                fechaExpiracion.setFullYear(fechaExpiracion.getFullYear() + 1);
+    
+                // Nueva tarjeta VIP
+                const tarjeta_VIP = {
+                    fecha_expiracion: fechaExpiracion,
+                    numero: numeroVip,
+                    descuento: 10
+                };
+    
+                // Añade el campo tarjeta_VIP a updateFields
+                NuevoCampo.tarjeta_VIP = tarjeta_VIP;
+            }
+    
+            // Actualiza el usuario con el nuevo rol y, si es necesario, la tarjeta VIP
+            await this.collection.updateOne(
+                { id: objecto.usuario_id },
+                { $set: NuevoCampo }
+            );
+    
+            return { message: "Rol actualizado correctamente" };
+
+        } catch (error) {
+            return { error: error.toString() }
+        } finally {
+            await this.conexion.close()
+        }
+    }
 }

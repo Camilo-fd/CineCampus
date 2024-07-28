@@ -64,3 +64,10 @@ import { usuario } from "./js/model/usuario.js";
 // let objUsuario = new usuario();
 // console.log(await objUsuario.getUserById(2));
 // objUsuario.destructor()
+
+// let objUsuario = new usuario();
+// console.log(await objUsuario.updateUserRole({
+//     usuario_id: 4,
+//     nuevoRol: "vip"
+// }));
+// objUsuario.destructor()
