@@ -127,4 +127,35 @@ export class usuario extends connect{
             await this.conexion.close()
         }
     }
+
+    // Permitir la consulta de información detallada sobre un usuario, incluyendo su rol y estado de tarjeta VIP.
+
+    /**
+         * This function retrieves detailed information about a user from the database.
+         * It includes the user's role and VIP card status.
+         *
+         * @param {number} id - The unique identifier of the user.
+         *
+         * @returns {Promise<Object>} - A promise that resolves to an object containing the user's information.
+         * If the user is found, the object will contain the user's details.
+         * If the user is not found, the object will contain an error message.
+         * If an error occurs during the database operation, the object will contain an error message.
+     */
+    async getUserById(id) {
+        try {
+            await this.conexion.connect()
+
+            let dataUsuario = await this.collection.findOne({ id: id });
+            if (!dataUsuario) {
+                return { error: "Usuario no encontrado" };
+            }
+
+            return dataUsuario;
+
+        } catch (error) {
+            return { error: error.toString() }
+        } finally {
+            await this.conexion.close()
+        }
+    }
 }

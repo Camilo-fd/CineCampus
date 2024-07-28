@@ -59,3 +59,7 @@ import { usuario } from "./js/model/usuario.js";
 //     contraseña: "javascript",
 //     rol: "estandar"
 // }));
+
+// let objUsuario = new usuario();
+// console.log(await objUsuario.getUserById(2));
+// objUsuario.destructor()
