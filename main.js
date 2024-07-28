@@ -51,3 +51,11 @@ import { usuario } from "./js/model/usuario.js";
 // let objBoleto = new boleto();
 // console.log(await objBoleto.verifyVIPCard(1));
 // objBoleto.destructor()
+
+// let objUsuario = new usuario();
+// console.log(await objUsuario.newUser({
+//     nombre: "Miguel_Castro",
+//     email: "miguel_papu@gmail.com",
+//     contraseña: "javascript",
+//     rol: "estandar"
+// }));
