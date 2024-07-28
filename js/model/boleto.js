@@ -18,7 +18,7 @@ export class boleto extends connect{
 
     destructor() {
         connect.instanceConnect = undefined;
-        item.instanceItem = undefined;
+        // item.instanceItem = undefined;
     }
 
     async getAll(){
@@ -247,6 +247,51 @@ export class boleto extends connect{
 
         } catch (error) {
             return { error: error.toString() };
+        } finally {
+            await this.conexion.close();
+        }
+    }
+
+    // Permitir la cancelación de una reserva de asiento ya realizada.
+
+    /**
+         * This function is responsible for canceling a seat reservation.
+         * It connects to the database, retrieves the reservation data, checks if the reservation is in a 'reservado' state,
+         * updates the seat status to 'disponible', and deletes the reservation document.
+         *
+         * @param {Object} objecto - The object containing the necessary data for seat reservation cancellation.
+         * @param {number} objecto.boleto_id - The ID of the reservation to be canceled.
+         *
+         * @returns {string|Object} - A success message or an error object.
+         * @returns {string} - A success message indicating that the reservation was canceled.
+         * @returns {Object.error} - An error message indicating that an error occurred during the cancellation process.
+     */
+    async cancelSeatReservation(objecto) {
+        try {
+            await this.conexion.connect()
+
+            let dataBoleto = await this.collection.findOne({id: objecto.boleto_id});
+            if (!dataBoleto) {
+                return { error: "Reserva no encontrada" };
+            }
+
+            if (dataBoleto.estado === "reservado") {
+                for (let asiento of dataBoleto.asientos) {
+                    await this.db.collection("asientos").updateOne(
+                        { id: asiento, proyeccion_id: dataBoleto.proyeccion_id },
+                        { $set: { estado: "disponible" } }
+                    );
+                }
+            } else {
+                return { error: "No se puede cancelar una reserva que no esté en estado reservado" };
+            }
+
+            await this.collection.deleteOne({ id: objecto.boleto_id });
+
+            return { message: "Cancelada la reserva" }
+
+        } catch (error) {
+            return { error: error.toString() }
         } finally {
             await this.conexion.close();
         }
