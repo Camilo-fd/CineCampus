@@ -164,36 +164,91 @@ export class boleto extends connect{
 
     // Permitir la selección y reserva de asientos para una proyección específica.
 
+    /**
+         * This function is responsible for reserving seats for a specific projection.
+         * It performs several validations and operations related to seat reservation.
+         *
+         * @param {Object} objecto - The object containing the necessary data for seat reservation.
+         * @param {number} objecto.proyeccion_id - The ID of the projection.
+         * @param {number} objecto.usuario_id - The ID of the user.
+         * @param {Array<number>} objecto.asiento_id - The IDs of the seats to be reserved.
+         *
+         * @returns {Object} - An object containing either a success message or an error message.
+         * @returns {Object.message} - A success message indicating that the seats were successfully reserved.
+         * @returns {Object.error} - An error message indicating that an error occurred during seat reservation.
+         * @returns {Object.Reservados} - An array of reserved seat numbers.
+    */
     async reserveSeats(objecto) {
         try {
-            await this.conexion.connect()
-
+            await this.conexion.connect();
+    
             // Genero el nuevo id del boleto
             const [dataBoleto] = await this.collection.find({}).sort({ id: -1 }).limit(1).toArray();
-            const newIdBoleto = dataBoleto.id + 1;
-
-            // Verifico si existe la proyeccion
-            let dataProyeccion = await this.db.collection("proyecciones").findOne({id: objecto.proyeccion_id})
+            const newIdBoleto = dataBoleto ? dataBoleto.id + 1 : 1;
+    
+            // Verifico si existe la proyección
+            let dataProyeccion = await this.db.collection("proyecciones").findOne({ id: objecto.proyeccion_id });
             if (!dataProyeccion) {
-                return { error: "No exite proyeccion"}
+                return { error: "No existe la proyección" };
             }
-
+    
             // Verifico si existe el usuario
-            let dataUsuario = await this.db.collection("usuarios").findOne({id: objecto.usuario_id})
+            let dataUsuario = await this.db.collection("usuarios").findOne({ id: objecto.usuario_id });
             if (!dataUsuario) {
-                return { error: "Usuario no existente" }
+                return { error: "Usuario no existente" };
             }
+    
+            // Verifico si existen los asientos de la proyección y si están disponibles
+            let availableSeats = [];
+            for (let asiento of objecto.asiento_id) {
+                let dataAsiento = await this.db.collection("asientos").findOne({
+                    id: asiento,
+                    proyeccion_id: objecto.proyeccion_id
+                });
+    
+                if (!dataAsiento) {
+                    return { error: `El asiento #${asiento} no existe para la proyección` };
+                }
+    
+                if (dataAsiento.estado === "disponible") {
+                    availableSeats.push(`Asiento #${dataAsiento.id}`);
+                }
+            }
+    
+            // Actualizo el estado a reservado de los asientos
+            if (availableSeats.length === objecto.asiento_id.length) {
+                for (let asiento of objecto.asiento_id) {
+                    await this.db.collection("asientos").updateOne(
+                        { id: asiento, proyeccion_id: objecto.proyeccion_id },
+                        { $set: { estado: "reservado" } }
+                    );
+                }
 
-            //Verifico si existen los asientos de la proyeccion
-            let dataAsientos = await this.db.collection("asientos").findOne({proyeccion_id: objecto.proyeccion_id})
-            if (!dataAsientos || dataAsientos.length === 0) {
-                return { error: "No existen asientos disponibles para la proyeccion" }
+                // Nuevo documento de reserva
+                let nuevoReserva = {
+                    id: newIdBoleto,
+                    proyeccion_id: objecto.proyeccion_id,
+                    usuario_id: objecto.usuario_id,
+                    asientos: objecto.asiento_id,
+                    estado: "reservado"
+                }
+
+                // Inserta el nuevo documento de reserva
+                await this.collection.insertOne(nuevoReserva);
+
+                return { 
+                    message: 'Asientos reservados con éxito', 
+                    Reservados: availableSeats 
+                };
+
+            } else {
+                return { error: 'No hay suficientes asientos disponibles' };
             }
 
         } catch (error) {
             return { error: error.toString() };
         } finally {
-            await this.conexion.close()
+            await this.conexion.close();
         }
     }
 }
