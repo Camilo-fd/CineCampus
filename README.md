@@ -853,3 +853,65 @@ async newUser(objecto) {
 { message: "Usuario creado correctamente"}
 ```
 
+
+
+## Caso 9: Obtener Detalles de Usuario
+
+### Descripción
+
+Este código muestra un método asíncrono en JavaScript que utiliza MongoDB para obtener información detallada de un usuario específico basado en su ID. La función maneja la conexión a la base de datos, realiza la consulta para encontrar al usuario y gestiona los errores potenciales.
+
+### Método getUserById(id)
+
+Este método es parte de una clase (`Usuario`) que interactúa con la base de datos MongoII. La función realiza las siguientes operaciones:
+
+1. **Conexión a la base de datos:** Se utiliza `await this.conexion.connect()` para establecer la conexión antes de ejecutar consultas.
+2. **Consulta del usuario:** Se utiliza `this.collection.findOne({ id: id })` para buscar un documento de usuario en la colección que coincida con el ID proporcionado.
+3. **Manejo de errores:** Si el usuario no se encuentra, se devuelve un mensaje de error. Si ocurre algún otro error durante la operación, también se maneja y se devuelve el mensaje de error correspondiente.
+4. **Cierre de conexión:** Se asegura que la conexión a la base de datos se cierre correctamente después de ejecutar la consulta mediante el bloque `finally`.
+
+### Uso del método
+
+Se instancia un objeto de la clase `Usuario` (`let objUsuario = new Usuario(conexion)`), y se llama al método `getUserById(id)` utilizando `await` para esperar la resolución de la promesa devuelta por el método.
+
+```javascript
+let objUsuario = new usuario();
+console.log(await objUsuario.getUserById(2));
+objUsuario.destructor()
+```
+
+### Ejemplo de uso
+
+```javascript
+async getUserById(id) {
+    try {
+        await this.conexion.connect()
+
+        let dataUsuario = await this.collection.findOne({ id: id });
+        if (!dataUsuario) {
+            return { error: "Usuario no encontrado" };
+        }
+
+        return dataUsuario;
+
+    } catch (error) {
+        return { error: error.toString() }
+    } finally {
+        await this.conexion.close()
+    }
+}
+```
+
+### Return
+
+```javascript
+{
+  _id: new ObjectId('64b5f1234567890123456810'),
+  id: 2,
+  nombre: 'Carlos Rodríguez',
+  email: 'carlos.rodriguez@email.com',
+  contrasena: 'hash_contraseña_2',
+  rol: 'estandar'
+}
+```
+
