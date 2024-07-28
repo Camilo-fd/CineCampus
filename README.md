@@ -650,3 +650,72 @@ async cancelSeatReservation(objecto) {
 { message: "Cancelada la reserva" }
 ```
 
+
+
+## Caso 7: Verificar Tarjeta VIP
+
+### Descripción
+
+Este código muestra un método asíncrono en JavaScript que utiliza MongoDB para aplicar descuentos a un usuario con tarjeta VIP. La función verifica si el usuario existe, si tiene una tarjeta VIP, y si la tarjeta no ha expirado. Si todas las condiciones se cumplen, devuelve el porcentaje de descuento aplicado.
+
+### Método verifyVIPCard(usuario_id)
+
+Este método es parte de una clase (`Boleto`) que interactúa con la base de datos MongoII. La función realiza las siguientes operaciones:
+
+1. **Conexión a la base de datos:** Se utiliza `await this.conexion.connect()` para establecer la conexión antes de ejecutar consultas.
+2. **Verificación de existencia del usuario:** Se comprueba que el usuario exista en la base de datos utilizando el ID del usuario proporcionado.
+3. **Verificación de tarjeta VIP:** Se asegura de que el usuario tenga una `tarjeta_VIP` y que no esté expirada.
+4. **Resultado:** Se devuelve un mensaje indicando el porcentaje de descuento si el usuario tiene una tarjeta VIP válida, o mensajes de error si alguna de las condiciones no se cumple.
+5. **Manejo de errores y cierre de conexión:** Se utiliza un bloque `try-catch-finally` para manejar errores y asegurar que la conexión a la base de datos se cierre correctamente después de ejecutar la consulta.
+
+### Uso del método
+
+Se instancia un objeto de la clase `Boleto` (`let objBoleto = new Boleto()`), y se llama al método `verifyVIPCard(usuario_id)` utilizando `await` para esperar la resolución de la promesa devuelta por el método.
+
+```javascript
+let objBoleto = new boleto();
+console.log(await objBoleto.verifyVIPCard(1));
+objBoleto.destructor()
+```
+
+### Ejemplo de uso
+
+```javascript
+async verifyVIPCard(usuario_id) {
+    try {
+        await this.conexion.connect()
+
+        // Verifico que exista el usuario
+        let dataTarjetaVIP = await this.db.collection("usuarios").findOne({ id: usuario_id});
+        if (!dataTarjetaVIP) {
+            return { message: "No existe usuario" };
+        }
+
+        // Verifico que tenga tarjeta VIP
+        if (!dataTarjetaVIP.tarjeta_VIP) {
+            return { message: "No eres usuario con tarjeta VIP" };
+        }
+
+        // Verifico que la tarjeta VIP no haya caducado
+        if (dataTarjetaVIP.tarjeta_VIP.fecha_expiracion < new Date()) {
+            return { message: "La tarjeta VIP caducó" };
+        }
+
+        // Saco el descuento de la tarjeta
+        let descuentoAplicado = dataTarjetaVIP.tarjeta_VIP.descuento;
+
+        return { message: `Eres usuario VIP, tu descuento para la compra es: ${descuentoAplicado}%` }
+
+    } catch (error) {
+        return { error: error.toString() }
+    } finally {
+        await this.conexion.close();
+    }
+}
+```
+
+### Return 
+
+```javascript
+{ message: 'Eres usuario VIP, tu descuento para la compra es: 10%' }
+```
