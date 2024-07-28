@@ -1,4 +1,5 @@
 import { connect } from "../../helpers/db/connect.js";
+import { usuario } from "./usuario.js";
 
 export class boleto extends connect{
     static instanceBoleto;
@@ -289,6 +290,50 @@ export class boleto extends connect{
             await this.collection.deleteOne({ id: objecto.boleto_id });
 
             return { message: "Cancelada la reserva" }
+
+        } catch (error) {
+            return { error: error.toString() }
+        } finally {
+            await this.conexion.close();
+        }
+    }
+
+    // Permitir la aplicación de descuentos en la compra de boletos para usuarios con tarjeta VIP.
+
+    /**
+         * This function applies discounts to the purchase of tickets for VIP users.
+         * It retrieves the user's VIP card information and calculates the applicable discount.
+         *
+         * @param {number} usuario_id - The ID of the user for whom the discount is being applied.
+         *
+         * @returns {Object} - An object containing either a success message or an error message.
+         * @returns {Object.message} - A success message indicating the discount percentage for VIP users.
+         * @returns {Object.error} - An error message indicating that an error occurred during the discount application process.
+     */
+    async verifyVIPCard(usuario_id) {
+        try {
+            await this.conexion.connect()
+
+            // Verifico que exista el usuario
+            let dataTarjetaVIP = await this.db.collection("usuarios").findOne({ id: usuario_id});
+            if (!dataTarjetaVIP) {
+                return { message: "No existe usuario" };
+            }
+
+            // Verifico que tenga tarjeta VIP
+            if (!dataTarjetaVIP.tarjeta_VIP) {
+                return { message: "No eres usuario con tarjeta VIP" };
+            }
+
+            // Verifico que la tarjeta VIP no haya caducado
+            if (dataTarjetaVIP.tarjeta_VIP.fecha_expiracion < new Date()) {
+                return { message: "La tarjeta VIP caducó" };
+            }
+
+            // Saco el descuento de la tarjeta
+            let descuentoAplicado = dataTarjetaVIP.tarjeta_VIP.descuento;
+
+            return { message: `Eres usuario VIP, tu descuento para la compra es: ${descuentoAplicado}%` }
 
         } catch (error) {
             return { error: error.toString() }
