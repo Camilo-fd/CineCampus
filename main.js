@@ -42,3 +42,9 @@ import { usuario } from "./js/model/usuario.js";
 //     estado: "reservado"
 // }));
 // objBoleto.destructor()
+
+// let objBoleto = new boleto();
+// console.log(await objBoleto.cancelSeatReservation({
+//     boleto_id: 6
+// }));
+// objBoleto.destructor()
