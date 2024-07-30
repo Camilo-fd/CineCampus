@@ -728,21 +728,22 @@ async verifyVIPCard(usuario_id) {
 
 Este código muestra un método asíncrono en JavaScript que utiliza MongoDB para crear un nuevo usuario en la base de datos. La función valida la existencia de un usuario con el mismo nombre o email, valida la estructura del email, y crea un nuevo usuario con diferentes tipos de roles: VIP, estándar o administrador.
 
-### Método newUser(objecto)
+### Método `newUser(objecto)`
 
 Este método es parte de una clase (`Usuario`) que interactúa con la base de datos MongoII. La función realiza las siguientes operaciones:
 
 1. **Conexión a la base de datos:** Se utiliza `await this.conexion.connect()` para establecer la conexión antes de ejecutar consultas.
-2. **Generación de IDs:** Se genera un nuevo ID para el usuario y un nuevo número para la tarjeta VIP, si corresponde, utilizando el ID máximo actual en la colección.
-3. **Validación de existencia del nombre y email:** Se verifica que el nombre y el email proporcionados no estén ya en uso en la base de datos.
-4. **Validación del email:** Se comprueba que el email tenga una estructura válida utilizando una expresión regular.
-5. **Creación de fecha de expiración:** Se establece la fecha de expiración de la tarjeta VIP a un año a partir de la fecha actual.
-6. **Creación del nuevo usuario:** Dependiendo del rol proporcionado en `objecto.rol`, se crea un nuevo documento de usuario en la base de datos con los detalles correspondientes:
+2. **Generación de IDs:** Se genera un nuevo ID para el usuario utilizando el ID máximo actual en la colección.
+3. **Generación del número de tarjeta VIP:** Si el usuario es VIP, se genera un nuevo número de tarjeta VIP utilizando el número máximo actual en la colección.
+4. **Validación de existencia del nombre y email:** Se verifica que el nombre y el email proporcionados no estén ya en uso en la base de datos.
+5. **Validación del email:** Se comprueba que el email tenga una estructura válida utilizando una expresión regular.
+6. **Creación de fecha de expiración:** Se establece la fecha de expiración de la tarjeta VIP a un año a partir de la fecha actual.
+7. Creación del nuevo usuario: Dependiendo del rol proporcionado en `objecto.rol` se crea un nuevo documento de usuario en la base de datos con los detalles correspondientes:
    - **VIP:** Incluye información de la tarjeta VIP con descuento.
    - **Estándar y Administrador:** Sin información de tarjeta VIP.
-7. **Inserción del usuario:** Se inserta el nuevo usuario en la colección correspondiente de la base de datos.
-8. **Resultado:** Se devuelve un mensaje indicando que el usuario se creó correctamente, o un mensaje de error si alguna de las validaciones falla.
-9. **Manejo de errores y cierre de conexión:** Se utiliza un bloque `try-catch-finally` para manejar errores y asegurar que la conexión a la base de datos se cierre correctamente después de ejecutar la consulta.
+8. **Inserción del usuario:** Se inserta el nuevo usuario en la colección correspondiente de la base de datos.
+9. **Resultado:** Se devuelve un mensaje indicando que el usuario se creó correctamente, o un mensaje de error si alguna de las validaciones falla.
+10. **Manejo de errores y cierre de conexión:** Se utiliza un bloque `try-catch-finally` para manejar errores y asegurar que la conexión a la base de datos se cierre correctamente después de ejecutar la consulta.
 
 ### Uso del método
 
@@ -762,89 +763,60 @@ console.log(await objUsuario.newUser({
 ### Ejemplo de uso
 
 ```javascript
-async newUser(objecto) {
-        try {
-            await this.conexion.connect()
+async updateUserRole(objecto) {
+    try {
+        await this.conexion.connect();
+        const db = this.conexion.db("MongoII");
 
-            // Genero el nuevo id del usuario
-            const [dataUsuario] = await this.collection.find({}).sort({ id: -1 }).limit(1).toArray();
-            const newIdUsuario = dataUsuario.id + 1;
+        // Verifico el usuario
+        let dataUsuario = await this.collection.findOne({ id: objecto.usuario_id });
+        if (!dataUsuario) {
+            return { error: "Usuario no encontrado" };
+        }
 
-            // Genero el nuevo numero de la tarjeta VIP
-            const dataNumeroVip = await this.collection.find({}).sort({ tarjeta_VIP: -1 }).limit(1).toArray();
-            const numeroVip = dataNumeroVip[0].tarjeta_VIP.numero + 1
+        // Inicializa el objeto de actualización
+        const NuevoCampo = { rol: objecto.nuevoRol };
 
-            // Valido que el nombre no exita
-            const nombreExiste = await this.collection.findOne({ nombre: objecto.nombre });
-            if (nombreExiste) {
-                return { error: "El nombre de usuario ya existe." }
-            }
+        // Verifica si el nuevo rol es "vip"
+        if (objecto.nuevoRol === "vip") {
+            // Creo el nuevo número VIP
+            const dataNumeroVip = await this.collection.find({}).sort({ "tarjeta_VIP.numero": -1 }).limit(1).toArray();
+            const numeroVip = dataNumeroVip.length > 0 ? dataNumeroVip[0].tarjeta_VIP.numero + 1 : 1;
 
-            // Valido que el email no exita
-            const emailExiste = await this.collection.findOne({ email: objecto.email });
-            if (emailExiste) {
-                return { error: "El email ya está en uso." }
-            }
-
-            // Valido que el email sea correcto
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(objecto.email)) {
-                throw new Error("El email ingresado no tiene una estructura válida.");
-            }
-
-            // Creo la fecha expiracion 
+            // Creo la fecha de expiración de la tarjeta VIP
             const fechaExpiracion = new Date();
             fechaExpiracion.setFullYear(fechaExpiracion.getFullYear() + 1);
 
-            // Creo el nuevo usuario VIP
-            let nuevoUsuarioVip = {
-                id: newIdUsuario,
-                nombre: objecto.nombre,
-                email: objecto.email,
-                contrasena: objecto.contraseña,
-                rol: objecto.rol,
-                tarjeta_VIP: {
-                    fecha_expiracion: fechaExpiracion,
-                    numero: numeroVip,
-                    descuento: 10
-                }
-            }
+            // Nueva tarjeta VIP
+            const tarjeta_VIP = {
+                fecha_expiracion: fechaExpiracion,
+                numero: numeroVip,
+                descuento: 10
+            };
 
-            // Creo el nuevo usuario estandar
-            let nuevoUsuarioEstandar = {
-                id: newIdUsuario,
-                nombre: objecto.nombre,
-                email: objecto.email,
-                contrasena: objecto.contraseña,
-                rol: objecto.rol,
-            }
-
-            // Creo el nuevo usuario administrador
-            let nuevoUsuarioAdministrador = {
-                id: newIdUsuario,
-                nombre: objecto.nombre,
-                email: objecto.email,
-                contrasena: objecto.contraseña,
-                rol: objecto.rol,
-            }
-
-            // Inserto el nuevo usuario en la base de datos según el rol
-            if (objecto.rol === "vip") {
-                await this.collection.insertOne(nuevoUsuarioVip)
-            } else if (objecto.rol === "estandar") {
-                await this.collection.insertOne(nuevoUsuarioEstandar)
-            } else if (objecto.rol === "administrador") {
-                await this.collection.insertOne(nuevoUsuarioAdministrador)
-            } 
-
-            return { message: "Usuario creado correctamente"}
-
-        } catch (error) {
-            return { error: error.toString() }
-        } finally {
-            await this.conexion.close()
+            // Añade el campo tarjeta_VIP a NuevoCampo
+            NuevoCampo.tarjeta_VIP = tarjeta_VIP;
         }
+
+        // Actualiza el usuario con el nuevo rol y, si es necesario, la tarjeta VIP
+        await this.collection.updateOne(
+            { id: objecto.usuario_id },
+            { $set: NuevoCampo }
+        );
+
+        await db.command({
+            updateUser: dataUsuario.nombre,
+            roles: [{ role: objecto.nuevoRol, db: "MongoII" }] 
+        });
+
+        return { message: "Rol actualizado correctamente" };
+
+    } catch (error) {
+        return { error: error.toString() };
+    } finally {
+        await this.conexion.close();
     }
+}
 ```
 
 ### Return
