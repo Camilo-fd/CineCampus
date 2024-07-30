@@ -46,38 +46,48 @@ export class usuario extends connect{
      */
     async newUser(objecto) {
         try {
-            await this.conexion.connect()
-
+            await this.conexion.connect();
+            const db = this.conexion.db("MongoII");
+    
             // Genero el nuevo id del usuario
             const [dataUsuario] = await this.collection.find({}).sort({ id: -1 }).limit(1).toArray();
             const newIdUsuario = dataUsuario.id + 1;
-
+    
             // Genero el nuevo numero de la tarjeta VIP
-            const dataNumeroVip = await this.collection.find({}).sort({ tarjeta_VIP: -1 }).limit(1).toArray();
-            const numeroVip = dataNumeroVip[0].tarjeta_VIP.numero + 1
-
+            const dataNumeroVip = await this.collection.find({}).sort({ "tarjeta_VIP.numero": -1 }).limit(1).toArray();
+            const numeroVip = dataNumeroVip.length > 0 ? dataNumeroVip[0].tarjeta_VIP.numero + 1 : 1;
+    
             // Valido que el nombre no exita
             const nombreExiste = await this.collection.findOne({ nombre: objecto.nombre });
             if (nombreExiste) {
-                return { error: "El nombre de usuario ya existe." }
+                return { error: "El nombre de usuario ya existe." };
             }
-
+    
             // Valido que el email no exita
             const emailExiste = await this.collection.findOne({ email: objecto.email });
             if (emailExiste) {
-                return { error: "El email ya está en uso." }
+                return { error: "El email ya está en uso." };
             }
-
+    
             // Valido que el email sea correcto
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(objecto.email)) {
                 throw new Error("El email ingresado no tiene una estructura válida.");
             }
-
+    
             // Creo la fecha expiracion 
             const fechaExpiracion = new Date();
             fechaExpiracion.setFullYear(fechaExpiracion.getFullYear() + 1);
-
+    
+            // Añado el usuario a Mongo
+            let mongoUsuario = {
+                createUser: objecto.nombre,
+                pwd: objecto.contraseña,
+                roles: [
+                    { role: objecto.rol, db: "MongoII" }
+                ]
+            };
+    
             // Creo el nuevo usuario VIP
             let nuevoUsuarioVip = {
                 id: newIdUsuario,
@@ -90,41 +100,31 @@ export class usuario extends connect{
                     numero: numeroVip,
                     descuento: 10
                 }
-            }
-
-            // Creo el nuevo usuario estandar
-            let nuevoUsuarioEstandar = {
+            };
+    
+            // Creo el nuevo usuario dependiendo del rol
+            let nuevoUsuario = {
                 id: newIdUsuario,
                 nombre: objecto.nombre,
                 email: objecto.email,
                 contrasena: objecto.contraseña,
-                rol: objecto.rol,
-            }
-
-            // Creo el nuevo usuario administrador
-            let nuevoUsuarioAdministrador = {
-                id: newIdUsuario,
-                nombre: objecto.nombre,
-                email: objecto.email,
-                contrasena: objecto.contraseña,
-                rol: objecto.rol,
-            }
-
+                rol: objecto.rol
+            };
+    
             // Inserto el nuevo usuario en la base de datos según el rol
             if (objecto.rol === "vip") {
-                await this.collection.insertOne(nuevoUsuarioVip)
-            } else if (objecto.rol === "estandar") {
-                await this.collection.insertOne(nuevoUsuarioEstandar)
-            } else if (objecto.rol === "administrador") {
-                await this.collection.insertOne(nuevoUsuarioAdministrador)
-            } 
-
-            return { message: "Usuario creado correctamente"}
-
+                await this.collection.insertOne(nuevoUsuarioVip);
+            } else {
+                await this.collection.insertOne(nuevoUsuario);
+            }
+            await db.command(mongoUsuario);
+    
+            return { message: "Usuario creado correctamente" };
+    
         } catch (error) {
-            return { error: error.toString() }
+            return { error: error.toString() };
         } finally {
-            await this.conexion.close()
+            await this.conexion.close();
         }
     }
 
