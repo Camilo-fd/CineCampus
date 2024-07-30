@@ -27,4 +27,6 @@ export class proyeccion extends connect{
         await this.conexion.close();
         return data
     }
+
+    
 }
