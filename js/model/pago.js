@@ -21,7 +21,7 @@ export class pago extends connect{
         // item.instanceItem = undefined;
     }
 
-    async getAll(){
+    async getAllPago(){
         await this.conexion.connect();
         const data = await this.collection.find({}).toArray()
         await this.conexion.close();
