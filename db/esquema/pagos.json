@@ -1,0 +1,42 @@
+{
+    "$jsonSchema": {
+        "bsonType": "object",
+        "required": [
+            "id",
+            "boleto_id",
+            "metodo_pago",
+            "pago_total",
+            "estado"
+        ],
+        "properties": {
+            "id": {
+                "bsonType": "int",
+                "description": "debe ser un entero y es obligatorio"
+            },
+            "boleto_id": {
+                "bsonType": "int",
+                "description": "debe ser un entero y es obligatorio"
+            },
+            "metodo_pago": {
+                "enum": [
+                    "tarjeta",
+                    "efectivo",
+                    "transferencia"
+                ],
+                "description": "puede ser solo uno de los valores enumerados y es opcional"
+            },
+            "pago_total": {
+                "bsonType": "int",
+                "description": "debe ser un entero y es obligatorio"
+            },
+            "estado": {
+                "enum": [
+                    "pendiente",
+                    "completado",
+                    "fallido"
+                ],
+                "description": "puede ser solo uno de los valores enumerados y es obligatorio"
+            }
+        }
+    }
+}
