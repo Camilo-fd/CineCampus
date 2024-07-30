@@ -1,12 +1,12 @@
 // ------------------ CADENA CONEXION ------------------
 
-// ------ ADMINISTRADOR
+// ------ Vip
 // mongodb://Ana_García:ana123@monorail.proxy.rlwy.net:45882/MongoII
 
-// ------ VIP
+// ------ ESTANDAR
 // mongodb://Carlos_Rodríguez:carlos123@monorail.proxy.rlwy.net:45882/MongoII
 
-// ------ ESTANDAR
+// ------ ADMINISTRADOR
 // mongodb://Maria_López:maria123@monorail.proxy.rlwy.net:45882/MongoII
 
 

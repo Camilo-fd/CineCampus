@@ -57,27 +57,27 @@ db.createRole({
     privileges: [
       {
         resource: { db: "MongoII", collection: "boletos" },
-        actions: ["find", "insert", "remove"]
+        actions: ["find", "insert", "remove", "update"]
       },
       {
         resource: { db: "MongoII", collection: "pagos" },
-        actions: ["find", "insert", "remove"]
+        actions: ["find", "insert", "remove", "update"]
       },
       {
         resource: { db: "MongoII", collection: "asientos" },
-        actions: ["find", "insert", "remove"]
+        actions: ["find", "insert", "remove", "update"]
       },
       {
         resource: { db: "MongoII", collection: "peliculas" },
-        actions: ["find", "insert", "remove"]
+        actions: ["find", "insert", "remove", "update"]
       },
       {
         resource: { db: "MongoII", collection: "proyecciones" },
-        actions: ["find", "insert", "remove"]
+        actions: ["find", "insert", "remove", "update"]
       },
       {
         resource: { db: "MongoII", collection: "usuarios" },
-        actions: ["find", "insert", "remove"]
+        actions: ["find", "insert", "remove", "update"]
       }
     ],
     roles: []
