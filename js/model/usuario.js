@@ -175,21 +175,22 @@ export class usuario extends connect{
     */
     async updateUserRole(objecto) {
         try {
-            await this.conexion.connect()
-
+            await this.conexion.connect();
+            const db = this.conexion.db("MongoII");
+    
             // Verifico el usuario
             let dataUsuario = await this.collection.findOne({ id: objecto.usuario_id });
             if (!dataUsuario) {
                 return { error: "Usuario no encontrado" };
             }
-
+    
             // Inicializa el objeto de actualización
             const NuevoCampo = { rol: objecto.nuevoRol };
-
+    
             // Verifica si el nuevo rol es "vip"
             if (objecto.nuevoRol === "vip") {
                 // Creo el nuevo número VIP
-                const dataNumeroVip = await this.collection.find({}).sort({ tarjeta_VIP: -1 }).limit(1).toArray();
+                const dataNumeroVip = await this.collection.find({}).sort({ "tarjeta_VIP.numero": -1 }).limit(1).toArray();
                 const numeroVip = dataNumeroVip.length > 0 ? dataNumeroVip[0].tarjeta_VIP.numero + 1 : 1;
     
                 // Creo la fecha de expiración de la tarjeta VIP
@@ -203,7 +204,7 @@ export class usuario extends connect{
                     descuento: 10
                 };
     
-                // Añade el campo tarjeta_VIP a updateFields
+                // Añade el campo tarjeta_VIP a NuevoCampo
                 NuevoCampo.tarjeta_VIP = tarjeta_VIP;
             }
     
@@ -213,12 +214,17 @@ export class usuario extends connect{
                 { $set: NuevoCampo }
             );
     
+            await db.command({
+                updateUser: dataUsuario.nombre,
+                roles: [{ role: objecto.nuevoRol, db: "MongoII" }] 
+            });
+    
             return { message: "Rol actualizado correctamente" };
-
+    
         } catch (error) {
-            return { error: error.toString() }
+            return { error: error.toString() };
         } finally {
-            await this.conexion.close()
+            await this.conexion.close();
         }
     }
 
