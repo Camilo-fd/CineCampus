@@ -1,0 +1,51 @@
+{
+    "$jsonSchema": {
+        "bsonType": "object",
+        "required": [
+            "id",
+            "titulo",
+            "genero",
+            "duracion",
+            "sinopsis"
+        ],
+        "properties": {
+            "id": {
+                "bsonType": "int",
+                "description": "debe ser un entero y es obligatorio"
+            },
+            "titulo": {
+                "bsonType": "string",
+                "description": "debe ser una cadena y es obligatorio"
+            },
+            "genero": {
+                "bsonType": "array",
+                "description": "debe ser un array y es obligatorio",
+                "items": {
+                    "enum": [
+                        "Comedia",
+                        "Accion",
+                        "Ciencia Ficción",
+                        "Drama",
+                        "Romance",
+                        "Crimen",
+                        "Aventura",
+                        "Fantasia",
+                        "Animacion",
+                        "Terror",
+                        "Historia",
+                        "Misterio"
+                    ]
+                }
+            },
+            "duracion": {
+                "bsonType": "int",
+                "minimum": 1,
+                "description": "debe ser un entero mayor que 0 y es obligatorio"
+            },
+            "sinopsis": {
+                "bsonType": "string",
+                "description": "debe ser una cadena y es obligatorio"
+            }
+        }
+    }
+}

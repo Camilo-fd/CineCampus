@@ -1,0 +1,65 @@
+{
+    "$jsonSchema": {
+        "bsonType": "object",
+        "required": [
+            "id",
+            "nombre",
+            "email",
+            "contrasena",
+            "rol"
+        ],
+        "properties": {
+            "id": {
+                "bsonType": "int",
+                "description": "debe ser un entero y es obligatorio"
+            },
+            "nombre": {
+                "bsonType": "string",
+                "description": "debe ser una cadena y es obligatorio"
+            },
+            "email": {
+                "bsonType": "string",
+                "pattern": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
+                "description": "debe ser una dirección de correo válida y es obligatorio"
+            },
+            "contrasena": {
+                "bsonType": "string",
+                "description": "debe ser una cadena y es obligatorio"
+            },
+            "rol": {
+                "enum": [
+                    "estandar",
+                    "vip",
+                    "administrador"
+                ],
+                "description": "puede ser solo uno de los valores enumerados y es obligatorio"
+            },
+            "tarjeta_VIP": {
+                "bsonType": [
+                    "object",
+                    "null"
+                ],
+                "properties": {
+                    "numero": {
+                        "bsonType": "int",
+                        "description": "debe ser un entero"
+                    },
+                    "fecha_expiracion": {
+                        "bsonType": "date",
+                        "description": "debe ser una fecha"
+                    },
+                    "descuento": {
+                        "bsonType": "int",
+                        "description": "debe ser un entero"
+                    }
+                },
+                "required": [
+                    "numero",
+                    "fecha_expiracion",
+                    "descuento"
+                ],
+                "description": "puede ser un objeto con número, fecha de expiración y descuento, o puede estar ausente"
+            }
+        }
+    }
+}

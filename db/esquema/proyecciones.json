@@ -1,0 +1,36 @@
+{
+    "$jsonSchema": {
+        "bsonType": "object",
+        "required": [
+            "id",
+            "pelicula_id",
+            "fecha",
+            "hora",
+            "sala"
+        ],
+        "properties": {
+            "id": {
+                "bsonType": "int",
+                "description": "debe ser un entero y es obligatorio"
+            },
+            "pelicula_id": {
+                "bsonType": "int",
+                "description": "debe ser un entero y es obligatorio"
+            },
+            "fecha": {
+                "bsonType": "date",
+                "description": "debe ser una fecha y es obligatorio"
+            },
+            "hora": {
+                "bsonType": "string",
+                "pattern": "^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$",
+                "description": "debe ser una cadena en formato HH:MM y es obligatorio"
+            },
+            "sala": {
+                "bsonType": "int",
+                "minimum": 1,
+                "description": "debe ser un entero mayor que 0 y es obligatorio"
+            }
+        }
+    }
+}

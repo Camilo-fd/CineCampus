@@ -1,0 +1,33 @@
+{
+    "$jsonSchema": {
+      "bsonType": "object",
+      "required": [
+        "id",
+        "proyeccion_id",
+        "numero",
+        "estado"
+      ],
+      "properties": {
+        "id": {
+          "bsonType": "int",
+          "description": "debe ser un entero y es obligatorio"
+        },
+        "proyeccion_id": {
+          "bsonType": "int",
+          "description": "debe ser un entero y es obligatorio"
+        },
+        "numero": {
+          "bsonType": "string",
+          "description": "debe ser una cadena y es obligatorio"
+        },
+        "estado": {
+          "enum": [
+            "disponible",
+            "ocupado",
+            "reservado"
+          ],
+          "description": "puede ser solo uno de los valores enumerados y es obligatorio"
+        }
+      }
+    }
+}

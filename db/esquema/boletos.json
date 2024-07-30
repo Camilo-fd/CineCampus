@@ -1,0 +1,54 @@
+{
+    "$jsonSchema": {
+        "bsonType": "object",
+        "required": [
+            "id",
+            "proyeccion_id",
+            "usuario_id",
+            "asientos",
+            "estado"
+        ],
+        "properties": {
+            "id": {
+                "bsonType": "int",
+                "description": "debe ser un entero y es obligatorio"
+            },
+            "proyeccion_id": {
+                "bsonType": "int",
+                "description": "debe ser un entero y es obligatorio"
+            },
+            "usuario_id": {
+                "bsonType": "int",
+                "description": "debe ser un entero y es obligatorio"
+            },
+            "asientos": {
+                "bsonType": "array",
+                "items": {
+                    "bsonType": "int"
+                },
+                "description": "debe ser un array de enteros y es obligatorio"
+            },
+            "precio": {
+                "bsonType": "int",
+                "description": "debe ser un entero y es opcional"
+            },
+            "descuento_aplicado": {
+                "bsonType": "int",
+                "description": "debe ser un entero y es opcional"
+            },
+            "fecha_compra": {
+                "bsonType": "date",
+                "description": "debe ser una fecha y es opcional"
+            },
+            "estado": {
+                "bsonType": "string",
+                "enum": [
+                    "reservado",
+                    "pagado",
+                    "cancelado"
+                ],
+                "description": "puede ser solo uno de los valores enumerados y es obligatorio"
+            }
+        }
+    }
+}
