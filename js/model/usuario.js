@@ -173,60 +173,70 @@ export class usuario extends connect{
         @returns {Object.message} - A success message indicating that the user's role was updated correctly.
         @returns {Object.error} - An error message indicating that an error occurred during the role update process.
     */
-    async updateUserRole(objecto) {
-        try {
-            await this.conexion.connect();
-            const db = this.conexion.db("MongoII");
-    
-            // Verifico el usuario
-            let dataUsuario = await this.collection.findOne({ id: objecto.usuario_id });
-            if (!dataUsuario) {
-                return { error: "Usuario no encontrado" };
-            }
-    
-            // Inicializa el objeto de actualización
-            const NuevoCampo = { rol: objecto.nuevoRol };
-    
-            // Verifica si el nuevo rol es "vip"
-            if (objecto.nuevoRol === "vip") {
-                // Creo el nuevo número VIP
-                const dataNumeroVip = await this.collection.find({}).sort({ "tarjeta_VIP.numero": -1 }).limit(1).toArray();
-                const numeroVip = dataNumeroVip.length > 0 ? dataNumeroVip[0].tarjeta_VIP.numero + 1 : 1;
-    
-                // Creo la fecha de expiración de la tarjeta VIP
-                const fechaExpiracion = new Date();
-                fechaExpiracion.setFullYear(fechaExpiracion.getFullYear() + 1);
-    
-                // Nueva tarjeta VIP
-                const tarjeta_VIP = {
-                    fecha_expiracion: fechaExpiracion,
-                    numero: numeroVip,
-                    descuento: 10
+        async updateUserRole(objecto) {
+            try {
+                await this.conexion.connect();
+                const db = this.conexion.db("MongoII");
+        
+                // Verifico el usuario
+                let dataUsuario = await this.collection.findOne({ id: objecto.usuario_id });
+                if (!dataUsuario) {
+                    return { error: "Usuario no encontrado" };
+                }
+        
+                // Inicializa el objeto de actualización
+                const NuevoCampo = { rol: objecto.nuevoRol };
+        
+                // Verifica si el nuevo rol es "vip"
+                if (objecto.nuevoRol === "vip") {
+                    // Creo el nuevo número VIP
+                    const dataNumeroVip = await this.collection.find({}).sort({ "tarjeta_VIP.numero": -1 }).limit(1).toArray();
+                    const numeroVip = dataNumeroVip.length > 0 ? dataNumeroVip[0].tarjeta_VIP.numero + 1 : 1;
+        
+                    // Creo la fecha de expiración de la tarjeta VIP
+                    const fechaExpiracion = new Date();
+                    fechaExpiracion.setFullYear(fechaExpiracion.getFullYear() + 1);
+        
+                    // Nueva tarjeta VIP
+                    const tarjeta_VIP = {
+                        fecha_expiracion: fechaExpiracion,
+                        numero: numeroVip,
+                        descuento: 10
+                    };
+        
+                    // Añade el campo tarjeta_VIP a NuevoCampo
+                    NuevoCampo.tarjeta_VIP = tarjeta_VIP;
+                }
+        
+                // Elimina el usuario existente
+                await db.command({ dropUser: dataUsuario.nombre });
+        
+                // Crea el usuario con el nuevo rol
+                let mongoUsuario = {
+                    createUser: dataUsuario.nombre,
+                    pwd: dataUsuario.contrasena,
+                    roles: [
+                        { role: objecto.nuevoRol, db: "MongoII" }
+                    ]
                 };
-    
-                // Añade el campo tarjeta_VIP a NuevoCampo
-                NuevoCampo.tarjeta_VIP = tarjeta_VIP;
+        
+                // Inserta el nuevo usuario en la base de datos
+                await db.command(mongoUsuario);
+        
+                // Actualiza el documento del usuario en la colección
+                await this.collection.updateOne(
+                    { id: objecto.usuario_id },
+                    { $set: NuevoCampo }
+                );
+        
+                return { message: "Rol actualizado correctamente" };
+        
+            } catch (error) {
+                return { error: error.toString() };
+            } finally {
+                await this.conexion.close();
             }
-    
-            // Actualiza el usuario con el nuevo rol y, si es necesario, la tarjeta VIP
-            await this.collection.updateOne(
-                { id: objecto.usuario_id },
-                { $set: NuevoCampo }
-            );
-    
-            await db.command({
-                updateUser: dataUsuario.nombre,
-                roles: [{ role: objecto.nuevoRol, db: "MongoII" }] 
-            });
-    
-            return { message: "Rol actualizado correctamente" };
-    
-        } catch (error) {
-            return { error: error.toString() };
-        } finally {
-            await this.conexion.close();
         }
-    }
 
     // Permitir la consulta de todos los usuarios del sistema, con la posibilidad de filtrar por rol (VIP, estándar o administrador).
 

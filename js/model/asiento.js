@@ -49,41 +49,43 @@ export class asiento extends connect{
             if (!Number.isInteger(object.proyeccion_id)) {
                 return { error: 'El valor proyeccion_id debe ser un entero' };
             }
-            let asientosString = [];
-            for (let tipoAsiento of object.asiento_id) {
-                if (!Number.isInteger(tipoAsiento)) {
-                    asientosString.push(`El asiento #${tipoAsiento} debe ser un entero`);
-                }
-            }
+            // let asientosString = [];
+            // for (let tipoAsiento of object.asiento_id) {
+            //     if (!Number.isInteger(tipoAsiento)) {
+            //         asientosString.push(`El asiento #${tipoAsiento} debe ser un entero`);
+            //     }
+            // }
             
-            if (asientosString.length > 0) {
-                return asientosString;
-            }
+            // if (asientosString.length > 0) {
+            //     return asientosString;
+            // }
 
             let dataProyeccion = await this.db.collection("proyecciones").findOne({id: object.proyeccion_id})
             if (!dataProyeccion) {
                 return { error: `No existe la proyeccion #${object.proyeccion_id}` }
             }
 
-            let availableSeats = [];
-            for (let asientoId of object.asiento_id) {
-                let dataAsiento = await this.collection.findOne({ id: asientoId });
-                if (!dataAsiento) {
-                    continue;
-                }
-                if (dataAsiento.proyeccion_id !== object.proyeccion_id) {
-                    continue;
-                }
-                if (dataAsiento.estado === "disponible") {
-                    availableSeats.push(`Asiento #${dataAsiento.id}`);
-                }
-            }
-    
-            if (availableSeats.length > 0) {
-                return {Disponibles: availableSeats};
-            } else {
+            let dataAsiento = await this.collection.find({ proyeccion_id: object.proyeccion_id, estado: "disponible" }).toArray();
+            if (!dataAsiento.length) {
                 return { error: 'No hay asientos disponibles' };
+            } else {
+                return { disponible: dataAsiento };
             }
+
+            // let availableSeats = [];
+            // for (let asientoId of object.asiento_id) {
+            //   let dataAsiento = await this.collection.findOne({ id: asientoId });
+            //   if (!dataAsiento || dataAsiento.proyeccion_id !== object.proyeccion_id || dataAsiento.estado !== "disponible") {
+            //     continue;
+            //   }
+            //   availableSeats.push(dataAsiento);
+            // }
+          
+            // if (availableSeats.length > 0) {
+            //   return { disponibles: availableSeats };
+            // } else {
+            //     return { error: 'No hay asientos disponibles' };
+            // }
 
         } catch (error) {
             return { error: error.toString() }

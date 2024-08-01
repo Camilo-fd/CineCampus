@@ -12,7 +12,7 @@ import { usuario } from "./js/model/usuario.js";
 // ObjPelicula.destructor()
 
 // let ObjPelicula = new pelicula()
-// console.log(await ObjPelicula.getMovisId(new ObjectId("64b5f1234567890123456789")));
+// console.log(await ObjPelicula.getMovisId(20));
 // ObjPelicula.destructor()
 
 // let objBoleto = new boleto();
@@ -30,7 +30,7 @@ import { usuario } from "./js/model/usuario.js";
 // let objAsiento = new asiento()
 // console.log(await objAsiento.checkSeatAvailability({
 //     proyeccion_id: 1,
-//     asiento_id: [1]
+//     // asiento_id: [1]
 // }));
 // objAsiento.destructor()
 
@@ -68,7 +68,7 @@ import { usuario } from "./js/model/usuario.js";
 // let objUsuario = new usuario();
 // console.log(await objUsuario.updateUserRole({
 //     usuario_id: 4,
-//     nuevoRol: "vip"
+//     nuevoRol: "administrador",
 // }));
 // objUsuario.destructor()
 

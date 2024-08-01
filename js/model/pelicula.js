@@ -72,19 +72,20 @@ export class pelicula extends connect{
 
     // Permitir la consulta de información detallada sobre una película específica, incluyendo sinopsis.
 
-    async getMovisId(id){
+    async getMovisId(id) {
         try {
-            await this.conexion.connect()
-
+            await this.conexion.connect();
+    
             let dataMovis = await this.collection.aggregate(
                 [
                     {
                         $match: {
-                            _id: id        
+                            id: id        
                         }
                     },
                     {
                         $project: {
+                            _id: 0,
                             id: 1,
                             titulo: 1,
                             genero: 1,
@@ -94,14 +95,19 @@ export class pelicula extends connect{
                         }
                     }
                 ]
-            ).toArray()
-
-            return dataMovis
-
+            ).toArray();
+    
+            if (dataMovis.length === 0) {
+                return { error: "Pelicula no encontrada" };
+            } else {
+                return dataMovis;
+            }
+    
         } catch (error) {
-            return { error: error.toString() }
+            return { error: error.toString() };
         } finally {
-            await this.conexion.close()
+            await this.conexion.close();
         }
     }
+    
 }
