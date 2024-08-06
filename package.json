@@ -1,10 +1,11 @@
 {
   "name": "proyectomongoii",
   "version": "1.0.0",
-  "main": "main.js",
-  "type": "module",
+  "main": "app.js",
+  "type": "commonjs",
   "scripts": {
-    "dev": "node --watch --env-file=.env main.js"
+    "test": "node --watch --env-file .env js/model/main.js",
+    "dev": "node --watch --env-file=.env app.js"
   },
   "keywords": [],
   "author": "",
@@ -12,6 +13,7 @@
   "description": "",
   "dependencies": {
     "dotenv": "^16.4.5",
+    "express": "^4.19.2",
     "mongodb": "^6.8.0"
   }
 }

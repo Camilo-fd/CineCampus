@@ -1,6 +1,6 @@
-import { connect } from "../../helpers/db/connect.js";
+const connect = require("../../helpers/db/connect.js");
 
-export class pelicula extends connect{
+module.exports = class pelicula extends connect{
     static instancePelicula;
     db
     collection
@@ -72,7 +72,7 @@ export class pelicula extends connect{
 
     // Permitir la consulta de información detallada sobre una película específica, incluyendo sinopsis.
 
-    async getMovisId(id) {
+    async getMovisId({id}) {
         try {
             await this.conexion.connect();
     
@@ -80,7 +80,7 @@ export class pelicula extends connect{
                 [
                     {
                         $match: {
-                            id: id        
+                            id: id      
                         }
                     },
                     {

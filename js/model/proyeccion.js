@@ -1,6 +1,6 @@
-import { connect } from "../../helpers/db/connect.js";
+const connect = require("../../helpers/db/connect.js");
 
-export class proyeccion extends connect{
+module.exports = class proyeccion extends connect{
     static instanceProyeccion;
     db
     collection
