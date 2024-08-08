@@ -21,20 +21,13 @@ app.get("/pelicula/:id", async(req, res) => {
 
 // ----------------------------------------------------------------
 
-app.post("/boleto", async(req, res) => {
-    let objBoleto = new boleto
-    const resultado = await objBoleto.buyTicketMovis({
-      pelicula_id,
-      proyeccion_id,
-      fechaCompra,
-      usuario_id,
-      asiento_id,
-      precio,
-      estado,
-    });
+app.use(express.json());
 
+app.post("/boleto", async (req, res) => {
+    let objBoleto = new boleto();
+    const resultado = await objBoleto.buyTicketMovis(req.body);
     res.status(201).json(resultado);
-})
+});
 
 app.listen({host, port}, () => {
     console.log(`http://${host}:${port}`);
