@@ -5,9 +5,6 @@ const pelicula = require("./js/model/pelicula")
 const boleto = require("./js/model/boleto")
 const asiento = require("./js/model/asiento")
 
-const host = "localhost"
-const port = 5000
-
 
 app.get("/pelicula", async(req, res) => {
     let objPeliculas = new pelicula 
@@ -38,6 +35,6 @@ app.get("/asiento/:proyeccion_id", async(req, res) => {
     res.status(200).send(await objAsiento.checkSeatAvailability(idObject))
 })
 
-app.listen({host, port}, () => {
-    console.log(`http://${host}:${port}`);
+app.listen({host: process.env.EXPRESS_HOST, port: process.env.EXPRESS_PORT}, () => {
+    console.log(`http://${process.env.EXPRESS_HOST}:${process.env.EXPRESS_PORT}`);
 })
