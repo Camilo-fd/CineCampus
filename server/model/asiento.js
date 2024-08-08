@@ -1,4 +1,4 @@
-const connect = require("../../helpers/db/connect")
+const connect = require("../helpers/connect");
 
 module.exports = class asiento extends connect{
     static instanceAsiento;

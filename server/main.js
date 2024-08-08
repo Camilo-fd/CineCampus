@@ -8,12 +8,12 @@
 
 
 const { ObjectId } = require("mongodb");
-const asiento = require("./asiento.js");
-const boleto = require("./boleto.js");
-const pago = require("./pago.js");
-const pelicula = require("./pelicula.js");
-const proyeccion = require("./proyeccion.js");
-const usuario = require("./usuario.js");
+const asiento = require("./js/model/asiento.js");
+const boleto = require("./js/model/boleto.js");
+const pago = require("./js/model/pago.js");
+const pelicula = require("./js/model/pelicula.js");
+const proyeccion = require("./js/model/proyeccion.js");
+const usuario = require("./js/model/usuario.js");
 
 async function main() {
     try {

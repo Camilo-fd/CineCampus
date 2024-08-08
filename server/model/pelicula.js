@@ -1,4 +1,4 @@
-const connect = require("../../helpers/db/connect.js");
+const connect = require("../helpers/connect");
 
 module.exports = class pelicula extends connect{
     static instancePelicula;

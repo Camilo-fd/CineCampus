@@ -1,4 +1,4 @@
-const connect = require("../../helpers/db/connect.js");
+const connect = require("../helpers/connect.js");
 const { usuario } = require("./usuario.js")
 
 module.exports = class boleto extends connect{
