@@ -10,4 +10,10 @@ appBoleto.post("/ticket", async (req, res) => {
     res.status(201).json(resultado);
 });
 
+appBoleto.post("/reserveSeats", async (req, res) => {
+    let objBoleto = new boleto();
+    const resultado = await objBoleto.reserveSeats(req.body);
+    res.status(201).json(resultado);
+});
+
 module.exports = appBoleto;
