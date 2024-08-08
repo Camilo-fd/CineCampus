@@ -3,6 +3,7 @@ const app = express()
 
 const pelicula = require("./js/model/pelicula")
 const boleto = require("./js/model/boleto")
+const asiento = require("./js/model/asiento")
 
 const host = "localhost"
 const port = 5000
@@ -28,6 +29,14 @@ app.post("/boleto", async (req, res) => {
     const resultado = await objBoleto.buyTicketMovis(req.body);
     res.status(201).json(resultado);
 });
+
+// ----------------------------------------------------------------
+
+app.get("/asiento/:proyeccion_id", async(req, res) => {
+    let objAsiento = new asiento 
+    const idObject = { proyeccion_id: parseInt(req.params.proyeccion_id) };
+    res.status(200).send(await objAsiento.checkSeatAvailability(idObject))
+})
 
 app.listen({host, port}, () => {
     console.log(`http://${host}:${port}`);
