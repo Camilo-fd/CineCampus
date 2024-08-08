@@ -310,19 +310,19 @@ module.exports = class boleto extends connect{
          * @returns {Object.message} - A success message indicating the discount percentage for VIP users.
          * @returns {Object.error} - An error message indicating that an error occurred during the discount application process.
      */
-    async verifyVIPCard(usuario_id) {
+    async verifyVIPCard(objecto) {
         try {
             await this.conexion.connect()
 
             // Verifico que exista el usuario
-            let dataTarjetaVIP = await this.db.collection("usuarios").findOne({ id: usuario_id});
+            let dataTarjetaVIP = await this.db.collection("usuarios").findOne({ id: objecto.usuario_id});
             if (!dataTarjetaVIP) {
                 return { message: "No existe usuario" };
             }
 
             // Verifico que tenga tarjeta VIP
             if (!dataTarjetaVIP.tarjeta_VIP) {
-                return { message: "No eres usuario con tarjeta VIP" };
+                return { message: "No eres usuario con tarjeta VIP", usuario: dataTarjetaVIP };
             }
 
             // Verifico que la tarjeta VIP no haya caducado
@@ -333,7 +333,7 @@ module.exports = class boleto extends connect{
             // Saco el descuento de la tarjeta
             let descuentoAplicado = dataTarjetaVIP.tarjeta_VIP.descuento;
 
-            return { message: `Eres usuario VIP, tu descuento para la compra es: ${descuentoAplicado}%` }
+            return { message: "Eres usuario VIP", usuario: dataTarjetaVIP }
 
         } catch (error) {
             return { error: error.toString() }

@@ -22,4 +22,10 @@ appBoleto.get("/cancelSeats/:boleto_id", async(req, res) => {
     res.status(200).send(await objBoleto.cancelSeatReservation(idObject))
 })
 
+appBoleto.get("/verifyVip/:usuario_id", async(req, res) => {
+    let objBoleto = new boleto();
+    const idObject = { usuario_id: parseInt(req.params.usuario_id) };
+    res.status(200).send(await objBoleto.verifyVIPCard(idObject))
+})
+
 module.exports = appBoleto;
