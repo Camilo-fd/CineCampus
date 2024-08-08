@@ -47,7 +47,7 @@ module.exports = class usuario extends connect{
     async newUser(objecto) {
         try {
             await this.conexion.connect();
-            const db = this.conexion.db("MongoII");
+            const db = this.conexion.db("CineCampus");
     
             // Genero el nuevo id del usuario
             const [dataUsuario] = await this.collection.find({}).sort({ id: -1 }).limit(1).toArray();
@@ -84,7 +84,7 @@ module.exports = class usuario extends connect{
                 createUser: objecto.nombre,
                 pwd: objecto.contraseña,
                 roles: [
-                    { role: objecto.rol, db: "MongoII" }
+                    { role: objecto.rol, db: "CineCampus" }
                 ]
             };
     
