@@ -141,11 +141,11 @@ module.exports = class usuario extends connect{
          * If the user is not found, the object will contain an error message.
          * If an error occurs during the database operation, the object will contain an error message.
      */
-    async getUserById(id) {
+    async getUserById(objecto) {
         try {
             await this.conexion.connect()
 
-            let dataUsuario = await this.collection.findOne({ id: id });
+            let dataUsuario = await this.collection.findOne({ id: objecto.id });
             if (!dataUsuario) {
                 return { error: "Usuario no encontrado" };
             }
