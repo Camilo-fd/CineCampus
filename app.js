@@ -6,6 +6,7 @@ const appAsiento = require("./server/router/asiento.routes")
 const appUsuario = require("./server/router/usuario.routes")
 
 app.use(express.static(process.env.EXPRESS_STATIC))
+app.use(express.json())
 
 app.get("/pelicula", async(req, res) => {
     res.sendFile(`${process.env.EXPRESS_STATIC}/views/pelicula.html`, {root: __dirname})
