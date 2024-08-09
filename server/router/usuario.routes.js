@@ -22,4 +22,9 @@ appUsuario.post("/updateRol", async (req, res) => {
     res.status(201).json(resultado);
 });
 
+appUsuario.get("/getUserRol/:rol", async (req, res) => {
+    let objUsuario = new usuario();
+    res.status(200).send(await objUsuario.getUsersByRole(req.params.rol))
+});
+
 module.exports = appUsuario;
