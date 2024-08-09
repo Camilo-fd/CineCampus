@@ -16,4 +16,10 @@ appUsuario.get("/getUser/:id", async (req, res) => {
     res.status(200).send(await objUsuario.getUserById(idObject))
 });
 
+appUsuario.post("/updateRol", async (req, res) => {
+    let objUsuario = new usuario();
+    const resultado = await objUsuario.updateUserRole(req.body);
+    res.status(201).json(resultado);
+});
+
 module.exports = appUsuario;

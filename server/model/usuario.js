@@ -176,7 +176,7 @@ module.exports = class usuario extends connect{
         async updateUserRole(objecto) {
             try {
                 await this.conexion.connect();
-                const db = this.conexion.db("MongoII");
+                const db = this.conexion.db("CineCampus");
         
                 // Verifico el usuario
                 let dataUsuario = await this.collection.findOne({ id: objecto.usuario_id });
@@ -216,7 +216,7 @@ module.exports = class usuario extends connect{
                     createUser: dataUsuario.nombre,
                     pwd: dataUsuario.contrasena,
                     roles: [
-                        { role: objecto.nuevoRol, db: "MongoII" }
+                        { role: objecto.nuevoRol, db: "CineCampus" }
                     ]
                 };
         
