@@ -1,9 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     background: #000;
     color: #fff;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
 }
 
 header {
@@ -21,6 +25,7 @@ header {
     height: 50%;
     justify-content: space-around;
     align-items: center;
+    padding-top: 1rem;
 }
 
 .informacion-img {
@@ -40,17 +45,23 @@ header {
 
 .informacion-texto {
     display: flex;
-    width: 50%;
+    width: 60%;
     height: 100%;
     flex-direction: column;
-    font-size: 1.3em;
+    font-size: 1em;
+}
+
+.informacion-texto p {
+    font-size: 1.1em;
 }
 
 .informacion-icono {
+    display: flex;
     width: 20%;
     height: 100%;
     font-size: 2rem;
     padding-left: 2rem;
+    align-items: center;
 }
 
 .buscador-header {
@@ -90,7 +101,7 @@ main {
     width: 100%;
     height: 60%;
     flex-direction: column;
-    padding-top: 1rem;
+    /* padding-top: 1rem; */
     gap: 1rem;
     overflow: hidden;
 }
@@ -116,9 +127,8 @@ main {
     width: 100vw;
     height: 70%;
     align-items: center;
-    margin-top: 10px;
-    padding: 1.2rem;
-    padding-left: 3.8rem;
+    padding: 0.4rem 1.2rem 0 2.2rem;
+    padding-left: 2.2rem;
     overflow-x: scroll;
     gap: 2.2rem;
 }
@@ -129,7 +139,7 @@ main {
 
 .carousel-item {
     display: flex;
-    height: 20rem;
+    height: 22rem;
     object-fit: contain;
 }
 

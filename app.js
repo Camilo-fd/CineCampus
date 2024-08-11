@@ -11,6 +11,9 @@ app.use(express.json())
 app.get("/pelicula", async(req, res) => {
     res.sendFile(`${process.env.EXPRESS_STATIC}/views/pelicula.html`, {root: __dirname})
 })
+app.get("/pelicula/detalle", async (req, res) => {
+    res.sendFile(`${process.env.EXPRESS_STATIC}/views/peliculaDetalle.html`, { root: __dirname });
+});
 app.use("/pelicula", appPelicula)
 
 
