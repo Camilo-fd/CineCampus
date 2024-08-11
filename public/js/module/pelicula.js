@@ -4,17 +4,16 @@ async function loadMovies() {
         if (!response.ok) throw new Error('Error al cargar las películas');
 
         const movies = await response.json();
-        const carouselContainer = document.getElementById("carrusel");
-        const movieTitleElement = document.getElementById("movie-title");
-        const movieGenreElement = document.getElementById("movie-genre");
+        const carrusel = document.getElementById("carrusel");
+        const pelicula_titulo = document.getElementById("pelicula-titulo");
+        const pelicula_genero = document.getElementById("pelicula-genero");
+        const span = document.querySelectorAll('.span');
+        carrusel.innerHTML = '';
 
-        carouselContainer.innerHTML = '';
-
-        // Verificar si hay duplicados
+        let contador = 0;
         const seenUrls = new Set();
         const carouselItems = [];
-
-        movies.forEach((movie) => {
+        movies.forEach((movie, index) => {
             if (!seenUrls.has(movie.url)) {
                 seenUrls.add(movie.url);
                 const carouselItem = document.createElement('div');
@@ -22,41 +21,55 @@ async function loadMovies() {
                 carouselItem.innerHTML = `
                     <img src="${movie.url}" alt="" class="">
                 `;
-                carouselContainer.appendChild(carouselItem);
+                carrusel.appendChild(carouselItem);
                 carouselItems.push({ element: carouselItem, movie });
-
-                // Inicializa la primera película visible
-                if (carouselItems.length === 1) {
-                    const firstMovie = carouselItems[0].movie;
-                    movieTitleElement.textContent = firstMovie.titulo;
-                    movieGenreElement.textContent = firstMovie.genero[0];
-                }
             }
         });
 
-        // Configura el Intersection Observar
+        let lastVisibleIndex = 0;
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const currentItem = carouselItems.find(item => item.element === entry.target);
                     if (currentItem) {
                         const movie = currentItem.movie;
-                        movieTitleElement.textContent = movie.titulo;
-                        movieGenreElement.textContent = movie.genero[0];
+                        pelicula_titulo.textContent = movie.titulo;
+                        pelicula_genero.textContent = movie.genero[0];
+
+                        const newIndex = carouselItems.indexOf(currentItem);
+                        if (newIndex !== lastVisibleIndex) {
+                            if (newIndex > lastVisibleIndex) {
+                                // Avanza
+                                contador = (contador + 1) % Math.min(5, carouselItems.length);
+                            } else {
+                                // Retrocede
+                                contador = (contador - 1 + Math.min(5, carouselItems.length)) % Math.min(5, carouselItems.length);
+                            }
+                            lastVisibleIndex = newIndex;
+                        }
+
+                        // Actualizar los punticos
+                        span.forEach((span, index) => {
+                            if (index === contador) {
+                                span.style.backgroundColor = 'red';
+                            } else {
+                                span.style.backgroundColor = '#ccc';
+                            }
+                        });
                     }
                 }
             });
-        }, { threshold: 0.5 }); // Ajusta el umbral según sea necesario
+        }, { threshold: 0.5 });
 
-        // Observa todos los elementos del carrusel
         carouselItems.forEach(item => {
             observer.observe(item.element);
         });
+
     } catch (error) {
         console.error(error);
     }
 }
-
 
 async function MoviesComingSoon() {
     try {
@@ -64,8 +77,8 @@ async function MoviesComingSoon() {
         if (!response.ok) throw new Error('Error al cargar las películas');
 
         const movies = await response.json();
-        const carouselContainer = document.getElementById("carrusel-pronto");
-        carouselContainer.innerHTML = '';
+        const carrusel_pronto = document.getElementById("carrusel-pronto");
+        carrusel_pronto.innerHTML = '';
 
         movies.forEach((movie) => {
             const carouselItem = document.createElement('div');
@@ -77,21 +90,13 @@ async function MoviesComingSoon() {
                     <p>${movie.genero[0]}</p>
                 </div>
             `;
-            carouselContainer.appendChild(carouselItem);
+            carrusel_pronto.appendChild(carouselItem);
         });
 
     } catch (error) {
-        
+        console.error(error);
     }
 }
 
-
-
-MoviesComingSoon()
+MoviesComingSoon();
 loadMovies();
-
-
-
-
-
-
