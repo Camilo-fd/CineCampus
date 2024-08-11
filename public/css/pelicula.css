@@ -2,14 +2,174 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background: #000;
+    color: #fff;
 }
 
-.container {
+header {
     display: flex;
     width: 100%;
-    height: 40%;
+    height: 20%;
     flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+.informacion-header {
+    display: flex;
+    width: 100%;
+    height: 50%;
+    align-items: center;
+}
+
+.informacion-img {
+    display: flex;
+    width: 30%;
+    height: 100%;
+    object-fit: cover;
+    justify-content: center;
+}
+
+.informacion-img img {
+    width: 50%;
+    height: 50%;
+    border-radius: 50%;
+}
+
+.informacion-texto {
+    display: flex;
+    width: 50%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.informacion-icono {
+    width: 20%;
+    height: 100%;
+    font-size: 1.5rem;
+}
+
+.buscador-header {
+    width: 100%;
+    height: 50%;
+}
+
+.buscador-header div {
+    display: flex;
+    width: 100%;
+    height: 100%;
     align-items: center;
     justify-content: center;
-    border: 1px solid red
+}
+
+.search-bar input {
+    width: 20rem;
+    height: 2rem;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    border: 1px solid gray;
+}
+
+/* -------------------------------------------- */
+
+main {
+    display: flex;
+    width: 100%;
+    height: 60%;
+    flex-direction: column;
+    padding-top: 1rem;
+    gap: 1rem;
+}
+
+.informacion-main {
+    display: flex;
+    width: 100%;
+    height: 10%;
+    justify-content: space-around;
+    align-items: end;
+}
+
+.carrusel-main {
+    display: flex;
+    width: 95vw;
+    height: 70%;
+    align-items: center;
+    margin-top: 10px;
+    padding-left: 1.2rem;
+    overflow-x: scroll;
+    gap: 2rem;
+}
+
+.carousel-item{
+    display: flex;
+    height: 14rem;
+    object-fit: contain;
+}
+
+.informacion-pelicula-main {
+    width: 100%;
+    height: 20%;
+    padding: 0.5rem;
+}
+
+.informacion-texto {
+    display: flex;
+    width: 100%;
+    height: 20%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.informacion-span {
+    display: flex;
+    width: 100%;
+    height: 80%;
+    justify-content: center;
+    padding-top: 0.6rem;
+}
+
+.span {
+    display: inline-block;
+    width: 0.625rem;
+    height: 0.625rem;
+    margin: 0 5px;
+    background-color: #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.pelicula-pronto-main {
+    display: flex;
+    width: 60%;
+    height: 0%;
+    gap: 2rem;
+    align-items: center;
+    margin-left: 5rem;
+    border-radius: 1rem;
+    border: 1px solid gray;
+}
+
+.pelicula-imagen {
+    width: 25%;
+}
+
+.pelicula-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+}
+
+footer {
+    width: 100%;
+    height: 20%;
+    border: 1px solid blue;
 }
