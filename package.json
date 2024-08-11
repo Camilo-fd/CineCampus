@@ -5,7 +5,7 @@
   "type": "commonjs",
   "scripts": {
     "test": "node --watch --env-file .env js/model/main.js",
-    "dev": "node --watch --env-file=.env app.js"
+    "dev": "node --watch --env-file .env app.js"
   },
   "keywords": [],
   "author": "",

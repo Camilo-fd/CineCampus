@@ -1,9 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     background: #000;
     color: #fff;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
 }
 
 header {
@@ -29,6 +34,7 @@ main {
 }
 
 .video-main {
+    height: 50%;
     text-align: center;
 }
 
@@ -39,4 +45,81 @@ main {
     border-bottom-right-radius: 1rem;
     width: 25rem;
     height: 25rem;
+}
+
+.info_video-main {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 10%;
+    justify-content: space-around;
+    bottom: 2rem;
+    font-size: 1.5rem;
+}
+
+.info_video-main p {
+    font-size: 1rem;
+}
+
+.info_video-main button {
+    text-decoration: none;
+    border: none;
+    background: red;
+    padding: 0.7rem;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+}
+
+.detalle_video-main {
+    position: relative;
+    display: flex;
+    width: 90%;
+    height: 40%;
+    flex-direction: column;
+    left: 1.5rem;
+    gap: 2rem;
+}
+
+.detalle_video-main h5 {
+    text-align: justify;
+    font-size: 1rem;
+}
+
+.detalle_video-main div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+
+.detalle_video-main div p {
+    font-size: 1.3rem;
+}
+
+.detalle_video-main .p {
+    font-size: 1rem;
+}
+
+footer {
+    display: flex;
+    width: 100%;
+    height: 20%;
+    align-items: center;
+    justify-content: center;
+}
+
+footer button {
+    position: fixed;
+    bottom: 2rem;
+    width: 70%;
+    text-decoration: none;
+    border: none;
+    padding: 0.6rem;
+    font-size: 1.2em;
+    background: red;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
 }
