@@ -30,45 +30,59 @@ module.exports = class pelicula extends connect{
 
     // Permitir la consulta de todas las películas disponibles en el catálogo, con detalles como título, género, duración y horarios de proyección.
 
-    async getAllMovis(){
+    async getAllMovis() {
         try {
-            await this.conexion.connect()
-
-            let dataMovis = await this.collection.aggregate(
-                [
-                    {
-                      $lookup: {
+            await this.conexion.connect();
+    
+            let dataMovis = await this.collection.aggregate([
+                {
+                    $lookup: {
                         from: "proyecciones",
                         localField: "id",
                         foreignField: "pelicula_id",
                         as: "proyecciones"
-                      }
-                    },
-                      {
-                      $unwind: "$proyecciones"
-                    },
-                    {
-                      $project: {
-                        _id: 0,
-                        id: 1,
+                    }
+                },
+                {
+                    $unwind: "$proyecciones"
+                },
+                {
+                    $group: {
+                        _id: "$id",
+                        titulo: { $first: "$titulo" },
+                        genero: { $first: "$genero" },
+                        duracion: { $first: "$duracion" },
+                        horarios: { $first: "$horarios" },
+                        proyecciones: { $push: "$proyecciones" },
+                        url: { $first: "$url" }
+                    }
+                },
+                {
+                    $project: {
+                        id: "$_id",
                         titulo: 1,
                         genero: 1,
                         duracion: 1,
                         horarios: 1,
-                        proyecciones: 1
-                      }
+                        proyecciones: 1,
+                        url: 1,
                     }
-                ]
-            ).toArray()
-            
-            return dataMovis
-
+                },
+                {
+                    $sort: { id: 1 } // Ordenar si es necesario
+                }
+            ]).toArray();
+    
+            return dataMovis;
+    
         } catch (error) {
-            return { error: error.toString()}
+            return { error: error.toString() };
         } finally {
-            await this.conexion.close()
+            await this.conexion.close();
         }
     }
+    
+    
 
     // Permitir la consulta de información detallada sobre una película específica, incluyendo sinopsis.
 

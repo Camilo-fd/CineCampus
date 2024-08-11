@@ -6,13 +6,14 @@
     <link rel="stylesheet" href="../css/pelicula.css">
     <script type="module" src="../js/module/pelicula.js" defer></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <title>Pelicula</title>
 </head>
 <body>
     <header>
         <section class="informacion-header">
             <div class="informacion-img">
-                <img src="https://media.licdn.com/dms/image/D4E03AQHPfHRgGUBETA/profile-displayphoto-shrink_200_200/0/1721736403106?e=2147483647&v=beta&t=Bi7Lk4AN7_VFH0_fFQMqPvo2WHLLNMOkDNtUbM19W6U" alt="">
+                <img src="https://i.postimg.cc/qRGy3vB2/furiosa.jpg" alt="">
             </div>
             <div class="informacion-texto">
                 <h5>Hi, Ferrucio Tuccine!</h5>
@@ -39,30 +40,11 @@
                 <button>See all</button>
             </div>
         </section>
-        <section class="carrusel-main">
-            <div class="carousel-item">
-                <img src="https://i.postimg.cc/qRGy3vB2/furiosa.jpg" alt="">
-            </div>
-            <div class="carousel-item">
-                <img src="https://i.postimg.cc/qRGy3vB2/furiosa.jpg" alt="">
-            </div>
-            <div class="carousel-item">
-                <img src="https://i.postimg.cc/qRGy3vB2/furiosa.jpg" alt="">
-            </div>
-            <div class="carousel-item">
-                <img src="https://i.postimg.cc/qRGy3vB2/furiosa.jpg" alt="">
-            </div>
-            <div class="carousel-item">
-                <img src="https://i.postimg.cc/qRGy3vB2/furiosa.jpg" alt="">
-            </div>
-            <div class="carousel-item">
-                <img src="https://i.postimg.cc/qRGy3vB2/furiosa.jpg" alt="">
-            </div>
-        </section>
+        <section id="carrusel" class="carrusel-main"></section>
         <section class="informacion-pelicula-main">
-            <div class="informacion-texto">
-                <p>Puss In Boots The Last..</p>
-                <p>Adventure</p>
+            <div class="informacion-texto-pelicula">
+                <p id="movie-title"></p>
+                <p id="movie-genre"></p>
             </div>
             <div class="informacion-span">
                 <span class="span"></span>
@@ -73,22 +55,24 @@
             </div>
         </section>
         <section class="pelicula-pronto-main">
-            <div class="pelicula-imagen">
-                <img src="https://i.postimg.cc/qRGy3vB2/furiosa.jpg" alt="">
+            <div class="informacion-pelicula_pronto-main">
+                <div>
+                    <p>Comming soon</p>
+                </div>
+                <div>
+                    <button>See all</button>
+                </div>
             </div>
-            <div class="pelicula-texto">
-                <p>furiosa 10</p>
-                <p>Action, Adventure</p>
-            </div>
+            <div id="carrusel-pronto" class="carrusel-pronto"></div>
         </section>
     </main>
     <footer>
-        <div class="botones-footer">
-            <button>home</button>
-            <button>search</button>
-            <button>ticktes</button>
-            <button>profile</button>
-        </div>
+        <ul>
+            <li><a href="#"><i class="bi bi-house-door"></i>Home</a></li>
+            <li><a href="#"><i class="bi bi-search"></i>Browse</a></li>
+            <li><a href="#"><i class="bi bi-ticket-detailed"></i>Tickets</a></li>
+            <li><a href="#"><i class="bi bi-person-lines-fill"></i>Profile</a></li>
+          </ul>
     </footer>
 </body>
 </html>

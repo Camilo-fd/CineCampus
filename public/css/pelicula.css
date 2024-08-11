@@ -19,20 +19,19 @@ header {
     display: flex;
     width: 100%;
     height: 50%;
+    justify-content: space-around;
     align-items: center;
 }
 
 .informacion-img {
     display: flex;
-    width: 30%;
-    height: 100%;
-    object-fit: cover;
-    justify-content: center;
+    width: 15%;
 }
 
 .informacion-img img {
-    width: 50%;
-    height: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
     border-radius: 50%;
 }
 
@@ -41,13 +40,14 @@ header {
     width: 50%;
     height: 100%;
     flex-direction: column;
-    justify-content: center;
+    font-size: 1.3em;
 }
 
 .informacion-icono {
     width: 20%;
     height: 100%;
-    font-size: 1.5rem;
+    font-size: 2rem;
+    padding-left: 2rem;
 }
 
 .buscador-header {
@@ -55,22 +55,21 @@ header {
     height: 50%;
 }
 
-.buscador-header div {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    align-items: center;
-    justify-content: center;
-}
-
-.search-bar input {
-    width: 20rem;
-    height: 2rem;
+.search-bar {
+    background-color: #1c1c1e;
+    padding: 1rem;
+    margin: 20px 0;
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
-    border: 1px solid gray;
+}
+
+.search-bar input {
+    width: 100%;
+    border: none;
+    color: #fff;    
+    background: transparent;
 }
 
 /* -------------------------------------------- */
@@ -82,6 +81,7 @@ main {
     flex-direction: column;
     padding-top: 1rem;
     gap: 1rem;
+    overflow: hidden;
 }
 
 .informacion-main {
@@ -90,23 +90,43 @@ main {
     height: 10%;
     justify-content: space-around;
     align-items: end;
+    font-size: 1.3rem;
+}
+
+.informacion-main button {
+    text-decoration: none;
+    font-size: 1.1rem;
+    border: none;
+    color: red;
 }
 
 .carrusel-main {
     display: flex;
-    width: 95vw;
+    width: 100vw;
     height: 70%;
     align-items: center;
     margin-top: 10px;
-    padding-left: 1.2rem;
+    padding: 1.2rem;
+    padding-left: 3.8rem;
     overflow-x: scroll;
-    gap: 2rem;
+    gap: 2.2rem;
 }
 
-.carousel-item{
+.carrusel-main::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel-item {
     display: flex;
-    height: 14rem;
+    height: 20rem;
     object-fit: contain;
+}
+
+.carousel-item img {
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
 }
 
 .informacion-pelicula-main {
@@ -115,10 +135,11 @@ main {
     padding: 0.5rem;
 }
 
-.informacion-texto {
+.informacion-texto-pelicula {
     display: flex;
     width: 100%;
     height: 20%;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -145,31 +166,114 @@ main {
 
 .pelicula-pronto-main {
     display: flex;
-    width: 60%;
-    height: 0%;
-    gap: 2rem;
-    align-items: center;
-    margin-left: 5rem;
-    border-radius: 1rem;
-    border: 1px solid gray;
-}
-
-.pelicula-imagen {
-    width: 25%;
-}
-
-.pelicula-imagen img {
     width: 100%;
-    height: 100%;
-    object-fit: contain;
-    border-top-left-radius: 1rem;
-    border-top-right-radius: 1rem;
-    border-bottom-left-radius: 1rem;
-    border-bottom-right-radius: 1rem;
+    height: auto;
+    flex-direction: column;
+    overflow: hidden;
+    margin-top: 1.5rem;
+}
+
+.informacion-pelicula_pronto-main {
+    display: flex;
+    width: 100%;
+    height: 10%;
+    justify-content: space-around;
+    align-items: end;
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+}
+
+.informacion-pelicula_pronto-main p {
+    font-size: 1.3rem;
+}
+
+.informacion-pelicula_pronto-main button {
+    text-decoration: none;
+    font-size: 1.1rem;
+    border: none;
+    color: red;
+    background: transparent;
+}
+
+.carrusel-pronto {
+    display: flex;
+    flex-direction: column; 
+    width: 100%;
+    height: 17rem; 
+    overflow-y: auto; 
+    gap: 1rem;
+    padding: 0 1rem;
+}
+
+.carrusel-pronto::-webkit-scrollbar {
+    display: none;
+}
+
+.pelicula_pronto-caratula-main {
+    display: flex;
+    flex-direction: row; 
+    flex: 0 0 auto;
+    width: 100%;
+    align-items: center;
+    background: #333;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.pelicula_pronto-caratula-main img {
+    width: 5rem;
+    height: 6rem;
+    object-fit: cover;
+}
+
+.pelicula-info {
+    margin-left: 1rem;
+    padding: 10px;
+    font-size: 16px;
+    background: #333;
+}
+
+
+.pelicula-info h3,
+.pelicula-info p {
+    background: #333;
 }
 
 footer {
+    position: fixed;
     width: 100%;
-    height: 20%;
-    border: 1px solid blue;
+    height: 10%;
+    background-color: #000;
+    padding-top: 1.4rem;
+    bottom: 0;
+    border-radius: 1rem 1rem 0 0;
+    border-top: 2px solid #fff
+}
+
+footer ul {
+    background-color: #000;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+    margin: 0;
+    padding: 0;
+}
+
+footer li {
+    text-align: center;
+}
+
+footer a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    font-size: 12px;
+    background-color: #000;
+}
+
+footer i {
+    font-size: 24px;
+    margin-bottom: 5px;
+    background-color: #000;
 }
