@@ -1,4 +1,4 @@
-async function loadMovies() {
+export async function loadMovies() {
     try {
         const response = await fetch('http://localhost:5000/pelicula/all');
         if (!response.ok) throw new Error('Error al cargar las películas');
@@ -16,11 +16,15 @@ async function loadMovies() {
         movies.forEach((movie, index) => {
             if (!seenUrls.has(movie.url)) {
                 seenUrls.add(movie.url);
+                const id = movie.id
                 const carouselItem = document.createElement('div');
                 carouselItem.classList.add('carousel-item');
                 carouselItem.innerHTML = `
                     <img src="${movie.url}" alt="" class="">
                 `;
+                carouselItem.addEventListener('click', () => {
+                    window.location.href = `http://localhost:5000/pelicula/detalle?id=${id}`;
+                });
                 carrusel.appendChild(carouselItem);
                 carouselItems.push({ element: carouselItem, movie });
             }
@@ -71,7 +75,7 @@ async function loadMovies() {
     }
 }
 
-async function MoviesComingSoon() {
+export async function MoviesComingSoon() {
     try {
         const response = await fetch('http://localhost:5000/pelicula/all');
         if (!response.ok) throw new Error('Error al cargar las películas');
@@ -97,6 +101,3 @@ async function MoviesComingSoon() {
         console.error(error);
     }
 }
-
-MoviesComingSoon();
-loadMovies();

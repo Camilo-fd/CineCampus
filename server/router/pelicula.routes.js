@@ -1,15 +1,15 @@
 const express = require("express")
 const appPelicula = express.Router()
-const { query, validationResult } = require("express-validator");
+const { query, param, validationResult } = require("express-validator");
 const pelicula = require("../model/pelicula")
 
-appPelicula.get("/id", [query("id").notEmpty()], async(req, res) => {
+appPelicula.get("/id/:id", [param("id").notEmpty()], async(req, res) => {
     const error = validationResult(req)
     if (!error.isEmpty()) {
         return res.status(400).json({ errors: error.array() });
     } else {
         let objPeliculas = new pelicula 
-        const idObject = { id: parseInt(req.query.id) };
+        const idObject = { id: parseInt(req.params.id) };
         res.status(200).send(await objPeliculas.getMovisId(idObject))
     }   
 })
