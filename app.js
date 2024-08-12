@@ -8,6 +8,10 @@ const appUsuario = require("./server/router/usuario.routes")
 app.use(express.static(process.env.EXPRESS_STATIC))
 app.use(express.json())
 
+app.get("/", async(req, res) => {
+    res.sendFile(`${process.env.EXPRESS_STATIC}/views/index.html`, {root: __dirname})
+})
+
 app.get("/pelicula", async(req, res) => {
     res.sendFile(`${process.env.EXPRESS_STATIC}/views/pelicula.html`, {root: __dirname})
 })
