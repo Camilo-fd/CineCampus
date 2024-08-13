@@ -84,53 +84,77 @@ main {
     gap: 2rem;
 }
 
-.detalle_video-main h5 {
-    text-align: justify;
-    font-size: 1rem;
-}
-
-.detalle_video-main div {
-    display: flex;
-    flex-direction: column;
-    gap: 0.7rem;
-}
-
-.detalle_video-main div p {
-    font-size: 1.3rem;
-}
-
 .detalle_video-main .p {
     font-size: 1rem;
     color: #9b9898;
 }
 
+/* .detalle_video-actor {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.actor-info {
+    display: flex;
+    width: 50%;
+    gap: 0.7rem;
+    align-items: center;
+}
+
+.actor-info img {
+    width: 3.5rem;
+    height: 3.5rem; 
+    border-radius: 50%;
+    object-fit: cover;
+} */
+
 .detalle_video-actor {
     display: flex;
-    width: 90%;
-    height: 80%;
     flex-direction: column;
-    border: 1px solid red;
+    gap: 1rem;
+    width: 100%;
 }
 
-.detalle_video-actor div {
+.detalle_video-actor > p {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.actor-list {
     display: flex;
-    width: 80%;
-    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+    width: 100%;
 }
 
-.detalle_video-actor div img {
+.actor-info {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    width: calc(50% - 0.5rem); /* Resta la mitad del gap para que quepan dos */
+    min-width: 150px; /* Ajusta según necesites */
+    margin-bottom: 1rem;
+}
+
+.actor-info img {
     width: 3.5rem;
     height: 3.5rem; 
     border-radius: 50%;
     object-fit: cover;
 }
 
-.actor-info {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 40%;
-    border: 1px solid blue;
+.actor-name {
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.actor-role {
+    color: #9b9898;
+    font-size: 0.8rem;
 }
 
 footer {
