@@ -15,7 +15,7 @@ header {
     width: 100%;
     height: 20%;
     flex-direction: column;
-    padding: 1rem;
+    padding: 1.875rem;
     gap: 1rem;
 }
 
@@ -23,16 +23,16 @@ header {
     display: flex;
     width: 100%;
     height: 50%;
-    justify-content: space-around;
-    /* gap: 0.4rem; */
+    justify-content: space-between;
+    gap: 1.5rem;
     align-items: center;
     padding-top: 1rem;
 }
 
 .informacion-img {
     display: flex;
-    width: 3.5rem;
-    height: 3.5rem; 
+    width: 3.2rem;
+    height: 3.2rem; 
     border-radius: 50%;
     overflow: hidden;
 }
@@ -46,7 +46,7 @@ header {
 
 .informacion-texto {
     display: flex;
-    width: 60%;
+    width: 62%;
     height: 100%;
     flex-direction: column;
     font-size: 1em;
@@ -59,7 +59,7 @@ header {
 
 .informacion-icono {
     display: flex;
-    width: 2.9rem;
+    /* width: 2.9rem; */
     font-size: 1.7rem;
     align-items: center;
     justify-content: center;
@@ -80,16 +80,13 @@ header {
 
 .search-bar {
     display: flex;
-    width: 90%;
+    width: 100%;
     background-color: #1c1c1e;
     border: 1px solid white;
     padding: 1.1rem;
     margin: 0.5rem 0;
     gap: 1rem;
-    border-top-left-radius: 0.8rem;
-    border-top-right-radius: 0.8rem;
-    border-bottom-left-radius: 0.8rem;
-    border-bottom-right-radius: 0.8rem;
+    border-radius: 0.8rem;
 }
 
 .search-bar i {
@@ -125,7 +122,7 @@ main {
     width: 100%;
     height: 10%;
     justify-content: space-around;
-    align-items: end;
+    gap: 8rem;
     font-size: 1.3rem;
 }
 
@@ -249,7 +246,7 @@ main {
     width: 100%;
     height: 10%;
     justify-content: space-around;
-    align-items: end;
+    gap: 6rem;
     font-size: 1.3rem;
     margin-bottom: 1.5rem;
 }
