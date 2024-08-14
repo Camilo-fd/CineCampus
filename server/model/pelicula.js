@@ -106,7 +106,9 @@ module.exports = class pelicula extends connect{
                             duracion: 1,
                             horarios: 1,
                             sinopsis: 1,
-                            video: 1
+                            url: 1,
+                            video: 1,
+                            actores: 1
                         }
                     }
                 ]

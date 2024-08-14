@@ -1,6 +1,6 @@
 export async function loadMovies() {
     try {
-        const response = await fetch('http://localhost:5000/pelicula/all');
+        const response = await fetch('/pelicula/all');
         if (!response.ok) throw new Error('Error al cargar las películas');
 
         const movies = await response.json();
@@ -23,7 +23,7 @@ export async function loadMovies() {
                     <img src="${movie.url}" alt="" class="">
                 `;
                 carouselItem.addEventListener('click', () => {
-                    window.location.href = `http://localhost:5000/pelicula/detalle?id=${id}`;
+                    window.location.href = `/pelicula/detalle?id=${id}`;
                 });
                 carrusel.appendChild(carouselItem);
                 carouselItems.push({ element: carouselItem, movie });
@@ -77,7 +77,7 @@ export async function loadMovies() {
 
 export async function MoviesComingSoon() {
     try {
-        const response = await fetch('http://localhost:5000/pelicula/all');
+        const response = await fetch('/pelicula/all');
         if (!response.ok) throw new Error('Error al cargar las películas');
 
         const movies = await response.json();

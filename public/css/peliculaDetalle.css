@@ -19,7 +19,7 @@ header {
     justify-content: space-around;
     gap: 3rem;
     font-size: 1.5rem;
-    padding: 2rem;
+    padding-top: 2rem;
 }
 
 header i {
@@ -40,19 +40,37 @@ main {
 }
 
 .video-main iframe {
-    border-top-left-radius: 1rem;
-    border-top-right-radius: 1rem;
-    border-bottom-left-radius: 1rem;
-    border-bottom-right-radius: 1rem;
+    border-radius: 1rem;
     width: 25rem;
     height: 19rem;
+}
+
+.imagen_video-main {
+    width: 100%;
+    height: 18rem;
+    padding: 1rem 0.5rem;
+}
+
+.imagen_video-main img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 1rem;
 }
 
 .info_video-main {
     display: flex;
     width: 100%;
     height: 10%;
-    justify-content: space-around;
+    align-items: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    gap: 0.7rem;
+}
+
+.info_video-main div {
+    width: 70%;
+    height: 50%;
     font-size: 1.5rem;
 }
 
@@ -62,14 +80,12 @@ main {
 }
 
 .info_video-main button {
+    height: 20%;
     text-decoration: none;
     border: none;
     background: red;
     padding: 0.7rem;
-    border-top-left-radius: 0.5rem;
-    border-top-right-radius: 0.5rem;
-    border-bottom-left-radius: 0.5rem;
-    border-bottom-right-radius: 0.5rem;
+    border-radius: 0.5rem;
 }
 
 .detalle_video-main {

@@ -49,12 +49,12 @@ header {
     width: 62%;
     height: 100%;
     flex-direction: column;
-    font-size: 1em;
+    font-size: 0.875em;
     gap: 0.5rem;
 }
 
 .informacion-texto p {
-    font-size: 1.13em;
+    font-size: 1.2em;
 }
 
 .informacion-icono {
@@ -270,7 +270,7 @@ main {
     flex-direction: column; 
     /* overflow-y: auto;  */
     gap: 1rem;
-    padding: 0 1rem;
+    padding: 0 2rem;
     /* padding-left: 2.5rem; */
 }
 
