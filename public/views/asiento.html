@@ -3,12 +3,163 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>seats</title>
     <link rel="stylesheet" href="../css/asiento.css">
+    <script type="module" src="../js/module/asiento.js" defer></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
 </head>
 <body>
-    <div class="container">
-        <h1>Soy asiento.html</h1>
+    <header class="choose__seat">
+        <a id="back-pelicula_detalle" href="#"><i class='bx bx-chevron-left'></i></a>
+        <h4>Choose Seat</h4>
+        <i class='bx bx-menu-alt-right'></i>
+    </header>
+    <main class= "teather">
+        <section class="screen">
+            <img src="../img/image1.webp" alt="screen">
+            <p>Screen This way</p>
+        </section>
+        <section class="seats">
+            <div class= "front__seats">
+                <div class ="front__letter">
+                    <p>A</p>
+                    <p>B</p>
+                </div>
+                <div class="group__seats_f">
+                    <div class="front__seat B "></div>
+                    <div class="front__seat B"></div>
+                    <div class="front__seat B"></div>
+                    <div class="front__seat B"></div>
+                    <div class="front__seat B"></div>
+                    <div class="front__seat B"></div>
+                    <div class="front__seat B"></div>
+                    <div class="front__seat A"></div>
+                    <div class="front__seat A"></div>
+                    <div class="front__seat A"></div>
+                    <div class="front__seat A"></div>
+                    <div class="front__seat A"></div>
+                    <div class="front__seat A"></div>
+                    <div class="front__seat A"></div>
+                </div>
+            </div>
+            <div class= "back__seats">
+                <div class ="back__letter">
+                    <p>C</p>
+                    <p>D</p>
+                    <p>E</p>
+                    <p>F</p>
+                </div>
+                <div class= "group__seats">
+                    <div class="back__seat C uno"></div>
+                    <div class="back__seat C dos"></div>
+                    <div class="back__seat C tres"></div>
+                    <div class="back__seat C cuatro"></div>
+                    <div class="back__seat C cinco"></div>
+                    <div class="back__seat C seis"></div>
+                    <div class="back__seat C siete"></div>
+                    <div class="back__seat C ocho"></div>
+                    <div class="back__seat C nueve"></div>
+
+                    <div class="back__seat D"></div>
+                    <div class="back__seat D"></div>
+                    <div class="back__seat D"></div>
+                    <div class="back__seat D"></div>
+                    <div class="back__seat D"></div>
+                    <div class="back__seat D"></div>
+                    <div class="back__seat D"></div>
+                    <div class="back__seat D"></div>
+                    <div class="back__seat D"></div>
+
+                    <div class="back__seat E"></div>
+                    <div class="back__seat E"></div>
+                    <div class="back__seat E"></div>
+                    <div class="back__seat E"></div>
+                    <div class="back__seat E"></div>
+                    <div class="back__seat E"></div>
+                    <div class="back__seat E"></div>
+                    <div class="back__seat E"></div>
+                    <div class="back__seat E"></div>
+                    
+                    <div class="back__seat F"></div>
+                    <div class="back__seat F"></div>
+                    <div class="back__seat F"></div>
+                    <div class="back__seat F"></div>
+                    <div class="back__seat F"></div>
+                    <div class="back__seat F"></div>
+                    <div class="back__seat F"></div>
+                    <div class="back__seat F"></div>
+                    <div class="back__seat F"></div>
+                </div>
+            </div>    
+    </section>
+    <div class="conventions">
+        <i class='bx bxs-circle'></i>
+        <p>Available</p>
+        <i class='bx bxs-circle'></i>
+        <p>Reserved</p>
+        <i class='bx bxs-circle'></i>
+        <p>Selected</p>
     </div>
+    <section class="dates">
+        <div class= "days">
+            <div class="day">
+                <p>Mon</p>
+                <p>17</p>
+            </div>
+            <div class="day">
+                <p>Tue</p>
+                <p>18</p>
+            </div>
+            <div class="day">
+                <p>wed</p>
+                <p>19</p>
+            </div>
+            <div class="day">
+                <p>Thu</p>
+                <p>20</p>
+            </div>
+            <div class="day">
+                <p>Fri</p>
+                <p>21</p>
+            </div>
+            <div class="day">
+                <p>Sat</p>
+                <p>22</p>
+            </div>
+            <div class="day">
+                <p>Sun</p>
+                <p>23</p>
+            </div>
+        </div>
+        <div class="times">
+            <div class="time">
+                <p>13:00</p>
+                <p>$5.99</p>
+            </div>
+            <div class="time">
+                <p>13:00</p>
+                <p>$5.99</p>
+            </div>
+            <div class="time">
+                <p>13:00</p>
+                <p>$5.99</p>
+            </div>
+            <div class="time">
+                <p>13:00</p>
+                <p>$5.99</p>
+            </div>
+        </div>
+    </section>
+    </main>
+    <footer class="payment">
+        <div class="price">
+            <p>Price</p>
+            <p>$23.99</p>
+        </div>
+        <div class="buy">
+            <button>Buy ticket</button>
+        </div>
+    </footer>
 </body>
 </html>

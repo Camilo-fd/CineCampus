@@ -57,18 +57,57 @@ document.addEventListener('DOMContentLoaded', async () => {
             // --------------------------------------------
 
             const button_video_main = document.getElementById("button_video-main");
-            button_video_main.addEventListener('click', () => {
-                video_main.innerHTML = "";
+            let estado = false;
 
-                const iframe = document.createElement("iframe");
-                iframe.src = `${movie[0].video}`;
-                iframe.width = "400";
-                iframe.height = "450";
-                iframe.frameBorder = "0";
-                iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
-                iframe.allowFullscreen = true;
-                video_main.appendChild(iframe);
+            button_video_main.addEventListener('click', () => {
+                if (estado) {
+                    video_main.innerHTML = "";
+
+                    const iframe = document.createElement("iframe");
+                    iframe.src = `${movie[0].video}`;
+                    iframe.width = "400";
+                    iframe.height = "450";
+                    iframe.frameBorder = "0";
+                    iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+                    iframe.allowFullscreen = true;
+
+                    button_video_main.innerHTML = `
+                        <i class="bi bi-play-fill"></i> 
+                        See Cover
+                    `
+                    video_main.appendChild(iframe);
+
+                } else {
+                    video_main.innerHTML = "";
+
+                    const imagen = document.createElement("div")
+                    imagen.classList.add("imagen_video-main")
+                    imagen.innerHTML = `
+                        <img src="${movie[0].url}" alt="" class="">
+                    `
+                    button_video_main.innerHTML = `
+                        <i class="bi bi-play-fill"></i> 
+                        Watch Trailer
+                    `
+                    video_main.append(imagen)
+                }
+                estado = !estado;
+            });
+
+            // --------------------------------------------
+
+            const choose__seat = document.getElementById("back-pelicula")
+            choose__seat.addEventListener("click", function(event) {
+                event.preventDefault();
+                history.back()
             })
+
+            // --------------------------------------------
+
+            const button_footer = document.getElementById("button-footer")
+            button_footer.addEventListener('click', () => {
+                window.location.href = `/views/asiento.html`;
+            });
 
         } catch (error) {
             console.error(error);
