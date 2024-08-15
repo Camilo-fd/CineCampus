@@ -92,7 +92,7 @@ main {
     position: relative;
     display: flex;
     width: 95%;
-    height: 50%;
+    height: 26rem;
     flex-direction: column;
     left: 1rem;
     gap: 2rem;
