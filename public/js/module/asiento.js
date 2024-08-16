@@ -45,6 +45,17 @@ day.forEach(days => {
             days.style.backgroundColor = 'red'; // Color cuando se hace clic
             days.style.color = '#F8F5F5'; // Color de texto cuando se hace clic
         }
+
+        const paragraphs = days.querySelectorAll(".day p");
+        paragraphs.forEach(p => {
+            if (days.style.backgroundColor === 'red') {
+                p.style.backgroundColor = 'red'; 
+                p.style.color = "white"
+            } else {
+                p.style.backgroundColor = 'white';
+                p.style.color = "black"
+            }
+        });
     });
 });
 
