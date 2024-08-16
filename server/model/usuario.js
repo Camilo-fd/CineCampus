@@ -123,8 +123,6 @@ module.exports = class usuario extends connect{
     
         } catch (error) {
             return { error: error.toString() };
-        } finally {
-            await this.conexion.close();
         }
     }
 
@@ -154,8 +152,6 @@ module.exports = class usuario extends connect{
 
         } catch (error) {
             return { error: error.toString() }
-        } finally {
-            await this.conexion.close()
         }
     }
 
@@ -233,9 +229,7 @@ module.exports = class usuario extends connect{
         
             } catch (error) {
                 return { error: error.toString() };
-            } finally {
-                await this.conexion.close();
-            }
+            } 
         }
 
     // Permitir la consulta de todos los usuarios del sistema, con la posibilidad de filtrar por rol (VIP, estándar o administrador).
@@ -270,8 +264,6 @@ module.exports = class usuario extends connect{
 
         } catch (error) {
             return { error: error.toString() }
-        } finally {
-            await this.conexion.close();
         }
     }
 }

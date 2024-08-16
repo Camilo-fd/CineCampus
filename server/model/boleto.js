@@ -158,8 +158,6 @@ module.exports = class boleto extends connect{
 
         } catch (error) {
             return { error: error.toString() };
-        } finally {
-            await this.conexion.close();
         }
     }
 
@@ -248,8 +246,6 @@ module.exports = class boleto extends connect{
 
         } catch (error) {
             return { error: error.toString() };
-        } finally {
-            await this.conexion.close();
         }
     }
 
@@ -293,8 +289,6 @@ module.exports = class boleto extends connect{
 
         } catch (error) {
             return { error: error.toString() }
-        } finally {
-            await this.conexion.close();
         }
     }
 
@@ -337,8 +331,6 @@ module.exports = class boleto extends connect{
 
         } catch (error) {
             return { error: error.toString() }
-        } finally {
-            await this.conexion.close();
         }
     }
 }
