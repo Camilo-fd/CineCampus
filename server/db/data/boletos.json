@@ -1,0 +1,208 @@
+[
+  {
+    "_id": "66b54a622093660cd198f07a",
+    "id": 1,
+    "proyeccion_id": 1,
+    "usuario_id": 101,
+    "asientos": [
+      2,
+      6
+    ],
+    "precio": 2000,
+    "descuento_aplicado": 200,
+    "fecha_compra": "2024-08-06T10:30:00.000Z",
+    "estado": "pagado"
+  },
+  {
+    "_id": "66b54a622093660cd198f07b",
+    "id": 2,
+    "proyeccion_id": 1,
+    "usuario_id": 102,
+    "asientos": [
+      4
+    ],
+    "precio": 1000,
+    "fecha_compra": "2024-08-06T11:45:00.000Z",
+    "estado": "reservado"
+  },
+  {
+    "_id": "66b54a622093660cd198f07c",
+    "id": 3,
+    "proyeccion_id": 1,
+    "usuario_id": 103,
+    "asientos": [
+      9
+    ],
+    "precio": 1000,
+    "fecha_compra": "2024-08-06T12:15:00.000Z",
+    "estado": "pagado"
+  },
+  {
+    "_id": "66b54a622093660cd198f07d",
+    "id": 4,
+    "proyeccion_id": 2,
+    "usuario_id": 104,
+    "asientos": [
+      13,
+      15
+    ],
+    "precio": 2000,
+    "fecha_compra": "2024-08-07T09:30:00.000Z",
+    "estado": "pagado"
+  },
+  {
+    "_id": "66b54a622093660cd198f07e",
+    "id": 5,
+    "proyeccion_id": 2,
+    "usuario_id": 105,
+    "asientos": [
+      17
+    ],
+    "precio": 1000,
+    "fecha_compra": "2024-08-07T10:45:00.000Z",
+    "estado": "pagado"
+  },
+  {
+    "_id": "66b54a622093660cd198f07f",
+    "id": 6,
+    "proyeccion_id": 3,
+    "usuario_id": 106,
+    "asientos": [
+      21,
+      22,
+      23
+    ],
+    "precio": 3000,
+    "descuento_aplicado": 300,
+    "fecha_compra": "2024-08-08T14:00:00.000Z",
+    "estado": "pagado"
+  },
+  {
+    "_id": "66b54a622093660cd198f080",
+    "id": 7,
+    "proyeccion_id": 3,
+    "usuario_id": 107,
+    "asientos": [
+      26,
+      27
+    ],
+    "precio": 2000,
+    "fecha_compra": "2024-08-08T15:30:00.000Z",
+    "estado": "reservado"
+  },
+  {
+    "_id": "66b54a622093660cd198f081",
+    "id": 8,
+    "proyeccion_id": 4,
+    "usuario_id": 108,
+    "asientos": [
+      31,
+      32,
+      33,
+      34
+    ],
+    "precio": 4000,
+    "descuento_aplicado": 400,
+    "fecha_compra": "2024-08-09T11:15:00.000Z",
+    "estado": "pagado"
+  },
+  {
+    "_id": "66b54a622093660cd198f082",
+    "id": 9,
+    "proyeccion_id": 5,
+    "usuario_id": 109,
+    "asientos": [
+      41,
+      42,
+      43,
+      44,
+      45
+    ],
+    "precio": 5000,
+    "descuento_aplicado": 500,
+    "fecha_compra": "2024-08-09T16:45:00.000Z",
+    "estado": "pagado"
+  },
+  {
+    "_id": "66b54a622093660cd198f083",
+    "id": 10,
+    "proyeccion_id": 5,
+    "usuario_id": 110,
+    "asientos": [
+      46,
+      47,
+      48
+    ],
+    "precio": 3000,
+    "fecha_compra": "2024-08-09T17:30:00.000Z",
+    "estado": "reservado"
+  },
+  {
+    "_id": "66b54a622093660cd198f084",
+    "id": 11,
+    "proyeccion_id": 6,
+    "usuario_id": 111,
+    "asientos": [
+      51,
+      52
+    ],
+    "precio": 2000,
+    "fecha_compra": "2024-08-10T10:00:00.000Z",
+    "estado": "pagado"
+  },
+  {
+    "_id": "66b54a622093660cd198f085",
+    "id": 12,
+    "proyeccion_id": 7,
+    "usuario_id": 112,
+    "asientos": [
+      61,
+      62,
+      63
+    ],
+    "precio": 3000,
+    "fecha_compra": "2024-08-10T11:30:00.000Z",
+    "estado": "pagado"
+  },
+  {
+    "_id": "66b54a622093660cd198f086",
+    "id": 13,
+    "proyeccion_id": 8,
+    "usuario_id": 113,
+    "asientos": [
+      71
+    ],
+    "precio": 1000,
+    "fecha_compra": "2024-08-10T13:45:00.000Z",
+    "estado": "reservado"
+  },
+  {
+    "_id": "66b54a622093660cd198f087",
+    "id": 14,
+    "proyeccion_id": 9,
+    "usuario_id": 114,
+    "asientos": [
+      81,
+      82
+    ],
+    "precio": 2000,
+    "fecha_compra": "2024-08-11T09:15:00.000Z",
+    "estado": "pagado"
+  },
+  {
+    "_id": "66b54a622093660cd198f088",
+    "id": 15,
+    "proyeccion_id": 10,
+    "usuario_id": 115,
+    "asientos": [
+      91,
+      92,
+      93,
+      94
+    ],
+    "precio": 4000,
+    "descuento_aplicado": 400,
+    "fecha_compra": "2024-08-11T10:30:00.000Z",
+    "estado": "pagado"
+  }
+]

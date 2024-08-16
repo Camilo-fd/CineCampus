@@ -89,8 +89,6 @@ module.exports = class asiento extends connect{
 
         } catch (error) {
             return { error: error.toString() }
-        } finally {
-            await this.conexion.close()
-        }
+        } 
     }
 }

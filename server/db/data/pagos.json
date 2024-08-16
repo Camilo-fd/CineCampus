@@ -1,0 +1,154 @@
+[
+  {
+    "_id": "66b3b13182f2026c4fd973c2",
+    "id": 1,
+    "boleto_id": 1,
+    "metodo_pago": "tarjeta",
+    "pago_total": 1800,
+    "estado": "completado"
+  },
+  {
+    "_id": "66b3b13182f2026c4fd973c3",
+    "id": 2,
+    "boleto_id": 2,
+    "metodo_pago": "efectivo",
+    "pago_total": 1000,
+    "estado": "pendiente"
+  },
+  {
+    "_id": "66b3b13182f2026c4fd973c4",
+    "id": 3,
+    "boleto_id": 3,
+    "metodo_pago": "transferencia",
+    "pago_total": 1000,
+    "estado": "completado"
+  },
+  {
+    "_id": "66b3b13182f2026c4fd973c5",
+    "id": 4,
+    "boleto_id": 4,
+    "metodo_pago": "tarjeta",
+    "pago_total": 2000,
+    "estado": "completado"
+  },
+  {
+    "_id": "66b3b13182f2026c4fd973c6",
+    "id": 5,
+    "boleto_id": 5,
+    "metodo_pago": "efectivo",
+    "pago_total": 1000,
+    "estado": "completado"
+  },
+  {
+    "_id": "66b3b13182f2026c4fd973c7",
+    "id": 6,
+    "boleto_id": 6,
+    "metodo_pago": "tarjeta",
+    "pago_total": 2700,
+    "estado": "completado"
+  },
+  {
+    "_id": "66b3b13182f2026c4fd973c8",
+    "id": 7,
+    "boleto_id": 7,
+    "metodo_pago": "transferencia",
+    "pago_total": 2000,
+    "estado": "pendiente"
+  },
+  {
+    "_id": "66b3b13182f2026c4fd973c9",
+    "id": 8,
+    "boleto_id": 8,
+    "metodo_pago": "tarjeta",
+    "pago_total": 3600,
+    "estado": "completado"
+  },
+  {
+    "_id": "66b3b13182f2026c4fd973ca",
+    "id": 9,
+    "boleto_id": 9,
+    "metodo_pago": "tarjeta",
+    "pago_total": 4500,
+    "estado": "completado"
+  },
+  {
+    "_id": "66b3b13182f2026c4fd973cb",
+    "id": 10,
+    "boleto_id": 10,
+    "metodo_pago": "efectivo",
+    "pago_total": 3000,
+    "estado": "pendiente"
+  },
+  {
+    "_id": "66b3b13182f2026c4fd973cc",
+    "id": 11,
+    "boleto_id": 11,
+    "metodo_pago": "transferencia",
+    "pago_total": 2000,
+    "estado": "completado"
+  },
+  {
+    "_id": "66b3b13182f2026c4fd973cd",
+    "id": 12,
+    "boleto_id": 12,
+    "metodo_pago": "tarjeta",
+    "pago_total": 3000,
+    "estado": "completado"
+  },
+  {
+    "_id": "66b3b13182f2026c4fd973ce",
+    "id": 13,
+    "boleto_id": 13,
+    "metodo_pago": "efectivo",
+    "pago_total": 1000,
+    "estado": "pendiente"
+  },
+  {
+    "_id": "66b3b13182f2026c4fd973cf",
+    "id": 14,
+    "boleto_id": 14,
+    "metodo_pago": "tarjeta",
+    "pago_total": 2000,
+    "estado": "completado"
+  },
+  {
+    "_id": "66b3b13182f2026c4fd973d0",
+    "id": 15,
+    "boleto_id": 15,
+    "metodo_pago": "transferencia",
+    "pago_total": 3600,
+    "estado": "completado"
+  },
+  {
+    "_id": "66b4ced71f9e8dfa628c9d07",
+    "id": 16,
+    "boleto_id": 16,
+    "pago_total": 13500,
+    "metodo_pago": "efectivo",
+    "estado": "completado"
+  },
+  {
+    "_id": "66b4cf0d1f9e8dfa628c9d09",
+    "id": 17,
+    "boleto_id": 16,
+    "pago_total": 13500,
+    "metodo_pago": "efectivo",
+    "estado": "completado"
+  },
+  {
+    "_id": "66b4d7ec74aca2c39c03fcff",
+    "id": 18,
+    "boleto_id": 17,
+    "pago_total": 13500,
+    "metodo_pago": "efectivo",
+    "estado": "completado"
+  },
+  {
+    "_id": "66b530dd06862d74b497e81e",
+    "id": 19,
+    "boleto_id": 16,
+    "pago_total": 13500,
+    "metodo_pago": "efectivo",
+    "estado": "completado"
+  }
+]

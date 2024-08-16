@@ -1,0 +1,132 @@
+[
+  {
+    "_id": "66b3b0ea82f2026c4fd97363",
+    "id": 1,
+    "titulo": "Dune: Parte Dos",
+    "genero": [
+      "Aventura",
+      "Comedia"
+    ],
+    "duracion": 120,
+    "sinopsis": "Paul Atreides lidera a los Fremen en una guerra contra los Harkonnen para tomar control de Arrakis y su especia, enfrentando traiciones y desafíos en el desértico planeta.",
+    "url": "https://i.postimg.cc/1zSTkFrp/Dune.png",
+    "video": "https://www.youtube.com/embed/esezQhsrix0"
+  },
+  {
+    "_id": "66b3b0ea82f2026c4fd97364",
+    "id": 2,
+    "titulo": "The Marvels",
+    "genero": [
+      "Ciencia Ficción",
+      "Misterio"
+    ],
+    "duracion": 145,
+    "sinopsis": "Carol Danvers, Kamala Khan y Monica Rambeau unen fuerzas para enfrentar una amenaza cósmica que pone en riesgo el universo.",
+    "url": "https://i.postimg.cc/SKzsvwVX/file.png",
+    "video": "https://www.youtube.com/embed/_8ylSrn3SJY"
+  },
+  {
+    "_id": "66b3b0ea82f2026c4fd97365",
+    "id": 3,
+    "titulo": "Killers of the Flower Moon",
+    "genero": [
+      "Romance",
+      "Drama"
+    ],
+    "duracion": 110,
+    "sinopsis": "En la década de 1920, una serie de asesinatos contra la tribu Osage desencadena una investigación del FBI sobre la corrupción y la codicia en los Estados Unidos.",
+    "url": "https://i.postimg.cc/htT6ZsTD/Killer.jpg",
+    "video": "https://www.youtube.com/embed/7cx9nCHsemc"
+  },
+  {
+    "_id": "66b3b0ea82f2026c4fd97366",
+    "id": 4,
+    "titulo": "The Hunger Games: Ballad of Songbirds & Snakes",
+    "genero": [
+      "Accion",
+      "Ciencia Ficción"
+    ],
+    "duracion": 135,
+    "sinopsis": "La precuela explora los orígenes de Coriolanus Snow y su rol como mentor en los décimos Juegos del Hambre, mostrando la formación del futuro tirano de Panem.",
+    "url": "https://i.postimg.cc/bNK4RWGV/Juegos.jpg",
+    "video": "https://www.youtube.com/embed/NxW_X4kzeus"
+  },
+  {
+    "_id": "66b3b0ea82f2026c4fd97367",
+    "id": 5,
+    "titulo": "Avatar 3",
+    "genero": [
+      "Fantasia",
+      "Aventura"
+    ],
+    "duracion": 115,
+    "sinopsis": "Jake Sully y Neytiri enfrentan nuevas amenazas en Pandora, explorando el mundo subacuático mientras defienden su hogar y su familia.",
+    "url": "https://i.postimg.cc/jdWGPtjJ/Avatar-3.jpg",
+    "video": "https://www.youtube.com/embed/knV6GlCeWCs"
+  },
+  {
+    "_id": "66b3b0ea82f2026c4fd97368",
+    "id": 6,
+    "titulo": "Wonka",
+    "genero": [
+      "Comedia",
+      "Crimen"
+    ],
+    "duracion": 105,
+    "sinopsis": "La película narra la juventud de Willy Wonka y sus aventuras para abrir su primera tienda de chocolates, revelando el inicio de su icónica carrera.",
+    "url": "https://i.postimg.cc/pVcwmpPH/Wonka.jpg",
+    "video": "https://www.youtube.com/embed/-YRw-3dgsjo"
+  },
+  {
+    "_id": "66b3b0ea82f2026c4fd97369",
+    "id": 7,
+    "titulo": "Mission: Impossible – Dead Reckoning Part Two",
+    "genero": [
+      "Drama",
+      "Romance"
+    ],
+    "duracion": 130,
+    "sinopsis": "Ethan Hunt y su equipo enfrentan su misión más peligrosa mientras luchan contra un enemigo global que amenaza con cambiar el curso de la historia.",
+    "url": "https://i.postimg.cc/50nZqtv8/Mission.jpg",
+    "video": "https://www.youtube.com/embed/8jRMVhGwy0M"
+  },
+  {
+    "_id": "66b3b0ea82f2026c4fd9736a",
+    "id": 8,
+    "titulo": "The Exorcist: Believe",
+    "genero": [
+      "Terror",
+      "Misterio"
+    ],
+    "duracion": 95,
+    "sinopsis": "Una familia busca ayuda cuando su hija y una amiga muestran signos de posesión demoníaca, desafiando a exorcistas a enfrentar un antiguo mal.",
+    "url": "https://i.postimg.cc/gj7QQBgJ/Exorcismo.jpg",
+    "video": "https://www.youtube.com/embed/PIxpPMyGcpU"
+  },
+  {
+    "_id": "66b3b0ea82f2026c4fd9736b",
+    "id": 9,
+    "titulo": "Barbie",
+    "genero": [
+      "Crimen",
+      "Comedia"
+    ],
+    "duracion": 125,
+    "sinopsis": "Barbie deja su mundo de plástico para enfrentarse a la realidad, descubriendo nuevas lecciones sobre identidad y felicidad en el proceso.",
+    "url": "https://i.postimg.cc/FzzwPQg8/Barbie.jpg",
+    "video": "https://www.youtube.com/embed/zh4KhVSMwtQ"
+  },
+  {
+    "_id": "66b3b0ea82f2026c4fd9736c",
+    "id": 10,
+    "titulo": "Furiosa: de la saga Mad Max",
+    "genero": [
+      "Ciencia Ficción",
+      "Aventura"
+    ],
+    "duracion": 150,
+    "sinopsis": "El spin-off de \"Mad Max\" sigue a una joven Furiosa mientras lucha por sobrevivir en un mundo post-apocalíptico y busca redención en el desierto.",
+    "url": "https://i.postimg.cc/QtX2T7BX/Furiosa.jpg",
+    "video": "https://www.youtube.com/embed/GgerHF86Rv4"
+  }
+]
