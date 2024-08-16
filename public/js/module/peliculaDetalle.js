@@ -96,6 +96,19 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             // --------------------------------------------
 
+            const cinema = document.querySelector("#cinema-info")
+            let estadoCinema = false;
+            cinema.addEventListener("click", () => {
+                if (estadoCinema) {
+                    cinema.style.border = "none"
+                } else {
+                    cinema.style.border = "1px solid red"
+                }
+                estadoCinema = !estadoCinema
+            })
+
+            // --------------------------------------------
+
             const choose__seat = document.getElementById("back-pelicula")
             choose__seat.addEventListener("click", function(event) {
                 event.preventDefault();
