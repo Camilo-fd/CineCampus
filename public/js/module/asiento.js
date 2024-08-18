@@ -1,49 +1,20 @@
 document.addEventListener('DOMContentLoaded', function()  {
-    const choose__seat = document.getElementById("back-pelicula_detalle")
-    choose__seat.addEventListener("click", function(event) {
+    const back = document.getElementById("back-pelicula_detalle");
+    back.addEventListener("click", function(event) {
         event.preventDefault();
-        history.back()
-    })
-})
-
-const front = document.querySelectorAll(".front__seat");
-front.forEach(seat => {
-    seat.addEventListener("click", () => {
-        // Verifica el color de fondo actual y cambia el color
-        if (seat.style.backgroundColor === 'red') {
-            seat.style.backgroundColor = '#cecece'; // Color inicial
-            seat.style.color = 'black'; // Color de texto inicial
-        } else {
-            seat.style.backgroundColor = 'red'; // Color cuando se hace clic
-            seat.style.color = '#cecece'; // Color de texto cuando se hace clic
-        }
-    });
-});
-
-const back = document.querySelectorAll(".back__seat");
-back.forEach(seat => {
-    seat.addEventListener("click", () => {
-        // Verifica el color de fondo actual y cambia el color
-        if (seat.style.backgroundColor === 'red') {
-            seat.style.backgroundColor = '#cecece'; // Color inicial
-            seat.style.color = 'black'; // Color de texto inicial
-        } else {
-            seat.style.backgroundColor = 'red'; // Color cuando se hace clic
-            seat.style.color = '#cecece'; // Color de texto cuando se hace clic
-        }
+        history.back();
     });
 });
 
 const day = document.querySelectorAll(".day");
 day.forEach(days => {
     days.addEventListener("click", () => {
-        // Verifica el color de fondo actual y cambia el color
         if (days.style.backgroundColor === 'red') {
-            days.style.backgroundColor = '#F8F5F5'; // Color inicial
-            days.style.color = 'black'; // Color de texto inicial
+            days.style.backgroundColor = '#F8F5F5'; 
+            days.style.color = 'black'; 
         } else {
-            days.style.backgroundColor = 'red'; // Color cuando se hace clic
-            days.style.color = '#F8F5F5'; // Color de texto cuando se hace clic
+            days.style.backgroundColor = 'red';
+            days.style.color = '#F8F5F5';
         }
 
         const paragraphs = days.querySelectorAll(".day p");
@@ -83,3 +54,41 @@ times.forEach(time => {
         });
     });
 });
+
+// ---------------------------------------------------------------------
+
+const price = document.querySelector(".price p:nth-child(2)"); 
+let totalPrice = 0;
+
+function updatePrice(val) {
+    totalPrice += val;
+    if (totalPrice < 0) {
+        totalPrice = 0;
+    }
+    price.textContent = `$${totalPrice.toFixed(2)}`;
+}
+
+function classSeat(seat, price) {
+    if (seat.classList.contains('selected')) {
+        updatePrice(-price); 
+        seat.classList.remove('selected');
+    } else {
+        updatePrice(price); 
+        seat.classList.add('selected');
+    }
+}
+
+function initializeSeats(seatClass, price) {
+    const seats = document.querySelectorAll(seatClass);
+    
+    seats.forEach(seat => {
+        seat.setAttribute("price", price);
+
+        seat.addEventListener("click", () => {
+            classSeat(seat, price);
+        });
+    });
+}
+
+initializeSeats(".front__seat", 5.99);
+initializeSeats(".back__seat", 5.99);
