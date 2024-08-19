@@ -3,10 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title></title>
+    <link rel="stylesheet" href="../css/index.css">
+    <script type="module" src="../js/module/index.js" defer></script>
 </head>
 <body>
-    <h1>hola</h1>
-    <a href="/pelicula">click</a>
+    <header class="header__title">
+        <h1>Login</h1>
+    </header>
+    <form class = "login__form">
+        <input id="username" type="text" placeholder="Username">
+        <input id="email" type="text" placeholder="Email">
+        <input id="rol" type="text" placeholder="Rol">
+        <input id="password" type="text" placeholder="Password">
+    </form>
+    <footer>
+        <div class="checkbox__remember">
+            <input type="checkbox"> Remember me 
+        </div>
+        <button id="button" class="login__button">Log in</button>
+        <p>Dont have an account? <a href="/usuario">Sing up</a></p>
+    </footer>
 </body>
 </html>
