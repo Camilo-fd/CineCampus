@@ -1,3 +1,15 @@
+import { search } from "./search.js";
+
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
+        await loadMovies();
+        await MoviesComingSoon();
+        await search();
+    } catch (error) {
+        console.error('Error al cargar las funciones:', error);
+    }
+});
+
 export async function loadMovies() {
     try {
         const response = await fetch('/pelicula/all');

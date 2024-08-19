@@ -45,21 +45,7 @@ module.exports = class asiento extends connect{
     async checkSeatAvailability(object) {
         try {
             await this.conexion.connect()
-
-            if (!Number.isInteger(object.proyeccion_id)) {
-                return { error: 'El valor proyeccion_id debe ser un entero' };
-            }
-            // let asientosString = [];
-            // for (let tipoAsiento of object.asiento_id) {
-            //     if (!Number.isInteger(tipoAsiento)) {
-            //         asientosString.push(`El asiento #${tipoAsiento} debe ser un entero`);
-            //     }
-            // }
             
-            // if (asientosString.length > 0) {
-            //     return asientosString;
-            // }
-
             let dataProyeccion = await this.db.collection("proyecciones").findOne({id: object.proyeccion_id})
             if (!dataProyeccion) {
                 return { error: `No existe la proyeccion #${object.proyeccion_id}` }
@@ -71,21 +57,6 @@ module.exports = class asiento extends connect{
             } else {
                 return { disponible: dataAsiento };
             }
-
-            // let availableSeats = [];
-            // for (let asientoId of object.asiento_id) {
-            //   let dataAsiento = await this.collection.findOne({ id: asientoId });
-            //   if (!dataAsiento || dataAsiento.proyeccion_id !== object.proyeccion_id || dataAsiento.estado !== "disponible") {
-            //     continue;
-            //   }
-            //   availableSeats.push(dataAsiento);
-            // }
-          
-            // if (availableSeats.length > 0) {
-            //   return { disponibles: availableSeats };
-            // } else {
-            //     return { error: 'No hay asientos disponibles' };
-            // }
 
         } catch (error) {
             return { error: error.toString() }
