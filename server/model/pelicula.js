@@ -87,35 +87,13 @@ module.exports = class pelicula extends connect{
     async getMovisId({id}) {
         try {
             await this.conexion.connect();
+
+            let movie = await this.collection.findOne({id: id})
     
-            let dataMovis = await this.collection.aggregate(
-                [
-                    {
-                        $match: {
-                            id: id      
-                        }
-                    },
-                    {
-                        $project: {
-                            _id: 0,
-                            id: 1,
-                            titulo: 1,
-                            genero: 1,
-                            duracion: 1,
-                            horarios: 1,
-                            sinopsis: 1,
-                            url: 1,
-                            video: 1,
-                            actores: 1
-                        }
-                    }
-                ]
-            ).toArray();
-    
-            if (dataMovis.length === 0) {
+            if (movie.length === 0) {
                 return { error: "Pelicula no encontrada" };
             } else {
-                return dataMovis;
+                return movie;
             }
     
         } catch (error) {

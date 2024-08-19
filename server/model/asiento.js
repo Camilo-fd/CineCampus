@@ -42,24 +42,27 @@ module.exports = class asiento extends connect{
          * - If there are errors, returns an object with an 'error' property.
          * - If there are validation errors, returns an array of error messages.
      */
+
     async checkSeatAvailability(object) {
         try {
-            await this.conexion.connect()
-            
-            let dataProyeccion = await this.db.collection("proyecciones").findOne({id: object.proyeccion_id})
+            await this.conexion.connect();
+    
+            let dataProyeccion = await this.db.collection("proyecciones").findOne({ pelicula_id: object.pelicula_id });
             if (!dataProyeccion) {
-                return { error: `No existe la proyeccion #${object.proyeccion_id}` }
+                return { error: `No existe la proyección con el ID de película #${object.pelicula_id}` };
             }
-
-            let dataAsiento = await this.collection.find({ proyeccion_id: object.proyeccion_id, estado: "disponible" }).toArray();
-            if (!dataAsiento.length) {
+    
+            let dataAsiento = await this.collection.find({ proyeccion_id: dataProyeccion.id, estado: "disponible" }).toArray();
+            if (dataAsiento.length === 0) {
                 return { error: 'No hay asientos disponibles' };
             } else {
                 return { disponible: dataAsiento };
             }
-
+    
         } catch (error) {
-            return { error: error.toString() }
-        } 
+            return { error: error.toString() };
+        }
     }
+    
+    
 }

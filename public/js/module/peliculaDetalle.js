@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             const imagen = document.createElement("div")
             imagen.classList.add("imagen_video-main")
             imagen.innerHTML = `
-                <img src="${movie[0].url}" alt="" class="">
+                <img src="${movie.url}" alt="" class="">
             `
             video_main.append(imagen)
             
@@ -24,24 +24,24 @@ document.addEventListener('DOMContentLoaded', async () => {
             info_video_main.innerHTML = ""
 
             const h5 = document.createElement("h5")
-            h5.textContent = movie[0].titulo
+            h5.textContent = movie.titulo
 
             const p = document.createElement("p")
-            p.textContent = movie[0].genero
+            p.textContent = movie.genero
             info_video_main.append(h5)
             info_video_main.append(p)
 
             // --------------------------------------------
 
             const sipnosis_p = document.querySelector("#p")
-            sipnosis_p.textContent = movie[0].sinopsis
+            sipnosis_p.textContent = movie.sinopsis
 
             // --------------------------------------------
 
             const actor_list = document.querySelector("#actor-list")
             actor_list.innerHTML = ""
 
-            movie[0].actores.forEach((actor) => {
+            movie.actores.forEach((actor) => {
                 const actor_info = document.createElement("div")
                 actor_info.classList.add("actor-info")
                 actor_info.innerHTML = `
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     video_main.innerHTML = "";
 
                     const iframe = document.createElement("iframe");
-                    iframe.src = `${movie[0].video}`;
+                    iframe.src = `${movie.video}`;
                     iframe.width = "400";
                     iframe.height = "450";
                     iframe.frameBorder = "0";
@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     const imagen = document.createElement("div")
                     imagen.classList.add("imagen_video-main")
                     imagen.innerHTML = `
-                        <img src="${movie[0].url}" alt="" class="">
+                        <img src="${movie.url}" alt="" class="">
                     `
                     button_video_main.innerHTML = `
                         <i class="bi bi-play-fill"></i> 
@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             const button_footer = document.getElementById("button-footer")
             button_footer.addEventListener('click', () => {
-                window.location.href = `/views/asiento.html`;
+                window.location.href = `/asiento?id=${id}`;
             });
 
         } catch (error) {
