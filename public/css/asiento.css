@@ -248,4 +248,12 @@
         background-color: red;
         color: #cecece;
     }
+
+    .available {
+        background-color: lightgreen; /* Color para asientos disponibles */
+    }
+    
+    .unavailable {
+        background-color: lightcoral; /* Color para asientos ocupados */
+    }
 }

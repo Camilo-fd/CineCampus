@@ -93,6 +93,25 @@ document.addEventListener('DOMContentLoaded', function()  {
 
     initializeSeats(".front__seat", 5.99);
     initializeSeats(".back__seat", 5.99);
+    
+    // ---------------------------------------------------------------------
+
+    const frontSeats = document.querySelectorAll('.front__seat');
+    const backSeats = document.querySelectorAll('.back__seat');
+
+    // Función para recorrer y mostrar los IDs de los asientos
+    function logSeatIds(seats) {
+        seats.forEach(seat => {
+            console.log(seat.id); // Imprime el ID del asiento
+        });
+    }
+
+    // Llamar a la función para ambos grupos de asientos
+    console.log('Front seats:');
+    logSeatIds(frontSeats);
+
+    console.log('Back seats:');
+    logSeatIds(backSeats);
 
     async function loadSeats() {
         const urlParams = new URLSearchParams(window.location.search);
@@ -100,14 +119,38 @@ document.addEventListener('DOMContentLoaded', function()  {
 
         if (id) {
             try {
-                const response = await fetch(`/asiento/checkSeat/${id}`, { method: "GET"});
+                const response = await fetch(`/asiento/checkSeat/${id}`, { method: "GET" });
                 if (!response.ok) throw new Error('Error al cargar');
 
                 const seatData = await response.json();
-                console.log(seatData);
+                const seatsArray = seatData.disponible;
+
+                // Crear un mapa para los estados de los asientos
+                const seatMap = new Map();
+                seatsArray.forEach(seat => {
+                    seatMap.set(seat.numero, seat.estado);
+                });
+
+                // Actualizar el estado de los asientos en el DOM
+                document.querySelectorAll('.front__seat, .back__seat').forEach(seatElement => {
+                    const seatNumber = seatElement.id;
+                    const seatState = seatMap.get(seatNumber);
+
+                    // if (seatState) {
+                    //     if (seatState === 'disponible') {
+                    //         seatElement.classList.add('available');
+                    //         seatElement.classList.remove('unavailable');
+                    //     } else if (seatState === 'ocupado') {
+                    //         seatElement.classList.add('unavailable');
+                    //         seatElement.classList.remove('available');
+                    //     }
+                    // } else {
+                    //     seatElement.classList.remove('available', 'unavailable');
+                    // }
+                });
 
             } catch (error) {
-                console.error(error);
+                console.error('Se produjo un error:', error);
             }
         } else {
             console.error('No se proporcionó un ID de película.');
@@ -115,4 +158,5 @@ document.addEventListener('DOMContentLoaded', function()  {
     }
 
     loadSeats();
+    
 });
