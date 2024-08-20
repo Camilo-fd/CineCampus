@@ -20,6 +20,7 @@ export async function loadMovies() {
         const pelicula_titulo = document.getElementById("pelicula-titulo");
         const pelicula_genero = document.getElementById("pelicula-genero");
         const span = document.querySelectorAll('.span');
+        const nombre = document.querySelector(".informacion-texto h5")
         carrusel.innerHTML = '';
 
         let contador = 0;
@@ -81,6 +82,8 @@ export async function loadMovies() {
         carouselItems.forEach(item => {
             observer.observe(item.element);
         });
+        const nombreData = localStorage.getItem('nombre');
+        nombre.innerHTML = `Hi, ${nombreData}`
 
     } catch (error) {
         console.error(error);

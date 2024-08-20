@@ -94,25 +94,25 @@ document.addEventListener('DOMContentLoaded', function()  {
     initializeSeats(".front__seat", 5.99);
     initializeSeats(".back__seat", 5.99);
 
-    async function loadSeats() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const id = urlParams.get('id');
+    // async function loadSeats() {
+    //     const urlParams = new URLSearchParams(window.location.search);
+    //     const id = urlParams.get('id');
 
-        if (id) {
-            try {
-                const response = await fetch(`/asiento/checkSeat/${id}`);
-                if (!response.ok) throw new Error('Error al cargar');
+    //     if (id) {
+    //         try {
+    //             const response = await fetch(`/asiento/checkSeat/${id}`);
+    //             if (!response.ok) throw new Error('Error al cargar');
 
-                const seatData = await response.json();
-                console.log(seatData);
+    //             const seatData = await response.json();
+    //             console.log(seatData);
 
-            } catch (error) {
-                console.error(error);
-            }
-        } else {
-            console.error('No se proporcionó un ID de película.');
-        }
-    }
+    //         } catch (error) {
+    //             console.error(error);
+    //         }
+    //     } else {
+    //         console.error('No se proporcionó un ID de película.');
+    //     }
+    // }
 
-    loadSeats();
+    // loadSeats();
 });

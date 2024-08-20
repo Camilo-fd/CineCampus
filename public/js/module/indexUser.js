@@ -31,9 +31,9 @@ document.addEventListener('DOMContentLoaded', async() => {
 
             const result = await response.json();
             console.log('Resultado:', result);
+            localStorage.setItem('nombre', nombre)
 
             window.location.href = '/pelicula';
-            console.log("Usuario creado");
         } catch (error) {
             console.error('Error al enviar los datos:', error);
         }
