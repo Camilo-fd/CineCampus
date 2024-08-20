@@ -8,6 +8,7 @@ appUsuario.post("/newUser", async (req, res) => {
     let objUsuario = new usuario();
     const resultado = await objUsuario.newUser(req.body);
     res.status(201).json(resultado);
+    objUsuario.destructor()
 });
 
 appUsuario.get("/getUser/:id", async (req, res) => {

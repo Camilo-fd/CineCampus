@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     if (id) {
         try {
-            const response = await fetch(`/pelicula/id/${id}`);
+            const response = await fetch(`/pelicula/id/${id}`, { method: "GET"});
             if (!response.ok) throw new Error('Error al cargar la película');
             const movie = await response.json();
 

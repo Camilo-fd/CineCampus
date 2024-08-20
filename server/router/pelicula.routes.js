@@ -11,7 +11,8 @@ appPelicula.get("/id/:id", [param("id").notEmpty()], async(req, res) => {
         let objPeliculas = new pelicula 
         const idObject = { id: parseInt(req.params.id) };
         res.status(200).send(await objPeliculas.getMovisId(idObject))
-    }   
+        objPeliculas.destructor()
+    }
 })
 
 appPelicula.get("/all", async(req, res) => {
@@ -20,6 +21,7 @@ appPelicula.get("/all", async(req, res) => {
     } else { 
         let objPeliculas = new pelicula 
         res.status(200).send(await objPeliculas.getAllMovis())
+        objPeliculas.destructor()
     }
 })
 

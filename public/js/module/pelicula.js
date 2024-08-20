@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 export async function loadMovies() {
     try {
-        const response = await fetch('/pelicula/all');
+        const response = await fetch('/pelicula/all', { method: 'GET' });
         if (!response.ok) throw new Error('Error al cargar las películas');
 
         const movies = await response.json();
@@ -92,7 +92,7 @@ export async function loadMovies() {
 
 export async function MoviesComingSoon() {
     try {
-        const response = await fetch('/pelicula/all');
+        const response = await fetch('/pelicula/all', { method: 'GET' });
         if (!response.ok) throw new Error('Error al cargar las películas');
 
         const movies = await response.json();
