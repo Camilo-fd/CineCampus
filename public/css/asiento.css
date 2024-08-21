@@ -250,7 +250,7 @@
     }
 
     .available {
-        background-color: lightgreen; /* Color para asientos disponibles */
+        background-color: #323232; /* Color para asientos disponibles */
     }
     
     .unavailable {
