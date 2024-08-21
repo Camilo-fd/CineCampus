@@ -11,7 +11,7 @@ appUsuario.post("/newUser", async (req, res) => {
     objUsuario.destructor()
 });
 
-appUsuario.get("/getUser/:id", async (req, res) => {
+appUsuario.get("/getUserId/:id", async (req, res) => {
     let objUsuario = new usuario();
     const idObject = { id: parseInt(req.params.id) };
     res.status(200).send(await objUsuario.getUserById(idObject))
@@ -27,5 +27,12 @@ appUsuario.get("/getUserRol/:rol", async (req, res) => {
     let objUsuario = new usuario();
     res.status(200).send(await objUsuario.getUsersByRole(req.params.rol))
 });
+
+appUsuario.post("/getUser", async(req, res) => {
+    let objUsuario = new usuario()
+    const resultado = await objUsuario.getUser(req.body)
+    res.status(200).json(resultado)
+    objUsuario.destructor()
+})
 
 module.exports = appUsuario;

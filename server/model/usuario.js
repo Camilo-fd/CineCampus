@@ -266,4 +266,24 @@ module.exports = class usuario extends connect{
             return { error: error.toString() }
         }
     }
+
+    async getUser(objeto) {
+        try {
+            await this.conexion.connect(); 
+    
+            const dataUser = await this.collection.findOne({
+                nombre: objeto.nombre, 
+                contraseña: objeto.contraseña
+            });
+    
+            if (!dataUser) {
+                return { error: "No existe el usuario" };
+            }
+    
+            return dataUser;
+        } catch (error) {
+            return { error: "Error al intentar obtener el usuario" };
+        }
+    }
+    
 }

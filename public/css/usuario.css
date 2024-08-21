@@ -1,14 +1,88 @@
-*{
-    margin: 0;
+* {
     padding: 0;
-    box-sizing: border-box;
+    margin: 0;
+    color: rgb(255, 255, 255);
+    background-color: #121212;
+    font-family: "Poppins", sans-serif;
 }
 
-.container {
+
+body {
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.3);
+    border-radius: 1rem;
+    padding: 1rem;
+    padding-top: 4rem;
+    margin: 1rem;
+    margin-top: 12rem;
+    margin-bottom: 0;
+}
+
+.header__title {
     display: flex;
-    width: 100%;
-    height: 40%;
-    align-items: center;
     justify-content: center;
-    border: 1px solid red
+    margin-bottom: 3rem;
+    background-color: transparent;
+}
+
+header h1 {
+    background-color: transparent;
+}
+
+.Sing-up__form {
+    display: flex;
+    justify-content: space-between;
+    margin: 2rem;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: transparent;
+}
+
+input {
+    border: 0;
+    border-bottom: 2px solid red;
+    padding: 0.5rem;
+    padding-left: 0.2;
+    font-size: medium;
+    background-color: transparent;
+}
+
+
+footer {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+    background-color: transparent;
+}
+
+.Sign-up__button {
+    padding: 1rem;
+    border: 0;
+    background-color: red;
+    border-radius: 2rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    font-size: medium;
+    font-weight: bold;
+}
+
+.checkbox__remember {
+    margin-left: 2.5rem;
+    display: flex;
+    gap: 0.5rem;
+    background-color: transparent;
+}
+
+
+footer p {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    background-color: transparent;
+}
+
+footer p a {
+    text-decoration: none;
+    color: red;
+    background-color: transparent;
 }

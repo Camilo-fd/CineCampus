@@ -3,21 +3,17 @@ document.addEventListener('DOMContentLoaded', async() => {
     
     button.addEventListener("click", async() => {
         const nombre = document.getElementById("username").value;
-        const email = document.getElementById("email").value;
-        const rol = document.getElementById("rol").value;
         const contraseña = document.getElementById("password").value;
 
        // Crear el objeto de datos
        const userData = {
         nombre,
-        email,
-        rol,
         contraseña
         };
 
         try {
             // Enviar una solicitud POST al servidor
-            const response = await fetch('/usuario/newUser', {
+            const response = await fetch('/usuario/getUser', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -31,11 +27,11 @@ document.addEventListener('DOMContentLoaded', async() => {
 
             const result = await response.json();
             console.log('Resultado:', result);
-            // localStorage.setItem('nombre', nombre)
+            localStorage.setItem('nombre', nombre)
 
-            window.location.href = '/usuario';
+            window.location.href = '/pelicula';
         } catch (error) {
             console.error('Error al enviar los datos:', error);
         }
     });
-});
+})
