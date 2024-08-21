@@ -5,6 +5,7 @@ const appPelicula = require("./server/router/pelicula.routes");
 const appBoleto = require("./server/router/boleto.routes");
 const appAsiento = require("./server/router/asiento.routes");
 const appUsuario = require("./server/router/usuario.routes");
+const appProyeccion = require("./server/router/proyeccion.routes")
 
 // Inicializar el caché
 const cache = new NodeCache({ stdTTL: 100, checkperiod: 120 });
@@ -62,6 +63,7 @@ app.use("/pelicula", cacheMiddleware(600), appPelicula);
 app.use("/boleto", cacheMiddleware(300), appBoleto);
 app.use("/asiento", cacheMiddleware(300), appAsiento);
 app.use("/usuario", cacheMiddleware(300), appUsuario);
+app.use("/proyeccion", cacheMiddleware(300), appProyeccion);
 
 app.listen({host: process.env.EXPRESS_HOST, port: process.env.EXPRESS_PORT}, () => {
     console.log(`http://${process.env.EXPRESS_HOST}:${process.env.EXPRESS_PORT}`);
