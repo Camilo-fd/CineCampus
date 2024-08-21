@@ -43,26 +43,51 @@ module.exports = class asiento extends connect{
          * - If there are validation errors, returns an array of error messages.
      */
 
-    async checkSeatAvailability(object) {
+    // async checkSeatAvailability(object) {
+    //     try {
+    //         await this.conexion.connect();
+    
+    //         let dataProyeccion = await this.db.collection("proyecciones").findOne({ pelicula_id: object.pelicula_id });
+    //         if (!dataProyeccion) {
+    //             return { error: `No existe la proyección con el ID de película #${object.pelicula_id}` };
+    //         }
+    
+    //         let dataAsiento = await this.collection.find({ proyeccion_id: dataProyeccion.id, estado: "disponible" }).toArray();
+    //         if (dataAsiento.length === 0) {
+    //             return { error: 'No hay asientos disponibles' };
+    //         } else {
+    //             return { disponible: dataAsiento };
+    //         }
+    
+    //     } catch (error) {
+    //         return { error: error.toString() };
+    //     }
+    // }
+    
+    async checkSeatAvailability(objecto) {
         try {
             await this.conexion.connect();
     
-            let dataProyeccion = await this.db.collection("proyecciones").findOne({ pelicula_id: object.pelicula_id });
+            let dataProyeccion = await this.db.collection("proyecciones").findOne({ pelicula_id: objecto.pelicula_id });
             if (!dataProyeccion) {
-                return { error: `No existe la proyección con el ID de película #${object.pelicula_id}` };
+                return { error: `No existe la proyección con el ID de película #${objecto.pelicula_id}` };
             }
-    
+            if (dataProyeccion.dia !== objecto.dia || dataProyeccion.fecha !== objecto.fecha) {
+                return { error: "No hay fechas" }
+            }
+            if (dataProyeccion.hora !== objecto.hora) {
+                return { error: "No esta la hora disponible" }
+            }
+
             let dataAsiento = await this.collection.find({ proyeccion_id: dataProyeccion.id, estado: "disponible" }).toArray();
             if (dataAsiento.length === 0) {
                 return { error: 'No hay asientos disponibles' };
             } else {
-                return { disponible: dataAsiento };
+                return { disponible: dataAsiento }; 
             }
     
         } catch (error) {
             return { error: error.toString() };
         }
     }
-    
-    
 }
