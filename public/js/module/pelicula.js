@@ -84,6 +84,7 @@ export async function loadMovies() {
         });
         const nombreData = localStorage.getItem('nombre');
         nombre.innerHTML = `Hi, ${nombreData}`
+        nombre.style = "font-size: 1em;"
 
     } catch (error) {
         console.error(error);

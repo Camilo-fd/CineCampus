@@ -48,11 +48,15 @@
         gap: 0.5em;
         width: 100%;
         display: flex;
-        flex-wrap: wrap-reverse;
+        flex-wrap: wrap;
         flex-direction: row;
         justify-content: center;
-        padding-left: 2.5em;
-        padding-right: 2.5em;
+    }
+
+    .seat_A, .seat_B {
+        display: flex;
+        gap: 0.375rem;
+        flex-direction: row;
     }
 
     .front__letter {
@@ -92,7 +96,7 @@
         width: 100%;
         grid-template-columns: repeat(9,1fr);
         gap: 0.5em;
-        margin-left: 1em;
+        margin-left: 0.5em;
         margin-right: 1em;
         margin-top: 3rem;
     }

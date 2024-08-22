@@ -32,12 +32,14 @@ document.addEventListener('DOMContentLoaded', async function () {
         // Seleccionamos elementos del html
         const daysContainer = document.querySelector('.days');
         const timesContainer = document.querySelector('.times');
-        const seatsContainerF = document.querySelector('.group__seats_f');
-        const seatsContainer = document.querySelector('.group__seats');
+        const seatsContainerA = document.querySelector('.seat_A');
+        const seatsContainerB = document.querySelector('.seat_B');
+        const seatsContainer = document.querySelector('.group__seats'); // Este se usa para otros asientos
 
         daysContainer.innerHTML = '';
         timesContainer.innerHTML = '';
-        seatsContainerF.innerHTML = ''; 
+        seatsContainerA.innerHTML = ''; 
+        seatsContainerB.innerHTML = ''; 
         seatsContainer.innerHTML = '';
 
         // Creamos los div de la fecha y la hora, y lo colocamos en el html
@@ -119,29 +121,34 @@ document.addEventListener('DOMContentLoaded', async function () {
                         const data = await response.json();
 
                         // Limpiar los contenedores de asientos
-                        seatsContainerF.innerHTML = '';
+                        seatsContainerA.innerHTML = '';
+                        seatsContainerB.innerHTML = '';
                         seatsContainer.innerHTML = '';
 
                         if (data.error) {
-                            seatsContainerF.innerHTML = `<p>${data.error}</p>`;
+                            seatsContainerA.innerHTML = `<p>${data.error}</p>`;
                         } else {
                             data.disponible.forEach(asiento => {
                                 const seatElement = document.createElement('div');
-                                seatElement.className = 'seat';
-                                
+                                // seatElement.textContent = asiento.numero;
+
                                 if (asiento.estado === 'ocupado') {
-                                    seatElement.className = 'seat ocupado';
+                                    seatElement.classList.add('ocupado');
                                     seatElement.style.backgroundColor = '#808080';
-                                    seatElement.style.pointerEvents = 'none';
+                                    seatElement.style.pointerEvents = 'none';   
                                 } else {
                                     seatElement.style.backgroundColor = '#323232';
                                 }
 
-                                // Determinar en qué contenedor colocar el asiento
-                                if (asiento.numero.startsWith('A') || asiento.numero.startsWith('B')) {
-                                    seatElement.className = 'front__seat'; // Cambiar a la clase adecuada
-                                    seatsContainerF.appendChild(seatElement);
+                                // Se determina en qué contenedor colocar el asiento
+                                if (asiento.numero.startsWith('A')) {
+                                    seatElement.classList.add('front__seat');
+                                    seatsContainerA.appendChild(seatElement);
+                                } else if (asiento.numero.startsWith('B')) {
+                                    seatElement.classList.add('front__seat');
+                                    seatsContainerB.appendChild(seatElement);
                                 } else {
+                                    seatElement.classList.add('back__seat');
                                     seatsContainer.appendChild(seatElement);
                                 }
                             });
@@ -157,6 +164,13 @@ document.addEventListener('DOMContentLoaded', async function () {
                 }
             });
         });
+
+        const nextButton = document.getElementById("buy")
+        if (nextButton) {
+            nextButton.addEventListener("click", () => {
+                window.location.href = "/boleto"
+            });
+        }
 
     } catch (error) {
         console.error('Error al obtener las proyecciones:', error);
