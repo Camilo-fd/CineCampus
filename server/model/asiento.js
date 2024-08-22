@@ -68,18 +68,16 @@ module.exports = class asiento extends connect{
         try {
             await this.conexion.connect();
     
-            let dataProyeccion = await this.db.collection("proyecciones").findOne({ pelicula_id: objecto.pelicula_id });
+            let dataProyeccion = await this.db.collection("proyecciones").findOne({ 
+                pelicula_id: parseInt(objecto.pelicula_id),
+                fecha: objecto.fecha,
+                hora: objecto.hora 
+            });
             if (!dataProyeccion) {
                 return { error: `No existe la proyección con el ID de película #${objecto.pelicula_id}` };
             }
-            if (dataProyeccion.dia !== objecto.dia || dataProyeccion.fecha !== objecto.fecha) {
-                return { error: "No hay fechas" }
-            }
-            if (dataProyeccion.hora !== objecto.hora) {
-                return { error: "No esta la hora disponible" }
-            }
-
-            let dataAsiento = await this.collection.find({ proyeccion_id: dataProyeccion.id, estado: "disponible" }).toArray();
+    
+            let dataAsiento = await this.collection.find({ proyeccion_id: dataProyeccion.id}).toArray();
             if (dataAsiento.length === 0) {
                 return { error: 'No hay asientos disponibles' };
             } else {

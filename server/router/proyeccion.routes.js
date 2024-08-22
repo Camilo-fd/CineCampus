@@ -4,9 +4,9 @@ const proyeccion = require("../model/proyeccion")
 
 appProyeccion.get("/getAll/:pelicula_id", async(req, res) => {
     let objProyeccion = new proyeccion();
-    const resultado = await objProyeccion.getAll(req.params.pelicula_id);
-    res.status(201).json(resultado);
+    const idObject = { pelicula_id: parseInt(req.params.pelicula_id) };
+    res.status(200).send(await objProyeccion.getProyeccionId(idObject));
     objProyeccion.destructor()
 })
 
-module.exports = appProyeccion;    
+module.exports = appProyeccion;   

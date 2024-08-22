@@ -1,159 +1,164 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', async function () {
     const backButton = document.getElementById("back-pelicula_detalle");
     if (backButton) {
-        backButton.addEventListener("click", function(event) {
+        backButton.addEventListener("click", function (event) {
             event.preventDefault();
             history.back();
         });
     }
 
-    const days = document.querySelectorAll(".day");  
-    days.forEach(day => {
-        day.addEventListener("click", () => {
-            if (day.style.backgroundColor === 'red') {
-                day.style.backgroundColor = '#F8F5F5'; 
-                day.style.color = 'black'; 
-            } else {
-                day.style.backgroundColor = 'red';
-                day.style.color = '#F8F5F5';
-            }
+    // Tomamos el id de la pelicula de la vista anterior
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get('id');
 
-            const paragraphs = day.querySelectorAll("p");
-            paragraphs.forEach(p => {
-                if (day.style.backgroundColor === 'red') {
-                    p.style.backgroundColor = 'red'; 
-                    p.style.color = "white";
-                } else {
-                    p.style.backgroundColor = 'white';
-                    p.style.color = "black";
-                }
-            });
-        });
-    });
-
-    const times = document.querySelectorAll(".time");
-
-    times.forEach(time => {
-        time.addEventListener("click", () => {
-            if (time.style.backgroundColor === 'red') {
-                time.style.backgroundColor = '#F8F5F5'; 
-                time.style.color = 'black';
-            } else {
-                time.style.backgroundColor = 'red';
-                time.style.color = '#F8F5F5'; 
-            }
-
-            const paragraphs = time.querySelectorAll("p");
-            paragraphs.forEach(p => {
-                if (time.style.backgroundColor === 'red') {
-                    p.style.backgroundColor = 'red'; 
-                    p.style.color = "white";
-                } else {
-                    p.style.backgroundColor = 'white';
-                    p.style.color = "black";
-                }
-            });
-        });
-    });
-
-    // ---------------------------------------------------------------------
-
-    const priceElement = document.querySelector(".price p:nth-child(2)"); 
-    let totalPrice = 0;
-
-    function updatePrice(val) {
-        totalPrice += val;
-        if (totalPrice < 0) {
-            totalPrice = 0;
-        }
-        priceElement.textContent = totalPrice.toFixed(2);
-    }
-    
-    const frontSeats = document.querySelectorAll('.front__seat');
-    const backSeats = document.querySelectorAll('.back__seat');
-    
-    // Lista de asientos seleccionados
-    const selectedSeats = [];
-
-    async function loadSeats() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const id = urlParams.get('id');
-    
-        if (id) {
-            try {
-                const response = await fetch(`/asiento/checkSeat/${id}`, { method: "GET" });
-                if (!response.ok) throw new Error('Error loading data');
-    
-                const seatData = await response.json();
-                const seatsArray = seatData.disponible;
-    
-                // Crear un mapa para los asientos
-                const seatMap = new Map();
-                seatsArray.forEach(seat => {
-                    seatMap.set(seat.numero, seat.estado);
-                });
-    
-                const allSeats = [...frontSeats, ...backSeats];
-    
-                // Actualizar el estado de los asientos en el DOM
-                allSeats.forEach(seatElement => {
-                    const seatNumber = seatElement.id;
-                    const seatState = seatMap.get(seatNumber);
-
-                    if (seatState === 'disponible') {
-                        seatElement.style.backgroundColor = '#323232';
-                        seatElement.classList.add('available');
-                    } else {
-                        seatElement.style.backgroundColor = '#CECECE';
-                        seatElement.classList.remove('available');
-                        seatElement.classList.add('unavailable');
-                    }
-                });
-
-                initializeSeats('.available', 5.99);
-
-            } catch (error) {
-                console.error('An error occurred:', error);
-            }
-        } else {
-            console.error('No movie ID provided.');
-        }
-    }
-
-    function classSeat(seat, price) {
-        if (seat.classList.contains('selected')) {
-            updatePrice(-price); 
-            seat.classList.remove('selected');
-            seat.style.backgroundColor = '#323232';
-
-            // Elimina el asiento de la lista de asientos seleccionados
-            const seatNumber = seat.id;
-            const index = selectedSeats.indexOf(seatNumber);
-            if (index !== -1) {
-                selectedSeats.splice(index, 1);
-            }
-        } else {
-            updatePrice(price); 
-            seat.classList.add('selected');
-            seat.style.backgroundColor = 'red';
-
-            // Añade el asiento a la lista de asientos seleccionados
-            const seatNumber = seat.id;
-            selectedSeats.push(seatNumber);
-        }
-    }
-
-    function initializeSeats(seatClass, price) {
-        const seats = document.querySelectorAll(seatClass);
+    try {
+        // Se obtiene las proyecciones mediante el id
+        const response = await fetch(`/proyeccion/getAll/${id}`);
+        const proyecciones = await response.json();
         
-        seats.forEach(seat => {
-            seat.setAttribute("price", price);
-
-            seat.addEventListener("click", () => {
-                classSeat(seat, price);
+        // Se almacena las fechas y sus proyecciones
+        const uniqueDates = {}; 
+        proyecciones.forEach(proyeccion => {
+            const isoDate = new Date(proyeccion.fecha).toISOString().split('T')[0]; // Formato YYYY-MM-DD
+            if (!uniqueDates[isoDate]) {
+                uniqueDates[isoDate] = [];
+            }
+            uniqueDates[isoDate].push({
+                hora: proyeccion.hora,
+                id: proyeccion.id
             });
         });
-    }
 
-    loadSeats();
+        // Seleccionamos elementos del html
+        const daysContainer = document.querySelector('.days');
+        const timesContainer = document.querySelector('.times');
+        const seatsContainerF = document.querySelector('.group__seats_f');
+        const seatsContainer = document.querySelector('.group__seats');
+
+        daysContainer.innerHTML = '';
+        timesContainer.innerHTML = '';
+        seatsContainerF.innerHTML = ''; 
+        seatsContainer.innerHTML = '';
+
+        // Creamos los div de la fecha y la hora, y lo colocamos en el html
+        Object.keys(uniqueDates).forEach(isoDate => {
+            const dateObj = new Date(isoDate);
+            const date = dateObj.getDate();
+            const day = dateObj.toLocaleDateString('en-US', { weekday: 'short' });
+            const dayElement = document.createElement('div');
+            dayElement.className = 'day';
+            dayElement.dataset.fecha = isoDate;
+            dayElement.innerHTML = `<p>${day}</p><p>${date}</p>`;
+            daysContainer.appendChild(dayElement);
+
+            const timeWrapper = document.createElement('div');
+            timeWrapper.className = 'time-wrapper';
+            timeWrapper.dataset.fecha = isoDate;
+            timeWrapper.style.display = 'none';
+
+            uniqueDates[isoDate].forEach(({ hora }) => {
+                const timeElement = document.createElement('div');
+                timeElement.className = 'time';
+                timeElement.innerHTML = `<p>${hora}</p><p>$5.99</p>`;
+                timeWrapper.appendChild(timeElement);
+            });
+
+            timesContainer.appendChild(timeWrapper);
+        });
+
+        document.querySelectorAll('.day').forEach(day => {
+            day.addEventListener('click', function () {
+                const isSelected = this.classList.contains('selected');
+                document.querySelectorAll('.day').forEach(d => d.classList.remove('selected'));
+                document.querySelectorAll('.time-wrapper').forEach(wrapper => {
+                    wrapper.style.display = 'none';
+                });
+
+                if (!isSelected) {
+                    this.classList.add('selected');
+                    const selectedFecha = this.dataset.fecha;
+                    const timeWrapper = document.querySelector(`.time-wrapper[data-fecha="${selectedFecha}"]`);
+                    if (timeWrapper) {
+                        timeWrapper.style.display = 'flex';
+                        timeWrapper.style.flexDirection = 'column';
+                        timeWrapper.style.alignItems = 'center';
+                    }
+                }
+            });
+        });
+
+        document.querySelectorAll('.time').forEach(time => {
+            time.addEventListener('click', async function () {
+                document.querySelectorAll('.time').forEach(t => t.classList.remove('selected'));
+                this.classList.add('selected');
+
+                // Obtener la fecha y la hora seleccionadas
+                const selectedDay = document.querySelector('.day.selected');
+                const selectedDate = selectedDay ? selectedDay.dataset.fecha : '';
+                const selectedHour = this.querySelector('p').innerText.trim();
+
+                try {
+                    // Encuentra la proyección que coincide con la fecha y hora seleccionadas
+                    const proyeccion = proyecciones.find(p => {
+                        const isoDate = new Date(p.fecha).toISOString().split('T')[0];
+                        return isoDate === selectedDate && p.hora === selectedHour;
+                    });
+                    
+                    if (proyeccion) {
+                        const response = await fetch('/asiento/checkSeat', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                pelicula_id: id,
+                                fecha: proyeccion.fecha,
+                                hora: selectedHour
+                            })
+                        });
+                        const data = await response.json();
+
+                        // Limpiar los contenedores de asientos
+                        seatsContainerF.innerHTML = '';
+                        seatsContainer.innerHTML = '';
+
+                        if (data.error) {
+                            seatsContainerF.innerHTML = `<p>${data.error}</p>`;
+                        } else {
+                            data.disponible.forEach(asiento => {
+                                const seatElement = document.createElement('div');
+                                seatElement.className = 'seat';
+                                
+                                if (asiento.estado === 'ocupado') {
+                                    seatElement.className = 'seat ocupado';
+                                    seatElement.style.backgroundColor = '#808080';
+                                    seatElement.style.pointerEvents = 'none';
+                                } else {
+                                    seatElement.style.backgroundColor = '#323232';
+                                }
+
+                                // Determinar en qué contenedor colocar el asiento
+                                if (asiento.numero.startsWith('A') || asiento.numero.startsWith('B')) {
+                                    seatElement.className = 'front__seat'; // Cambiar a la clase adecuada
+                                    seatsContainerF.appendChild(seatElement);
+                                } else {
+                                    seatsContainer.appendChild(seatElement);
+                                }
+                            });
+                        }
+
+                    } else {
+                        seatsContainer.innerHTML = `<p>No se encontró la proyección para la fecha y hora seleccionadas.</p>`;
+                    }
+
+                } catch (error) {
+                    console.error('Error al obtener los asientos:', error);
+                    seatsContainer.innerHTML = `<p>Error al obtener los asientos.</p>`;
+                }
+            });
+        });
+
+    } catch (error) {
+        console.error('Error al obtener las proyecciones:', error);
+    }
 });
