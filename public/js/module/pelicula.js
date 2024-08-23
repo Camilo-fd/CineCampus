@@ -8,6 +8,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     } catch (error) {
         console.error('Error al cargar las funciones:', error);
     }
+
+    const searchButton = document.getElementById('search');
+    const searchInput = document.querySelector('.search-input');
+
+    searchButton.addEventListener('click', (event) => {
+        event.preventDefault();
+        searchInput.focus();
+    });
 });
 
 export async function loadMovies() {

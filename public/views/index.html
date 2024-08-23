@@ -3,23 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
-    <link rel="stylesheet" href="../css/index.css">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="../css/usuario.css">
     <script type="module" src="../js/module/indexUser.js" defer></script>
 </head>
 <body>
     <header class="header__title">
-        <h1>Login</h1>
+        <h1>Sign Up</h1>
     </header>
-    <form class = "login__form">
+    <form class = "Sing-up__form">
         <input id="username" type="text" placeholder="Username">
-        <input id="email" type="text" placeholder="Email">
-        <input id="rol" type="text" placeholder="Rol">
         <input id="password" type="text" placeholder="Password">
     </form>
     <footer>
-        <button id="button" class="login__button">Log in</button>
-        <p>Dont have an account? <a href="/usuario">Sing up</a></p>
+        <div class="checkbox__remember">
+            <input type="checkbox"> Remember me 
+        </div>
+        <button id="button" class="Sign-up__button">Sign up</button>
+        <p>Already have an account?<a href="/">Login</a></p>
     </footer>
+    <div id="miAlerta" class="alerta oculto">
+        <div class="contenido">
+            <p>Por favor, completa todos los campos.</p>
+            <button id="cerrarAlerta">Cerrar</button>
+        </div>
+    </div>
 </body>
 </html>

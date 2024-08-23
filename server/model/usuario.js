@@ -273,7 +273,7 @@ module.exports = class usuario extends connect{
     
             const dataUser = await this.collection.findOne({
                 nombre: objeto.nombre, 
-                contraseña: objeto.contraseña
+                contrasena: objeto.contraseña
             });
     
             if (!dataUser) {

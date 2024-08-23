@@ -10,78 +10,50 @@
 </head>
 <body>
     <header>
-        <section class="section1-header">
-            <i class='bx bx-chevron-left'></i>
-            <h5>Order Summary</h5>
-            <i class='bx bx-dots-vertical-rounded'></i>
-        </section>
-        <section class="section2-header">
-            <div class="caja1-section2_header">
-                <img src="https://i.blogs.es/8eaa43/goku-day-dragon-ball/1366_2000.jpeg" alt="">
-            </div>
-            <div class="caja2-section2_header">
-                <div class="texto1-caja2_header">
-                    <h5>Puss In Boots The Last Wish</h5>
-                    <p>Adventure</p>
-                </div>
-                <div class="texto2-caja2_header">
-                    <h5>HARTONO MALL</h5>
-                    <P>Sun, 12 Feb 2023, 13:00</P>
-                </div>
-            </div>
-        </section>
+        <a id="back" href="#"><i class='bx bx-left-arrow-alt'></i></a>
+        <h2 class="title">Order Summary</h2>
+        <a><i class="bi bi-three-dots-vertical"></i></a>
     </header>
-    <main>
-        <section class="section1-main">
-            <div class="caja1-section1_main">
-                <p>Order Number:</p>
-                <p>p</p>
-            </div>
-            <div class="caja2-section1_main">
-                <div class="texto1-caja2_main">
-                    <p>1 TICKET</p>
-                    <p>C5</p>
-                </div>
-                <div class="texto2-caja2_main">
-                    <p>Regular Seat</p>
-                    <p>$24,99 x 3</p>
-                </div>
-                <div class="texto3-caja2_main">
-                    <p>SERVICE FEE</p>
-                    <p>$1,99 x 1</p>
-                </div>
-            </div>
-        </section>
-        <section class="section2-main">
-            <div class="caja1-section2_main">
-                <h4>Payment method</h4>
-            </div>
-            <div class="caja2-section2_main">
-                <div class="imagen-caja2_main">
-                    <img src="" alt="">
-                </div>
-                <div class="tarjeta-caja2_main">
-                    <h5>MasterCard</h5>
-                    <p>**** ***** 09895 4551</p>
-                </div>
-                <div class="check-caja2_main">
-                    <form>
-                        <ul>
-                            <li>
-                                <input type="checkbox" id="item1">
-                            </li>
-                        </ul>
-                    </form>
-                </div>
-            </div>
-            <div class="caja3-section2_main">
-                <h5>Complete your payment in</h5>
-                <p>04:59</p>
-            </div>
-        </section>
+    
+    <main class="movie-info">
+        <img src="https://lumiere-a.akamaihd.net/v1/images/image_26964b90.jpeg" alt="Puss In Boots The Last Wish">
+        <div class="movie-details">
+            <h1>Puss In Boots The Last Wish</h1>
+            <p>Adventure</p>
+            <h5>HARTONO MALL</h5>
+            <h6>Sun, 12 Feb 2023, 13:00</h6>
+        </div>
     </main>
+    
+    <section class="order-details">
+        <p class="order-number">ORDER NUMBER : <span class="order-number-value">123456786</span></p>
+        <p class="line">1 TICKET <span class="seat-number">C5</span></p>
+        <p class="line">REGULAR SEAT <span class="price">$24,99 x 3</span></p>
+        <p class="line">SERVICE FEE <span class="price">$1,99 x 1</span></p>
+    </section>
+    <section class="payment-method">
+        <h2>Payment method</h2>
+        <div class="card">
+            <img src="https://www.svgrepo.com/show/452059/mastercard.svg" alt="MasterCard">
+            <div class="card-details">
+                <span class="card-name">MasterCard</span>
+                <span class="card-number">**** **** 0998 7865</span>
+            </div>
+            <label class="radio-button">
+            <input type="checkbox" />
+            <span class="checkmark"></span>
+        </label>
+
+        </div>
+        
+    </section>
+
+    <section class="payment-timer">
+        <p>Complete your payment in <span id="countdown">04:59</span></p>
+    </section>
+    
     <footer>
-        <button>Buy ticket</button>
+        <a href="/boleto"><button class="buy-ticket">Buy ticket</button></a> 
     </footer>
-</body>
+</body> 
 </html>

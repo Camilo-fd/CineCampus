@@ -58,6 +58,10 @@ app.get("/usuario", (req, res) => {
     res.sendFile(`${process.env.EXPRESS_STATIC}/views/usuario.html`, {root: __dirname});
 });
 
+app.get("/pago", (req, res) => {
+    res.sendFile(`${process.env.EXPRESS_STATIC}/views/pago.html`, {root: __dirname});
+});
+
 // Aplicar caché a las rutas de la API
 app.use("/pelicula", cacheMiddleware(600), appPelicula);
 app.use("/boleto", cacheMiddleware(300), appBoleto);

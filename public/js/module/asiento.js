@@ -168,7 +168,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         const nextButton = document.getElementById("buy")
         if (nextButton) {
             nextButton.addEventListener("click", () => {
-                window.location.href = "/boleto"
+                window.location.href = "/pago"
             });
         }
 

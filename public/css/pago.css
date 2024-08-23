@@ -1,111 +1,305 @@
 *{
-    margin: 0;
     padding: 0;
+    margin: 0;
     box-sizing: border-box;
+  }
+body {
+    font-family: Arial, sans-serif;
+    background-color: #222;
+    color: white;
 }
+
+
 
 header {
     display: flex;
     width: 100%;
-    height: 30%;
-    flex-direction: column;
-    background: #737373;
-    gap: 2rem;
-    padding: 0.5rem;
+    height: 8vh;
+    align-items: center;
+    justify-content: space-around;
+    padding: 15px 20px;
+    /* margin-bottom: 2.1rem; */
+    background-color: #323232;
 }
 
-.section1-header {
+header :nth-child(1){
+    margin-left: 0.55rem;
+}
+
+header :nth-child(3){
+    margin-right: 0.7rem;
+}
+
+
+.title {
+    flex-grow: 1;
+    text-align: center;
+    padding: 10px;
+    margin: 0 10px;
+    margin-top: 36px;
+    /* border: 1px solid red; */
+    font-weight: normal;
+    font-size: 21px
+}
+
+header a {
     display: flex;
+    width: 10%;
+    height: 2rem;
+    justify-content: center;
+    align-items: center;
+    font-style: none;
+
+    /* color: white; */
+    /* border: 1px solid red; */
+    text-decoration: none;
+}
+header i{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid red; */
     width: 100%;
-    height: 40%;
+    height: 100%;
+    margin-top: 38px;
+    font-size: 30px;
+    color: white;
+    font-style: none;
+}
+
+header .bi{
+    font-size: 25px;
+    margin-bottom: 0.2rem;
+}
+
+
+
+.movie-info {
+    width: 100%;
+    height: 13.8rem;
+    display: flex;
+    margin-bottom: 20px;
+    background-color: #323232;
+    /* border: 1px solid red; */
+}
+
+.movie-info img {
+    width: 8rem;
+    height: 9rem;
+    border-radius: 10px;
+    margin-right: 15px;
+    margin-left: 2rem;
+    margin-top: 2.1rem;
+}
+
+.movie-details h1 {
+    font-size: 18px;
+    margin: 0;
+    color: red;
+    margin-top: 2.2rem;
+    font-weight: normal;
+    margin-right: 3rem;
+
+}
+
+.movie-details p {
+    font-weight: bolder;
+    margin-top: 5px;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    color: grey;
+}
+
+.movie-details h5{
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    font-weight: normal;
+}
+
+.movie-details h6{
+    font-size: 0.9rem;
+    color: grey;
+}
+
+.order-details {
+    margin-top: 1rem;
+    margin-bottom: 1.3rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+.order-number{
+    /* border: 1px solid red; */
+    color: gray;
+    font-size: 0.85rem;
+    font-weight: bold;
+    margin-bottom: 1.7rem;
+}
+
+.order-number-value {
+    font-weight: normal;
+    color: white; 
+}
+
+
+.order-details .line {
+    display: flex;
     justify-content: space-between;
-    color: #FFFFFF;
-    font-size: 1.8em;
+    margin: 25px 0;
+    color: grey;
+    font-weight: bold;
+    font-size: 0.9rem;
 }
 
-.section2-header {
+.order-details .line {
+    border-bottom: 1px solid #ccc; 
+    padding-bottom: 10px; 
+    margin-bottom: 10px; 
+}
+
+
+.price {
+    font-weight: bold;
+}
+
+.payment-method {
+    margin-left: 2rem;
+    margin-bottom: 20px;
+}
+
+.payment-method h2 {
+    font-size: 1.27rem;
+    margin-bottom: 10px;
+    font-weight: normal;
+}
+
+.card {
     display: flex;
-    width: 100%;
-    height: 60%;
-    padding: 0.5rem;
-    gap: 0.5rem;
+    align-items: center;
+    background-color: #323232;
+    padding: 10px;
+    border-radius: 5px;
+    position: relative;
+    width: 20.5rem;
+    height: 4.2rem;
+    border: 1px solid white;
 }
 
-.caja1-section2_header {
-    width: 50%;
-    height: 100%;
+
+.card img {
+    width: 60px;
+    margin-right: 10px;
 }
 
-.caja1-section2_header img {
-    width: 100%;
-    height: 100%;
-    border-radius: 0.5rem;
-    object-fit: cover;
-}
 
-.caja2-section2_header {
-    display: flex;
-    width: 50%;
-    height: 100%;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.texto1-caja2_header h5 {
-    color: red; 
-}
-
-.texto1-caja2_header p {
-    color: #737373; 
-    font-size: 0.8em;
-}
-
-.texto2-caja2_header h5 {
-    color: #FFFFFF
-}
-
-.texto2-caja2_header p {
-    color: #737373; 
-    font-size: 0.8em;
-}
-
-main {
-    display: flex;
-    border: 1px solid blue;
-    width: 100%;
-    height: 50%;
-    flex-direction: column;
-    background: #121212;
-    color: #FFFFFF;
-}
-
-.section1-main {
+.card-details {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    color: white;
+    margin-left: 0.8rem;
 }
 
-.caja1-section1_main {
+
+.card-name {
+    font-weight: normal;
+    font-size: 15px;
+    margin-bottom: 5px; 
+}
+
+.card-number {
+    font-size: 13px;
+    color: #ccc;
+}
+
+
+
+
+.radio-button {
+    position: absolute;
+    right: 20px;
+    cursor: pointer;
     display: flex;
-    width: 100%;
+    align-items: center;
+    justify-content: center;
 }
 
-.caja2-section1_main {
-    width: 100%;
+.radio-button input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
 }
 
-.texto1-caja2_main {
-    display: flex;
+
+.radio-button .checkmark {
+    position: relative;
+    height: 23px;
+    width: 23px;
+    border-radius: 50%;
+    border: 1.8px solid red; 
+    display: inline-block;
+    box-sizing: border-box;
 }
 
-.texto2-caja2_main {
-    display: flex;
+
+.radio-button input:checked + .checkmark::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 15px;
+    height: 15px;
+    background-color: red; 
+    border-radius: 50%;
 }
 
-.texto3-caja2_main {
-    display: flex;
+
+
+.payment-timer {
+    width: 20.5rem;
+    text-align: center;
+    margin-bottom: 20px;
+    margin-left: 2rem;
+    margin-right: 1.8rem;
+}
+
+.payment-timer span{
+    margin-left: 5rem;
+    color: red;
+}
+
+.payment-timer p {
+    background-color: #381818;
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    color: #a3a3a3;
 }
 
 footer {
+    display: flex;
     width: 100%;
-    height: 20%;
+    height: 7rem;
+    /* border: 1px solid red; */
+    justify-content: center;
+}
+
+.buy-ticket {
+    width: 20rem;
+    padding: 15px;
+    background-color: red;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+    color: white;
+    /* margin-top: 4rem; */
+}
+
+html, body{
+    /* overflow: hidden; */
+    margin: 0;
+    padding: 0;
+    height: 100%;
 }

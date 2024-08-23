@@ -3,24 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up</title>
-    <link rel="stylesheet" href="../css/usuario.css">
+    <title></title>
+    <link rel="stylesheet" href="../css/index.css">
     <script type="module" src="../js/module/usuario.js" defer></script>
 </head>
 <body>
     <header class="header__title">
-        <h1>Sign Up</h1>
+        <h1>Login</h1>
     </header>
-    <form class = "Sing-up__form">
+    <form class = "login__form">
         <input id="username" type="text" placeholder="Username">
+        <input id="email" type="text" placeholder="Email">
+        <input id="rol" type="text" placeholder="Rol">
         <input id="password" type="text" placeholder="Password">
     </form>
     <footer>
-        <div class="checkbox__remember">
-            <input type="checkbox"> Remember me 
-        </div>
-        <button id="button" class="Sign-up__button">Sign up</button>
-        <p>Already have an account?<a href="/">Login</a></p>
+        <button id="button" class="login__button">Log in</button>
+        <p>Dont have an account? <a href="/usuario">Sing up</a></p>
     </footer>
 </body>
 </html>
