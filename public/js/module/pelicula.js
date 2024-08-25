@@ -16,9 +16,42 @@ document.addEventListener('DOMContentLoaded', async () => {
         event.preventDefault();
         searchInput.focus();
     });
+
+    const seeAllButton = document.getElementById('see-all-btn');
+    let showingAll = false; // Variable de estado para controlar si se muestran todas las películas
+
+    seeAllButton.addEventListener('click', async () => {
+        showingAll = !showingAll;
+        if (showingAll) {
+            await loadMovies(true);
+            seeAllButton.textContent = "See less";
+        } else {
+            await loadMovies(false);
+            seeAllButton.textContent = "See all";
+        }
+    });
+
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            navLinks.forEach(nav => {
+                nav.classList.remove('active-nav');
+                const icon = nav.querySelector('i');
+                if (icon) {
+                    icon.classList.remove('active-nav');
+                }
+            });
+
+            this.classList.add('active-nav');
+            const icon = this.querySelector('i');
+            if (icon) {
+                icon.classList.add('active-nav');
+            }
+        });
+    });
 });
 
-export async function loadMovies() {
+export async function loadMovies(showAll = false) {
     try {
         const response = await fetch('/pelicula/all', { method: 'GET' });
         if (!response.ok) throw new Error('Error al cargar las películas');
@@ -28,16 +61,17 @@ export async function loadMovies() {
         const pelicula_titulo = document.getElementById("pelicula-titulo");
         const pelicula_genero = document.getElementById("pelicula-genero");
         const span = document.querySelectorAll('.span');
-        const nombre = document.querySelector(".informacion-texto h5")
+        const nombre = document.querySelector(".informacion-texto h5");
         carrusel.innerHTML = '';
 
         let contador = 0;
         const seenUrls = new Set();
         const carouselItems = [];
+        
         movies.forEach((movie, index) => {
-            if (!seenUrls.has(movie.url)) {
+            if (!seenUrls.has(movie.url) && (showAll || contador < 5)) {
                 seenUrls.add(movie.url);
-                const id = movie.id
+                const id = movie.id;
                 const carouselItem = document.createElement('div');
                 carouselItem.classList.add('carousel-item');
                 carouselItem.innerHTML = `
@@ -48,6 +82,8 @@ export async function loadMovies() {
                 });
                 carrusel.appendChild(carouselItem);
                 carouselItems.push({ element: carouselItem, movie });
+                
+                contador++; // Incrementa el contador después de añadir una película
             }
         });
 
@@ -77,9 +113,9 @@ export async function loadMovies() {
                         // Actualizar los punticos
                         span.forEach((span, index) => {
                             if (index === contador) {
-                                span.style.backgroundColor = 'red';
+                                span.classList.add('active');
                             } else {
-                                span.style.backgroundColor = '#ccc';
+                                span.classList.remove('active');
                             }
                         });
                     }

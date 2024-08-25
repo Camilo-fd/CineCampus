@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         const timesContainer = document.querySelector('.times');
         const seatsContainerA = document.querySelector('.seat_A');
         const seatsContainerB = document.querySelector('.seat_B');
-        const seatsContainer = document.querySelector('.group__seats'); // Este se usa para otros asientos
+        const seatsContainer = document.querySelector('.group__seats');
 
         daysContainer.innerHTML = '';
         timesContainer.innerHTML = '';
@@ -71,13 +71,17 @@ document.addEventListener('DOMContentLoaded', async function () {
         document.querySelectorAll('.day').forEach(day => {
             day.addEventListener('click', function () {
                 const isSelected = this.classList.contains('selected');
-                document.querySelectorAll('.day').forEach(d => d.classList.remove('selected'));
+                document.querySelectorAll('.day').forEach(d => {
+                    d.classList.remove('selected');
+                    d.classList.remove('selected-background');
+                });
                 document.querySelectorAll('.time-wrapper').forEach(wrapper => {
                     wrapper.style.display = 'none';
                 });
 
                 if (!isSelected) {
                     this.classList.add('selected');
+                    this.classList.add('selected-background');
                     const selectedFecha = this.dataset.fecha;
                     const timeWrapper = document.querySelector(`.time-wrapper[data-fecha="${selectedFecha}"]`);
                     if (timeWrapper) {
@@ -91,8 +95,16 @@ document.addEventListener('DOMContentLoaded', async function () {
 
         document.querySelectorAll('.time').forEach(time => {
             time.addEventListener('click', async function () {
-                document.querySelectorAll('.time').forEach(t => t.classList.remove('selected'));
-                this.classList.add('selected');
+                const isSelected = this.classList.contains('selected');
+                document.querySelectorAll('.time').forEach(t => {
+                    t.classList.remove('selected');
+                    t.classList.remove('selected-background');
+                });
+                
+                if (!isSelected) {
+                    this.classList.add('selected');
+                    this.classList.add('selected-background');
+                }
 
                 // Obtener la fecha y la hora seleccionadas
                 const selectedDay = document.querySelector('.day.selected');
@@ -130,17 +142,29 @@ document.addEventListener('DOMContentLoaded', async function () {
                         } else {
                             data.disponible.forEach(asiento => {
                                 const seatElement = document.createElement('div');
-                                // seatElement.textContent = asiento.numero;
-
+                                seatElement.classList.add('seat');
+    
                                 if (asiento.estado === 'ocupado') {
                                     seatElement.classList.add('ocupado');
                                     seatElement.style.backgroundColor = '#808080';
-                                    seatElement.style.pointerEvents = 'none';   
+                                    seatElement.style.pointerEvents = 'none';
                                 } else {
                                     seatElement.style.backgroundColor = '#323232';
+                                    seatElement.addEventListener('click', function () {
+                                        if (!this.classList.contains('selected')) {
+                                            this.style.backgroundColor = 'red';
+                                            // Extraer solo el número del asiento
+                                            const seatNumber = asiento.numero.replace(/[A-Z]/g, '');
+                                            this.textContent = seatNumber;
+                                            this.classList.add('selected');
+                                        } else {
+                                            this.style.backgroundColor = '#323232';
+                                            this.textContent = '';
+                                            this.classList.remove('selected');
+                                        }
+                                    });
                                 }
 
-                                // Se determina en qué contenedor colocar el asiento
                                 if (asiento.numero.startsWith('A')) {
                                     seatElement.classList.add('front__seat');
                                     seatsContainerA.appendChild(seatElement);
@@ -168,7 +192,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         const nextButton = document.getElementById("buy")
         if (nextButton) {
             nextButton.addEventListener("click", () => {
-                window.location.href = "/pago"
+                // window.location.href = "/pago"
             });
         }
 

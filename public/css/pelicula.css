@@ -211,7 +211,11 @@ main {
 }
 
 .span.active {
+    width: 1.5rem;
+    height: 0.625rem;
     background-color: red;
+    border-radius: 10px;
+    transition: all 0.3s ease;
 }
 
 .pelicula-pronto-main {
@@ -343,5 +347,18 @@ footer i {
 }
 
 footer .li-rojo, footer .li-rojo i {
+    color: red;
+}
+
+.nav-link,
+.nav-link i {
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.active-nav {
+    color: red;
+}
+
+.active-nav i {
     color: red;
 }

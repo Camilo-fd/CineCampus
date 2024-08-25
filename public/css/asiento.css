@@ -164,13 +164,13 @@
         border-radius: 0.6rem;
     }
 
-    .day :nth-child(1) {
+    .day p:nth-child(1) {
         color: #969696;
         background: #F8F5F5;    
         font-size: smaller;
     }
 
-    .day :nth-child(2) {
+    .day p:nth-child(2) {
         color: #2F2F2F;
         background: #F8F5F5;
         font-weight: 600;
@@ -193,7 +193,7 @@
     }
 
     .time-wrapper {
-        display: none; /* Oculto por defecto */
+        display: none;
         flex-wrap: nowrap;
         gap: 1rem;
         margin-top: 1rem;
@@ -253,14 +253,37 @@
         font-weight: bold;
     }
 
-    .day.selected {
-        background-color: #f0f0f0;
-        color: #000;
+    .day.selected, .day.selected p {
+        background-color: #FE0000;
+        color: #FFFFFF;
+    }
+
+    .time.selected, .time.selected p {
+        background-color: #FE0000;
+        color: #FFFFFF;
     }
 
     .seat.ocupado {
-        background-color: #808080; /* Gris para asientos ocupados */
-        pointer-events: none; /* Desactiva el clic */
+        background-color: #808080;
+        pointer-events: none;
     }
     
+    .seat.selected {
+        background-color: red;
+        color: #FFFFFF;
+    }
+    
+    .seat {
+        text-align: center;
+    }
+
+    .front__seat {
+        background-color: #323232;
+        border-radius: 0.3rem;
+    }
+    
+    .back__seat {
+        background-color: #323232;
+        border-radius: 0.3rem;
+    }  
 }

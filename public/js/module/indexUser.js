@@ -1,6 +1,6 @@
 function mostrarAlerta(mensaje) {
     const alerta = document.getElementById('miAlerta');
-    alerta.querySelector('p').textContent = mensaje; // Actualiza el mensaje de alerta
+    alerta.querySelector('p').textContent = mensaje;
     alerta.classList.remove('oculto');
 }
 
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Validar si los campos están vacíos
         if (!nombre.trim() || !contraseña.trim()) {
-            mostrarAlerta('Por favor, completa todos los campos.');
+            mostrarAlerta('Please complete all fields.');
             return; // Salir de la función para que no se ejecute el código siguiente
         }
 
@@ -42,18 +42,18 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             const result = await response.json();
-            console.log('Respuesta completa:', result); // Imprime la respuesta completa
+            // console.log('Respuesta completa:', result);
 
             // Validar la respuesta
-            if (result && result.nombre && result.email) { // Verifica que los campos esperados estén presentes
+            if (result && result.nombre && result.email) {
                 localStorage.setItem('nombre', nombre);
-                window.location.href = '/pelicula'; // Redirigir solo si la respuesta es válida
+                window.location.href = '/pelicula';
             } else {
-                mostrarAlerta('Nombre de usuario o contraseña incorrectos.');
+                mostrarAlerta('Incorrect username or password.');
             }
         } catch (error) {
-            console.error('Error al enviar los datos:', error);
-            mostrarAlerta('Ocurrió un error al procesar la solicitud.');
+            console.error('Error sending data:', error);
+            mostrarAlerta('Could not enter.');
         }
     });
 

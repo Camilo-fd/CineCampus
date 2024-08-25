@@ -41,7 +41,7 @@ main {
 
 .video-main iframe {
     border-radius: 1rem;
-    width: 25rem;
+    width: 24rem;
     height: 19rem;
 }
 
@@ -124,8 +124,14 @@ main {
 .actor-list {
     display: flex;
     width: 100%;
-    overflow-x: auto;
+    overflow-x: scroll; 
+    overflow-y: hidden;
     gap: 1rem;
+    scrollbar-width: none; /* Firefox */
+}
+
+.actor-list::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
 }
 
 .actor-info {
@@ -202,6 +208,7 @@ footer {
 }
 
 footer button {
+    display: none;
     width: 90%;
     text-decoration: none;
     border: none;
