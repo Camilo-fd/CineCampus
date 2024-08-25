@@ -5,7 +5,8 @@
     "pelicula_id": 1,
     "fecha": "2024-08-20T00:00:00.000Z",
     "hora": "19:30",
-    "sala": 1
+    "sala": 1,
+    "precio_boleto": 7500
   },
   {
     "_id": "66b3b0fe82f2026c4fd9736e",
@@ -13,7 +14,8 @@
     "pelicula_id": 2,
     "fecha": "2024-08-15T00:00:00.000Z",
     "hora": "20:00",
-    "sala": 1
+    "sala": 1,
+    "precio_boleto": 7500
   },
   {
     "_id": "66b3b0fe82f2026c4fd9736f",
@@ -21,7 +23,8 @@
     "pelicula_id": 3,
     "fecha": "2024-08-10T00:00:00.000Z",
     "hora": "18:45",
-    "sala": 1
+    "sala": 1,
+    "precio_boleto": 7500
   },
   {
     "_id": "66b3b0fe82f2026c4fd97370",
@@ -29,7 +32,8 @@
     "pelicula_id": 4,
     "fecha": "2024-08-10T00:00:00.000Z",
     "hora": "21:15",
-    "sala": 1
+    "sala": 1,
+    "precio_boleto": 7500
   },
   {
     "_id": "66b3b0fe82f2026c4fd97371",
@@ -37,7 +41,8 @@
     "pelicula_id": 5,
     "fecha": "2024-08-11T00:00:00.000Z",
     "hora": "17:00",
-    "sala": 1
+    "sala": 1,
+    "precio_boleto": 7500
   },
   {
     "_id": "66b3b0fe82f2026c4fd97372",
@@ -45,7 +50,8 @@
     "pelicula_id": 6,
     "fecha": "2024-08-11T00:00:00.000Z",
     "hora": "19:00",
-    "sala": 1
+    "sala": 1,
+    "precio_boleto": 7500
   },
   {
     "_id": "66b3b0fe82f2026c4fd97373",
@@ -53,7 +59,8 @@
     "pelicula_id": 7,
     "fecha": "2024-08-12T00:00:00.000Z",
     "hora": "20:30",
-    "sala": 1
+    "sala": 1,
+    "precio_boleto": 7500
   },
   {
     "_id": "66b3b0fe82f2026c4fd97374",
@@ -61,7 +68,8 @@
     "pelicula_id": 8,
     "fecha": "2024-08-12T00:00:00.000Z",
     "hora": "22:00",
-    "sala": 1
+    "sala": 1,
+    "precio_boleto": 7500
   },
   {
     "_id": "66b3b0fe82f2026c4fd97375",
@@ -69,7 +77,8 @@
     "pelicula_id": 9,
     "fecha": "2024-08-13T00:00:00.000Z",
     "hora": "18:30",
-    "sala": 1
+    "sala": 1,
+    "precio_boleto": 7500
   },
   {
     "_id": "66b3b0fe82f2026c4fd97376",
@@ -77,7 +86,8 @@
     "pelicula_id": 10,
     "fecha": "2024-08-13T00:00:00.000Z",
     "hora": "19:45",
-    "sala": 1
+    "sala": 1,
+    "precio_boleto": 7500
   },
   {
     "_id": "66c672296a96298ea585878f",
@@ -85,6 +95,7 @@
     "pelicula_id": 1,
     "fecha": "2024-08-16T00:00:00.000Z",
     "hora": "10:00",
-    "sala": 1
+    "sala": 1,
+    "precio_boleto": 7500
   }
 ]

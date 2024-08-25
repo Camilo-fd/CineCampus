@@ -174,6 +174,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
                                     seatElement.dataset.seatPrice = seatPrice; // Almacenamos el precio en el elemento
                                     seatElement.dataset.seatId = asiento.id; // Almacenamos el ID del asiento en el elemento
+                                    seatElement.dataset.seatNumber = asiento.numero; // Almacenamos el número completo del asiento en el elemento
 
                                     seatElement.addEventListener('click', function () {
                                         if (!this.classList.contains('selected')) {
@@ -234,14 +235,18 @@ document.addEventListener('DOMContentLoaded', async function () {
                 });
                 
                 // Obtener los asientos seleccionados por ID
-                const selectedSeats = Array.from(document.querySelectorAll('.seat.selected')).map(seat => seat.dataset.seatId);
+                const selectedSeats = Array.from(document.querySelectorAll('.seat.selected'));
+                const selectedSeatData = selectedSeats.map(seat => ({
+                    id: seat.dataset.seatId,
+                    numero: seat.dataset.seatNumber
+                }));
                 
                 const dataAll = {
                     pelicula_id: parseInt(id),
                     proyeccion_id: proyeccion.id,
                     fecha: new Date(),
                     usuario_id: parseInt(usuarioId),
-                    asientos: selectedSeats,
+                    asientos: selectedSeatData,
                     total: totalPrice,
                     estado: "pagado"
                 };

@@ -285,6 +285,10 @@ footer {
     justify-content: center;
 }
 
+footer button {
+    display: none;
+}
+
 .buy-ticket {
     width: 20rem;
     padding: 15px;

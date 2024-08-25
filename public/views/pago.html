@@ -11,25 +11,25 @@
 </head>
 <body>
     <header>
-        <a id="back" href="/asiento"><i class='bx bx-left-arrow-alt'></i></a>
+        <a id="back" href="#"><i class='bx bx-left-arrow-alt'></i></a>
         <h2 class="title">Order Summary</h2>
         <a><i class="bi bi-three-dots-vertical"></i></a>
     </header>
     
     <main class="movie-info">
-        <img src="https://lumiere-a.akamaihd.net/v1/images/image_26964b90.jpeg" alt="Puss In Boots The Last Wish">
+        <img id="movie-img" src="">
         <div class="movie-details">
-            <h1>Puss In Boots The Last Wish</h1>
-            <p>Adventure</p>
-            <h5>HARTONO MALL</h5>
-            <h6>Sun, 12 Feb 2023, 13:00</h6>
+            <h1 id="movie-titulo"></h1>
+            <p id="movie-genero"></p>
+            <h5 id="movie-usuario"></h5>
+            <h6 id="movie-fecha"></h6>
         </div>
     </main>
     
     <section class="order-details">
-        <p class="order-number">ORDER NUMBER : <span class="order-number-value">123456786</span></p>
-        <p class="line">1 TICKET <span class="seat-number">C5</span></p>
-        <p class="line">REGULAR SEAT <span class="price">$24,99 x 3</span></p>
+        <p class="order-number">ORDER NUMBER : <span id="order-number" class="order-number-value"></span></p>
+        <p class="line">1 TICKET <span id="numero-asiento" class="seat-number"></span></p>
+        <p class="line">REGULAR SEAT <span id="price" class="price"></span></p>
         <p class="line">SERVICE FEE <span class="price">$1,99 x 1</span></p>
     </section>
     <section class="payment-method">
@@ -42,7 +42,7 @@
             </div>
             <label class="radio-button">
             <input type="checkbox" />
-            <span class="checkmark"></span>
+            <span id="payment-card" class="checkmark"></span>
         </label>
 
         </div>
@@ -50,11 +50,11 @@
     </section>
 
     <section class="payment-timer">
-        <p>Complete your payment in <span id="countdown">04:59</span></p>
+        <p>Complete your payment in <span id="countdown"></span></p>
     </section>
     
     <footer>
-        <a href="/boleto"><button class="buy-ticket">Buy ticket</button></a> 
+        <a href="#"><button id="buy-ticket" class="buy-ticket">Buy ticket</button></a> 
     </footer>
 </body> 
 </html>
