@@ -47,6 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Validar la respuesta
             if (result && result.nombre && result.email) {
                 localStorage.setItem('nombre', nombre);
+                localStorage.setItem('id', result.id);
                 window.location.href = '/pelicula';
             } else {
                 mostrarAlerta('Incorrect username or password.');

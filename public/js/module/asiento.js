@@ -11,11 +11,22 @@ document.addEventListener('DOMContentLoaded', async function () {
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get('id');
 
+    // Variable para almacenar el precio total
+    let totalPrice = 0;
+
+    // Actualizar la visualización del precio total
+    const updateTotalPrice = (price) => {
+        const priceElement = document.getElementById('total-price');
+        if (priceElement) {
+            priceElement.textContent = `$ ${price.toLocaleString('en-US')}`;
+        }
+    };
+
     try {
         // Se obtiene las proyecciones mediante el id
         const response = await fetch(`/proyeccion/getAll/${id}`);
         const proyecciones = await response.json();
-        
+
         // Se almacena las fechas y sus proyecciones
         const uniqueDates = {}; 
         proyecciones.forEach(proyeccion => {
@@ -25,7 +36,8 @@ document.addEventListener('DOMContentLoaded', async function () {
             }
             uniqueDates[isoDate].push({
                 hora: proyeccion.hora,
-                id: proyeccion.id
+                id: proyeccion.id,
+                precio_boleto: proyeccion.precio_boleto // Almacenamos el precio del boleto
             });
         });
 
@@ -58,10 +70,11 @@ document.addEventListener('DOMContentLoaded', async function () {
             timeWrapper.dataset.fecha = isoDate;
             timeWrapper.style.display = 'none';
 
-            uniqueDates[isoDate].forEach(({ hora }) => {
+            uniqueDates[isoDate].forEach(({ hora, precio_boleto }) => {
                 const timeElement = document.createElement('div');
                 timeElement.className = 'time';
-                timeElement.innerHTML = `<p>${hora}</p><p>$5.99</p>`;
+                timeElement.dataset.precioBoleto = precio_boleto; // Almacenamos el precio del boleto en el elemento
+                timeElement.innerHTML = `<p>${hora}</p><p>${(precio_boleto / 1000).toFixed(2)}k</p>`;
                 timeWrapper.appendChild(timeElement);
             });
 
@@ -137,8 +150,8 @@ document.addEventListener('DOMContentLoaded', async function () {
                         seatsContainerB.innerHTML = '';
                         seatsContainer.innerHTML = '';
 
-                        if (data.error) {
-                            seatsContainerA.innerHTML = `<p>${data.error}</p>`;
+                        if (data.error || !data.disponible || data.disponible.length === 0) {
+                            seatsContainerA.innerHTML = `<p>${data.error || 'No hay asientos disponibles para esta función.'}</p>`;
                         } else {
                             data.disponible.forEach(asiento => {
                                 const seatElement = document.createElement('div');
@@ -150,18 +163,32 @@ document.addEventListener('DOMContentLoaded', async function () {
                                     seatElement.style.pointerEvents = 'none';
                                 } else {
                                     seatElement.style.backgroundColor = '#323232';
+                                    
+                                    // Precio base del asiento
+                                    let seatPrice = proyeccion.precio_boleto;
+
+                                    // Incremento del 15% para las filas E y F
+                                    if (asiento.numero.startsWith('E') || asiento.numero.startsWith('F')) {
+                                        seatPrice *= 1.15;
+                                    }
+
+                                    seatElement.dataset.seatPrice = seatPrice; // Almacenamos el precio en el elemento
+                                    seatElement.dataset.seatId = asiento.id; // Almacenamos el ID del asiento en el elemento
+
                                     seatElement.addEventListener('click', function () {
                                         if (!this.classList.contains('selected')) {
                                             this.style.backgroundColor = 'red';
-                                            // Extraer solo el número del asiento
-                                            const seatNumber = asiento.numero.replace(/[A-Z]/g, '');
-                                            this.textContent = seatNumber;
+                                            this.textContent = asiento.numero.replace(/[A-Z]/g, '');
                                             this.classList.add('selected');
+                                            totalPrice += parseFloat(this.dataset.seatPrice); // Sumar el precio al total
                                         } else {
                                             this.style.backgroundColor = '#323232';
                                             this.textContent = '';
                                             this.classList.remove('selected');
+                                            totalPrice -= parseFloat(this.dataset.seatPrice); // Restar el precio al total
                                         }
+
+                                        updateTotalPrice(totalPrice); // Actualizar la visualización del precio total
                                     });
                                 }
 
@@ -189,10 +216,38 @@ document.addEventListener('DOMContentLoaded', async function () {
             });
         });
 
-        const nextButton = document.getElementById("buy")
+        const usuarioId = localStorage.getItem('id')
+
+        const nextButton = document.getElementById("buy");
         if (nextButton) {
             nextButton.addEventListener("click", () => {
-                // window.location.href = "/pago"
+                // Obtener la fecha y hora seleccionadas
+                const selectedDay = document.querySelector('.day.selected');
+                const selectedHourElement = document.querySelector('.time.selected');
+                const selectedDate = selectedDay ? selectedDay.dataset.fecha : '';
+                const selectedHour = selectedHourElement ? selectedHourElement.querySelector('p').innerText.trim() : '';
+
+                // Encontrar la proyección que coincide con la fecha y la hora seleccionadas
+                const proyeccion = proyecciones.find(p => {
+                    const isoDate = new Date(p.fecha).toISOString().split('T')[0];
+                    return isoDate === selectedDate && p.hora === selectedHour;
+                });
+                
+                // Obtener los asientos seleccionados por ID
+                const selectedSeats = Array.from(document.querySelectorAll('.seat.selected')).map(seat => seat.dataset.seatId);
+                
+                const dataAll = {
+                    pelicula_id: parseInt(id),
+                    proyeccion_id: proyeccion.id,
+                    fecha: new Date(),
+                    usuario_id: parseInt(usuarioId),
+                    asientos: selectedSeats,
+                    total: totalPrice,
+                    estado: "pagado"
+                };
+                localStorage.setItem('boleto', JSON.stringify(dataAll));
+
+                window.location.href = "/pago";
             });
         }
 
