@@ -8,6 +8,7 @@ appBoleto.post("/ticket", async (req, res) => {
     let objBoleto = new boleto();
     const resultado = await objBoleto.buyTicketMovis(req.body);
     res.status(201).json(resultado);
+    objBoleto.destructor()
 });
 
 appBoleto.post("/reserveSeats", async (req, res) => {

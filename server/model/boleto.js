@@ -75,11 +75,11 @@ module.exports = class boleto extends connect{
 
             // Verifico el formato de la fecha compra del boleto 
             const regex = /^\d{4}-\d{2}-\d{2}$/;
-            if (!regex.test(objecto.fechaCompra)) {
+            if (!regex.test(String(objecto.fechaCompra))) {
                 return { error: "Formato de fecha incorrecto (YYYY-MM-DD)" };
             }
     
-            const [year, month, day] = objecto.fechaCompra.split('-').map(Number);
+            const [year, month, day] = String(objecto.fechaCompra).split('-').map(Number);
             const dateFechaCompra = new Date(year, month - 1, day);
             
             if (
@@ -150,7 +150,7 @@ module.exports = class boleto extends connect{
             }
 
             // Inserta el nuevo documento de pago
-            if (objecto.estado !== "reservado" || objecto.estado !== "rechazado") {
+            if (String(objecto.estado) !== "reservado" || String(objecto.estado) !== "rechazado") {
                 await this.db.collection("pagos").insertOne(nuevoPago)
             }
 
