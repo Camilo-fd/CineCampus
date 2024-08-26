@@ -152,7 +152,16 @@ document.addEventListener('DOMContentLoaded', async function () {
                 }
                 const boleto = await responseBoleto.json();
                 console.log("Boleto creado:", boleto);
-                mostrarAlerta("Boleto comprado con éxito");
+                // mostrarAlerta("Boleto comprado con éxito");
+                const dataAll = {
+                    pelicula_id: parseInt(objecto.pelicula_id),
+                    fecha: formattedDate,
+                    asiento: asientos,
+                    precio: objecto.total,
+                    order: generateRandomOrderNumber()
+                };
+                localStorage.setItem('boleto', JSON.stringify(dataAll));
+                window.location.href = "/boleto"
             } catch (error) {
                 console.error("Error al comprar el boleto:", error);
                 mostrarAlerta("Error al comprar el boleto: ");
