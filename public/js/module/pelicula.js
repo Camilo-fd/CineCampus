@@ -48,6 +48,33 @@ document.addEventListener('DOMContentLoaded', async () => {
                 icon.classList.add('active-nav');
             }
         });
+
+        const ticketsButton = document.getElementById('tickets');
+        const dataBoleto = localStorage.getItem('nombre');
+        console.log(dataBoleto);
+        
+        ticketsButton.addEventListener('click', async (event) => {
+            // event.preventDefault();
+            // const userId = dataBoleto
+            
+            // try {
+            //     const response = await fetch(`/getBoleto/${userId}`);
+            //     if (!response.ok) throw new Error('Error al obtener los tickets');
+
+            //     const tickets = await response.json();
+            //     if (tickets.error) throw new Error(tickets.error);
+            //     console.log(tickets);
+                
+
+            //     localStorage.setItem('tickets', JSON.stringify(tickets));
+
+                // Redirigir a la página de confirmación
+                // window.location.href = "/boleto";
+
+            // } catch (error) {
+            //     console.error('Error al obtener los tickets:', error);
+            // }
+        });
     });
 });
 
@@ -137,10 +164,44 @@ export async function loadMovies(showAll = false) {
 
 export async function MoviesComingSoon() {
     try {
-        const response = await fetch('/pelicula/all', { method: 'GET' });
-        if (!response.ok) throw new Error('Error al cargar las películas');
+        // const response = await fetch('/pelicula/all', { method: 'GET' });
+        // if (!response.ok) throw new Error('Error al cargar las películas');
 
-        const movies = await response.json();
+        // const movies = await response.json();
+        // const carrusel_pronto = document.getElementById("carrusel-pronto");
+        // carrusel_pronto.innerHTML = '';
+
+        // movies.forEach((movie) => {
+        //     const carouselItem = document.createElement('div');
+        //     carouselItem.classList.add('pelicula_pronto-caratula-main');
+        //     carouselItem.innerHTML = `
+        //         <img src="${movie.url}" alt="">
+        //         <div class="pelicula-info">
+        //             <h3>${movie.titulo}</h3>
+        //             <p>${movie.genero[0]}</p>
+        //         </div>
+        //     `;
+        //     carrusel_pronto.appendChild(carouselItem);
+        // });
+
+        const response = await fetch('/pelicula/pronto', { method: 'GET' });
+        if (!response.ok) throw new Error('Error al cargar las películas');
+        const moviesPronto = await response.json();
+        
+        const movieIds = moviesPronto.map(movie => movie.id);
+        
+        // Crear una lista de promesas para cada solicitud fetch
+        const fetchPromises = movieIds.map(id => 
+            fetch(`/pelicula/id/${id}`, { method: 'GET' })
+                .then(response => {
+                    if (!response.ok) throw new Error(`Error al cargar la película con ID ${id}`);
+                    return response.json();
+                })
+        );
+        
+        // Ejecutar todas las promesas y esperar a que se resuelvan
+        const movies = await Promise.all(fetchPromises);
+        
         const carrusel_pronto = document.getElementById("carrusel-pronto");
         carrusel_pronto.innerHTML = '';
 
@@ -156,6 +217,7 @@ export async function MoviesComingSoon() {
             `;
             carrusel_pronto.appendChild(carouselItem);
         });
+        
 
     } catch (error) {
         console.error(error);

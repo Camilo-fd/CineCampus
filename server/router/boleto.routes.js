@@ -29,4 +29,10 @@ appBoleto.get("/verifyVip/:usuario_id", async(req, res) => {
     res.status(200).send(await objBoleto.verifyVIPCard(idObject))
 })
 
+appBoleto.get("/getBoleto/:nombre", async(req, res) => {
+    let objBoleto = new boleto();
+    const idObject = { nombre: req.params.nombre };
+    res.status(200).send(await objBoleto.getBoleto(idObject))
+})
+
 module.exports = appBoleto;

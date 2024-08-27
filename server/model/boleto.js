@@ -333,4 +333,23 @@ module.exports = class boleto extends connect{
             return { error: error.toString() }
         }
     }
+
+    async getBoleto(objecto) {
+        try {
+            await this.conexion.connect()
+            const dataUsuario = await this.db.collection("usuarios").findOne({ nombre: objecto.nombre});
+            if (!dataUsuario) {
+                return { error: "No existe usuario" }
+            }
+
+            const data = await this.collection.find({usuario_id: dataUsuario.id}).toArray()
+            if (!data) {
+                return { error: "No existen boletos" }
+            }
+
+            return data
+        } catch (error) {
+            return { error: error.toString() }
+        }
+    }
 }

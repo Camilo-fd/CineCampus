@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', async() => {
 
             const result = await response.json();
             console.log('Resultado:', result);
-            // localStorage.setItem('nombre', nombre)
+            localStorage.setItem('nombre', nombre)
 
             window.location.href = '/usuario';
         } catch (error) {

@@ -25,4 +25,14 @@ appPelicula.get("/all", async(req, res) => {
     }
 })
 
+appPelicula.get("/pronto", async(req, res) => {
+    if (Object.keys(req.query).length) { 
+        return res.status(400).json({ message: "No es necesario una query" })
+    } else { 
+        let objPeliculas = new pelicula 
+        res.status(200).send(await objPeliculas.getMoviePronto())
+        objPeliculas.destructor()
+    }
+})
+
 module.exports = appPelicula;

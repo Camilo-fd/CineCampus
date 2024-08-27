@@ -37,15 +37,29 @@ module.exports = class pelicula extends connect{
             let dataMovis = await this.collection.aggregate([
                 {
                     $lookup: {
-                        from: "proyecciones",
-                        localField: "id",
-                        foreignField: "pelicula_id",
-                        as: "proyecciones"
+                      from: "proyecciones",
+                      localField: "id",
+                      foreignField: "pelicula_id",
+                      as: "proyecciones"
                     }
-                },
-                {
+                  },
+                  {
                     $unwind: "$proyecciones"
-                },
+                  },
+                  {
+                    $addFields: {
+                      "proyecciones.fecha": {
+                        $dateFromString: {
+                          dateString: "$proyecciones.fecha"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    $match: {
+                      "proyecciones.fecha": { $lt: new Date() }
+                    }
+                  },
                 {
                     $group: {
                         _id: "$id",
@@ -100,5 +114,34 @@ module.exports = class pelicula extends connect{
             return { error: error.toString() };
         }
     }
+
+    async getMoviePronto() {
+        try {
+            await this.conexion.connect()
     
+            // Obtener todas las películas
+            let movies = await this.collection.find({}).toArray()
+            
+            // Obtener los IDs de las películas
+            let movieIds = movies.map(movie => movie.id)
+    
+            // Obtener las proyecciones correspondientes a los IDs de las películas
+            let proyecciones = await this.db.collection("proyecciones").find({ pelicula_id: { $in: movieIds } }).toArray()
+    
+            // Filtrar las proyecciones que tienen fecha mayor a la actual
+            let proyeccionesPronto = proyecciones.filter(proyeccion => new Date(proyeccion.fecha) > new Date())
+    
+            // Si no hay proyecciones próximas, devolver un error
+            if (proyeccionesPronto.length === 0) {
+                return { error: "No hay películas pronto" }
+            }
+    
+            // Retornar todas las proyecciones futuras
+            return proyeccionesPronto
+    
+        } catch (error) {
+            return { error: error.toString() }
+        }
+    }
+      
 }
