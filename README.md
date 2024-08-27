@@ -4,6 +4,184 @@
 
 CineCampus es una empresa de entretenimiento especializada en ofrecer una experiencia de cine completa y personalizada. La empresa desea desarrollar una aplicación web que permita a los usuarios seleccionar películas, comprar boletos y asignar asientos de manera eficiente y cómoda. La aplicación también ofrecerá opciones de descuento para usuarios con tarjeta VIP y permitirá realizar compras en línea.
 
+## CineCampus API Documentation
+
+## Descripción del Proyecto
+
+CineCampus es una aplicación web que permite a los usuarios seleccionar películas, comprar boletos y asignar asientos de manera eficiente y cómoda. La aplicación también ofrece opciones de descuento para usuarios con tarjeta VIP y permite realizar compras en línea.
+
+## Clonar el Repositorio
+
+Para clonar el repositorio, ejecuta el siguiente comando en tu terminal:
+
+   git clone https://github.com/Camilo-fd/proyectoMongoII
+
+## Instalación de Dependencias
+
+Asegúrate de tener Node.js instalado en tu sistema. Luego, instala las dependencias del proyecto con el siguiente comando:
+
+npm install
+
+Este comando instalará todas las dependencias listadas en el archivo `package.json`.
+
+## Dependencias Principales
+
+- express: Framework web para Node.js
+- mongodb: Driver oficial de MongoDB para Node.js
+- express-validator: Middleware para validación de datos en Express
+
+## Estructura del Proyecto
+
+- `public`: Contiene archivos estáticos (CSS, imágenes, JavaScript del lado del cliente)
+- `server`: Contiene el código del lado del servidor
+  - `db`: Archivos relacionados con la base de datos
+  - `helpers`: Funciones auxiliares
+  - `model`: Archivos de modelo para diferentes entidades
+  - `router`: Archivos de ruta para diferentes entidades
+- `views`: Plantillas HTML
+
+## Rutas Principales
+
+### Asiento (Seat) Routes
+
+- `POST /checkSeat`: Verificar disponibilidad de asientos
+
+### Boleto (Ticket) Routes
+
+- `POST /ticket`: Comprar un boleto de película
+- `POST /reserveSeats`: Reservar asientos
+- `GET /cancelSeats/:boleto_id`: Cancelar reserva de asientos
+- `GET /verifyVip/:usuario_id`: Verificar estado VIP de un usuario
+- `GET /getBoleto/:nombre`: Obtener boleto por nombre de usuario
+
+### Película (Movie) Routes
+
+- `GET /id/:id`: Obtener película por ID
+- `GET /all`: Obtener todas las películas
+- `GET /pronto`: Obtener próximas películas
+
+### Proyección (Projection) Routes
+
+- `GET /getAll/:pelicula_id`: Obtener todas las proyecciones de una película
+
+### Usuario (User) Routes
+
+- `POST /newUser`: Crear un nuevo usuario
+- `GET /getUserId/:id`: Obtener usuario por ID
+- `POST /updateRol`: Actualizar rol de usuario
+- `GET /getUserRol/:rol`: Obtener usuarios por rol
+- `POST /getUser`: Obtener usuario
+
+## Modelos
+
+La aplicación utiliza archivos de modelo separados para diferentes entidades:
+
+- `asiento.js`: Operaciones relacionadas con asientos
+- `boleto.js`: Operaciones relacionadas con boletos
+- `pago.js`: Operaciones relacionadas con pagos
+- `pelicula.js`: Operaciones relacionadas con películas
+- `proyeccion.js`: Operaciones relacionadas con proyecciones
+- `usuario.js`: Operaciones relacionadas con usuarios
+
+## Base de Datos
+
+La aplicación utiliza MongoDB para el almacenamiento de datos. Los detalles de conexión y las credenciales se gestionan en el directorio `db/credenciales`.
+
+## Manejo de Errores
+
+Las rutas utilizan bloques try-catch para el manejo de errores. Los errores generalmente se devuelven como respuestas JSON con los códigos de estado HTTP apropiados.
+
+## Middleware
+
+La aplicación utiliza el middleware `express.json()` para analizar los cuerpos de las solicitudes JSON.
+
+Para obtener información más detallada sobre puntos finales específicos o modelos, consulte los archivos individuales o implemente documentación adicional dentro del código.
+
+## Estructura
+
+```
+CineCampus/
+├── node_modules/
+├── public/
+│   ├── css/
+│   │   ├── asiento.css
+│   │   ├── boleto.css
+│   │   ├── boletoComprado.css
+│   │   ├── index.css
+│   │   ├── pago.css
+│   │   ├── pelicula.css
+│   │   ├── peliculaDetalle.css
+│   │   ├── proyeccion.css
+│   │   ├── usuario.css
+│   │   └── variables.css
+│   ├── img/
+│   │   ├── image1.webp
+│   │   └── imagebarra.webp
+│   └── js/
+│       ├── module/
+│       │   ├── asiento.js
+│       │   ├── boleto.js
+│       │   ├── boletoComprado.js
+│       │   ├── indexUser.js
+│       │   ├── pago.js
+│       │   ├── pelicula.js
+│       │   ├── peliculaDetalle.js
+│       │   ├── search.js
+│       │   └── usuario.js
+│       └── views/
+│           ├── asiento.html
+│           ├── boleto.html
+│           ├── boletoComprado.html
+│           ├── index.html
+│           ├── pago.html
+│           ├── pelicula.html
+│           ├── peliculaDetalle.html
+│           ├── proyeccion.html
+│           └── usuario.html
+├── server/
+│   ├── db/
+│   │   ├── credenciales/
+│   │   │   ├── roles.js
+│   │   │   └── usuarios.js
+│   │   ├── data/
+│   │   │   ├── asientos.json
+│   │   │   ├── boletos.json
+│   │   │   ├── pagos.json
+│   │   │   ├── peliculas.json
+│   │   │   ├── proyecciones.json
+│   │   │   └── usuarios.json
+│   │   └── esquema/
+│   │       ├── asientos.json
+│   │       ├── boletos.json
+│   │       ├── pagos.json
+│   │       ├── peliculas.json
+│   │       ├── proyecciones.json
+│   │       └── usuarios.json
+│   ├── helpers/
+│   │   └── connect.js
+│   ├── model/
+│   │   ├── asiento.js
+│   │   ├── boleto.js
+│   │   ├── pago.js
+│   │   ├── pelicula.js
+│   │   ├── proyeccion.js
+│   │   └── usuario.js
+│   └── router/
+│       ├── asiento.routes.js
+│       ├── boleto.routes.js
+│       ├── pago.routes.js
+│       ├── pelicula.routes.js
+│       ├── proyeccion.routes.js
+│       └── usuario.routes.js
+├── .env
+├── .gitignore
+├── app.js
+├── main.js
+├── package-lock.json
+├── package.json
+└── README.md
+```
+
 ## Caso 1: Consulta de todas las películas disponibles en el catálogo
 
 ### Descripción
@@ -17,8 +195,9 @@ Este método es parte de una clase (`Pelicula`) que interactúa con la base de d
 1. **Conexión a la base de datos:** Se utiliza `await this.conexion.connect()` para establecer la conexión antes de ejecutar consultas.
 
 2. **Consulta de agregación:** Se utiliza `this.collection.aggregate([...])` para realizar una operación de agregación en la colección actual (`peliculas`). La operación incluye:
+
 - `$lookup`: Une la colección actual `peliculas` con la colección `proyecciones` usando los campos `id` de películas y `pelicula_id` de proyecciones.
-    - `$unwind`: Descompone el arreglo generado por `$lookup` para obtener un documento por cada elemento del arreglo.
+  - `$unwind`: Descompone el arreglo generado por `$lookup` para obtener un documento por cada elemento del arreglo.
 
 3. **Proyección de campos:** Se utiliza `$project` para especificar qué campos devolver en los documentos resultantes, excluyendo `_id` y seleccionando `id`, `titulo`, `genero`, `duracion`, `horarios` y `proyecciones`.
 
@@ -68,7 +247,7 @@ console.log(await ObjPelicula.getAllMovis());
                     }
                 ]
             ).toArray()
-            
+
             return dataMovis
 
         } catch (error) {
@@ -114,8 +293,6 @@ console.log(await ObjPelicula.getAllMovis());
 ]
 ```
 
-
-
 ## Caso 2: Obtener Detalles de Película
 
 ### Descripción
@@ -140,9 +317,11 @@ Este método es parte de una clase (`Pelicula`) que interactúa con la base de d
 Se instancia un objeto de la clase `Pelicula` (`let objPelicula = new Pelicula()`), y se llama al método `getMovisId(id)` utilizando `await` para esperar la resolución de la promesa devuelta por el método.
 
 ```javascript
-let ObjPelicula = new pelicula()
-console.log(await ObjPelicula.getMovisId(new ObjectId("64b5f1234567890123456789")));
-ObjPelicula.destructor()
+let ObjPelicula = new pelicula();
+console.log(
+  await ObjPelicula.getMovisId(new ObjectId("64b5f1234567890123456789"))
+);
+ObjPelicula.destructor();
 ```
 
 ### Ejemplo de uso
@@ -156,7 +335,7 @@ async getMovisId(id){
             [
                 {
                     $match: {
-                        _id: id        
+                        _id: id
                     }
                 },
                 {
@@ -182,23 +361,21 @@ async getMovisId(id){
 }
 ```
 
-
 ### Return
 
 ```javascript
 [
   {
-    _id: new ObjectId('64b5f1234567890123456789'),
+    _id: new ObjectId("64b5f1234567890123456789"),
     id: 1,
-    titulo: 'Dune: Parte Dos',
-    genero: [ 'Ciencia Ficción', 'Aventura' ],
+    titulo: "Dune: Parte Dos",
+    genero: ["Ciencia Ficción", "Aventura"],
     duracion: 166,
-    sinopsis: 'Paul Atreides se une a los Fremen en una guerra contra los Harkonnen.'
-  }
-]
+    sinopsis:
+      "Paul Atreides se une a los Fremen en una guerra contra los Harkonnen.",
+  },
+];
 ```
-
-
 
 ## Caso 3: Comprar Boletos
 
@@ -228,15 +405,17 @@ Se instancia un objeto de la clase `Boleto` (`let objBoleto = new Boleto()`), y 
 
 ```javascript
 let objBoleto = new boleto();
-console.log(await objBoleto.buyTicketMovis({
+console.log(
+  await objBoleto.buyTicketMovis({
     pelicula_id: 2,
     proyeccion_id: 2,
     fechaCompra: "2025-01-12",
     usuario_id: 1,
     asiento_id: [3],
     precio: 15000,
-    estado: "pagado"  
-}));
+    estado: "pagado",
+  })
+);
 objBoleto.destructor();
 ```
 
@@ -254,13 +433,13 @@ objBoleto.destructor();
             // Genero el nuevo id del pago
             const [dataPago] = await this.db.collection("pagos").find({}).sort({ id: -1 }).limit(1).toArray();
             const newIdPago = dataPago.id + 1;
-            
+
             // Verifico que exista la pelicula
             let dataPelicula = await this.db.collection("peliculas").findOne({id: objecto.pelicula_id});
             if (!dataPelicula) {
                 return { error: "No existe la película que buscas" };
             }
-            
+
             // Verifico si existen proyecciones de la pelicula
             let dataProyeccion = await this.db.collection("proyecciones").findOne({id: objecto.proyeccion_id})
             if (!dataProyeccion) {
@@ -270,15 +449,15 @@ objBoleto.destructor();
                 return { error: "La proyección no corresponde a la película seleccionada" }
             }
 
-            // Verifico el formato de la fecha compra del boleto 
+            // Verifico el formato de la fecha compra del boleto
             const regex = /^\d{4}-\d{2}-\d{2}$/;
             if (!regex.test(objecto.fechaCompra)) {
                 return { error: "Formato de fecha incorrecto (YYYY-MM-DD)" };
             }
-    
+
             const [year, month, day] = objecto.fechaCompra.split('-').map(Number);
             const dateFechaCompra = new Date(year, month - 1, day);
-            
+
             if (
                 dateFechaCompra.getFullYear() !== year ||
                 dateFechaCompra.getMonth() + 1 !== month ||
@@ -287,7 +466,7 @@ objBoleto.destructor();
                 return { error: "Fecha inválida. Verifica el mes o el día." };
             }
 
-            // Verifico el usuario 
+            // Verifico el usuario
             let dataUsuario = await this.db.collection("usuarios").findOne({id: objecto.usuario_id})
             if (!dataUsuario) {
                 return { error: "Usuario no existente" }
@@ -315,7 +494,7 @@ objBoleto.destructor();
             let descuento = objecto.precio * (dataUsuario.tarjeta_VIP.descuento / 100)
             let precioDescuentoAplicado = objecto.precio - descuento
 
-            
+
             // Nuevo documenbto de boleto
             let nuevoBoleto = {
                 id: newIdBoleto,
@@ -327,16 +506,16 @@ objBoleto.destructor();
                 fecha_compra: new Date(objecto.fechaCompra),
                 estado: objecto.estado
             }
-            
+
             await this.collection.insertOne(nuevoBoleto)
-            
+
             // Actualizamos el estado del asiento
             for (let asiento of objecto.asiento_id){
                 await this.db.collection('asientos').updateOne(
                     {id: asiento},
                     {$set:{estado: "ocupado"}});
               }
-            
+
             // // Nuevo documento de pago
             let nuevoPago = {
                 id: newIdPago,
@@ -364,10 +543,10 @@ objBoleto.destructor();
 ### Return
 
 ```javascript
-{ message: 'Boleto realizado' }
+{
+  message: "Boleto realizado";
+}
 ```
-
-
 
 ## Caso 4: Verificación de Disponibilidad de Asientos
 
@@ -376,6 +555,7 @@ objBoleto.destructor();
 Este código muestra un método asíncrono en JavaScript que utiliza MongoDB para verificar la disponibilidad de asientos para una proyección específica. La función valida los datos de entrada, verifica la existencia de la proyección y los asientos, y devuelve una lista de asientos disponibles o un mensaje de error si no hay asientos disponibles.
 
 ### Método checkSeatAvailability(object)
+
 Este método es parte de una clase `(Asiento)` que interactúa con la base de datos MongoII. La función realiza las siguientes operaciones:
 
 **Conexión a la base de datos**: Se utiliza `await this.conexion.connect()` para establecer la conexión antes de ejecutar consultas.
@@ -391,15 +571,18 @@ Este método es parte de una clase `(Asiento)` que interactúa con la base de da
 **Manejo de errores y cierre de conexión**: Se utiliza un bloque `try-catch-finally` para manejar errores y asegurar que la conexión a la base de datos se cierre correctamente después de ejecutar la consulta.
 
 ### Uso del método
+
 Se instancia un objeto de la clase `Asiento (let objAsiento = new Asiento())`, y se llama al método `checkSeatAvailability(objecto)` utilizando `await` para esperar la resolución de la promesa devuelta por el método.
 
 ```javascript
-let objAsiento = new asiento()
-console.log(await objAsiento.checkSeatAvailability({
+let objAsiento = new asiento();
+console.log(
+  await objAsiento.checkSeatAvailability({
     proyeccion_id: 1,
-    asiento_id: [1]
-}));
-objAsiento.destructor()
+    asiento_id: [1],
+  })
+);
+objAsiento.destructor();
 ```
 
 ### Ejemplo de uso
@@ -418,7 +601,7 @@ async checkSeatAvailability(object) {
                     asientosString.push(`El asiento #${tipoAsiento} debe ser un entero`);
                 }
             }
-            
+
             if (asientosString.length > 0) {
                 return asientosString;
             }
@@ -441,7 +624,7 @@ async checkSeatAvailability(object) {
                     availableSeats.push(`Asiento #${dataAsiento.id}`);
                 }
             }
-    
+
             if (availableSeats.length > 0) {
                 return {Disponibles: availableSeats};
             } else {
@@ -459,10 +642,10 @@ async checkSeatAvailability(object) {
 ### Return
 
 ```javascript
-{ Disponibles: [ 'Asiento #1' ] }
+{
+  Disponibles: ["Asiento #1"];
+}
 ```
-
-
 
 ## Caso 5: Reserva de Asientos
 
@@ -490,13 +673,15 @@ Se instancia un objeto de la clase `Asiento` (`let objAsiento = new Asiento()`),
 
 ```javascript
 let objBoleto = new boleto();
-console.log(await objBoleto.reserveSeats({
+console.log(
+  await objBoleto.reserveSeats({
     proyeccion_id: 1,
     usuario_id: 1,
     asiento_id: [1, 7],
-    estado: "reservado"
-}));
-objBoleto.destructor()
+    estado: "reservado",
+  })
+);
+objBoleto.destructor();
 ```
 
 ### Ejemplo de uso
@@ -560,9 +745,9 @@ async reserveSeats(objecto) {
             // Inserta el nuevo documento de reserva
             await this.collection.insertOne(nuevoReserva);
 
-            return { 
-                message: 'Asientos reservados con éxito', 
-                Reservados: availableSeats 
+            return {
+                message: 'Asientos reservados con éxito',
+                Reservados: availableSeats
             };
 
         } else {
@@ -576,8 +761,6 @@ async reserveSeats(objecto) {
     }
 }
 ```
-
-
 
 ## Caso 6: Cancelación de Reservación de Asientos
 
@@ -603,10 +786,12 @@ Se instancia un objeto de la clase `Boleto` (`let objBoleto = new Boleto()`), y 
 
 ```javascript
 let objBoleto = new boleto();
-console.log(await objBoleto.cancelSeatReservation({
-    boleto_id: 6
-}));
-objBoleto.destructor()
+console.log(
+  await objBoleto.cancelSeatReservation({
+    boleto_id: 6,
+  })
+);
+objBoleto.destructor();
 ```
 
 ### Ejemplo de uso
@@ -647,10 +832,10 @@ async cancelSeatReservation(objecto) {
 ### Return
 
 ```javascript
-{ message: "Cancelada la reserva" }
+{
+  message: "Cancelada la reserva";
+}
 ```
-
-
 
 ## Caso 7: Verificar Tarjeta VIP
 
@@ -675,7 +860,7 @@ Se instancia un objeto de la clase `Boleto` (`let objBoleto = new Boleto()`), y 
 ```javascript
 let objBoleto = new boleto();
 console.log(await objBoleto.verifyVIPCard(1));
-objBoleto.destructor()
+objBoleto.destructor();
 ```
 
 ### Ejemplo de uso
@@ -714,13 +899,13 @@ async verifyVIPCard(usuario_id) {
 }
 ```
 
-### Return 
+### Return
 
 ```javascript
-{ message: 'Eres usuario VIP, tu descuento para la compra es: 10%' }
+{
+  message: "Eres usuario VIP, tu descuento para la compra es: 10%";
+}
 ```
-
-
 
 ## Caso 8: Crear Usuario
 
@@ -750,14 +935,15 @@ Este método es parte de una clase (`Usuario`) que interactúa con la base de da
 Se instancia un objeto de la clase `Usuario` (`let objUsuario = new Usuario()`), y se llama al método `newUser(objecto)` utilizando `await` para esperar la resolución de la promesa devuelta por el método.
 
 ```javascript
-
 let objUsuario = new usuario();
-console.log(await objUsuario.newUser({
+console.log(
+  await objUsuario.newUser({
     nombre: "Miguel_Castro",
     email: "miguel_papu@gmail.com",
     contraseña: "javascript",
-    rol: "estandar"
-}));
+    rol: "estandar",
+  })
+);
 ```
 
 ### Ejemplo de uso
@@ -806,7 +992,7 @@ async updateUserRole(objecto) {
 
         await db.command({
             updateUser: dataUsuario.nombre,
-            roles: [{ role: objecto.nuevoRol, db: "MongoII" }] 
+            roles: [{ role: objecto.nuevoRol, db: "MongoII" }]
         });
 
         return { message: "Rol actualizado correctamente" };
@@ -822,10 +1008,10 @@ async updateUserRole(objecto) {
 ### Return
 
 ```javascript
-{ message: "Usuario creado correctamente"}
+{
+  message: "Usuario creado correctamente";
+}
 ```
-
-
 
 ## Caso 9: Obtener Detalles de Usuario
 
@@ -849,7 +1035,7 @@ Se instancia un objeto de la clase `Usuario` (`let objUsuario = new Usuario(cone
 ```javascript
 let objUsuario = new usuario();
 console.log(await objUsuario.getUserById(2));
-objUsuario.destructor()
+objUsuario.destructor();
 ```
 
 ### Ejemplo de uso
@@ -887,8 +1073,6 @@ async getUserById(id) {
 }
 ```
 
-
-
 ## Caso Uso 10: Actualizar Rol de Usuario
 
 ### Descripción
@@ -913,11 +1097,13 @@ Se instancia un objeto de la clase `Usuario` (`let objUsuario = new Usuario(cone
 
 ```javascript
 let objUsuario = new usuario();
-console.log(await objUsuario.updateUserRole({
+console.log(
+  await objUsuario.updateUserRole({
     usuario_id: 4,
-    nuevoRol: "vip"
-}));
-objUsuario.destructor()
+    nuevoRol: "vip",
+  })
+);
+objUsuario.destructor();
 ```
 
 ### Ejemplo de uso
@@ -966,7 +1152,7 @@ async updateUserRole(objecto) {
 
         await db.command({
             updateUser: dataUsuario.nombre,
-            roles: [{ role: objecto.nuevoRol, db: "MongoII" }] 
+            roles: [{ role: objecto.nuevoRol, db: "MongoII" }]
         });
 
         return { message: "Rol actualizado correctamente" };
@@ -984,8 +1170,6 @@ async updateUserRole(objecto) {
 ```
 { message: "Rol actualizado correctamente" }
 ```
-
-
 
 ## Caso Uso 11: Listar Usuarios
 
@@ -1009,7 +1193,7 @@ Se instancia un objeto de la clase `Usuario` (`let objUsuario = new Usuario(cone
 ```javascript
 let objUsuario = new usuario();
 console.log(await objUsuario.getUsersByRole("estandar"));
-objUsuario.destructor()
+objUsuario.destructor();
 ```
 
 ### Ejemplo de uso
@@ -1060,4 +1244,3 @@ async getUsersByRole(rol) {
   }
 ]
 ```
-
