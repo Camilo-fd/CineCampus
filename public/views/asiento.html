@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>seats</title>
+    <link rel="stylesheet" href="../css/asiento.css">
+    <script type="module" src="../js/module/asiento.js" defer></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+<body>
+    <header class="choose__seat">
+        <a id="back-pelicula_detalle" href="#"><i class='bx bx-chevron-left'></i></a>
+        <h4>Choose Seat</h4>
+        <i class='bx bx-menu-alt-right'></i>
+    </header>
+    <main class= "teather">
+        <section class="screen">
+            <img src="../img/image1.webp" alt="screen">
+            <p>Screen This way</p>
+        </section>
+        <section class="seats">
+            <div class= "front__seats">
+                <div class ="front__letter">
+                    <p>A</p>
+                    <p>B</p>
+                </div>
+                <div class="group__seats_f">
+                    <div class="seat_A"></div>
+                    <div class="seat_B"></div>
+                </div>
+            </div>
+            <div class= "back__seats">
+                <div class ="back__letter">
+                    <p>C</p>
+                    <p>D</p>
+                    <p>E</p>
+                    <p>F</p>
+                </div>
+                <div class= "group__seats">
+
+                </div>
+            </div>    
+        </section>
+        <div class="conventions">
+            <i class='bx bxs-circle'></i>
+            <p>Available</p>
+            <i class='bx bxs-circle'></i>
+            <p>Reserved</p>
+            <i class='bx bxs-circle'></i>
+            <p>Selected</p>
+        </div>
+        <section class="dates">
+            <div class= "days"></div>
+            <div class="times"></div>
+        </section>
+    </main>
+    <footer class="payment">
+        <div class="price">
+            <p>Price</p>
+            <p id="total-price">$0</p>
+        </div>
+        <div id="buy" class="buy">
+            <button>Buy ticket</button>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,364 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: #000;
+    color: #fff;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+header {
+    display: flex;
+    width: 100%;
+    height: 20%;
+    flex-direction: column;
+    padding: 1rem 1.875rem 1.875rem;
+    gap: 1rem;
+}
+
+.informacion-header {
+    display: flex;
+    width: 100%;
+    height: 50%;
+    justify-content: space-between;
+    gap: 1.5rem;
+    align-items: center;
+    padding-top: 1rem;
+}
+
+.informacion-img {
+    display: flex;
+    width: 3.2rem;
+    height: 3.2rem; 
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.informacion-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.informacion-texto {
+    display: flex;
+    width: 62%;
+    height: 100%;
+    flex-direction: column;
+    font-size: 0.875em;
+    gap: 0.5rem;
+}
+
+.informacion-texto p {
+    font-size: 1.2em;
+}
+
+.informacion-icono {
+    display: flex;
+    /* width: 2.9rem; */
+    font-size: 1.7rem;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    border: 1px solid #9A9A9A;
+    border-radius: 0.5rem;
+}
+
+.buscador-header {
+    width: 100%;
+    /* height: 50%; */
+}
+
+.buscador-header div {
+    display: flex;
+    justify-content: center;
+}
+
+.search-bar {
+    display: flex;
+    width: 100%;
+    background-color: #1c1c1e;
+    border: 1px solid white;
+    padding: 1.1rem;
+    margin: 0.5rem 0;
+    gap: 1rem;
+    border-radius: 0.8rem;
+}
+
+.search-bar i {
+    background-color: #1c1c1e;
+    font-size: 1.3rem
+}
+
+.search-bar input {
+    width: 100%;
+    border: none;
+    color: #fff;    
+    background: transparent;
+}
+
+.search-bar input::placeholder {
+    font-size: 1.3em;
+}
+
+/* -------------------------------------------- */
+
+main {
+    display: flex;
+    width: 100%;
+    height: 60%;
+    flex-direction: column;
+    /* padding-top: 1rem; */
+    gap: 1rem;
+    overflow: hidden;
+}
+
+.informacion-main {
+    display: flex;
+    width: 100%;
+    height: 10%;
+    justify-content: space-around;
+    gap: 8rem;
+    font-size: 1.3rem;
+}
+
+.informacion-main button {
+    text-decoration: none;
+    font-size: 1.1rem;
+    border: none;
+    color: red;
+}
+
+.carrusel-main {
+    display: flex;
+    width: 100%;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    padding: 20px 20px 0 20px;
+    gap: 15px;
+    scroll-behavior: smooth; /* Suaviza el desplazamiento */
+}
+
+
+.carrusel-main::-webkit-scrollbar {
+    display: none; /* Oculta la barra de desplazamiento */
+}
+
+.carousel-item {
+    flex: 0 0 auto;
+    width: 90%; /* Ajusta este valor según prefieras */
+    scroll-snap-align: center;
+    transition: all 0.3s ease;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 400px; /* Ajusta la altura según necesites */
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Efecto de escala para la imagen central */
+.carousel-item.active {
+    transform: scale(1.05);
+}
+
+.carousel-item img {
+    width: 100%; 
+    height: 100%; 
+    border-radius: 1rem; 
+    object-fit: cover; 
+}
+
+.informacion-pelicula-main {
+    width: 100%;
+    height: 20%;
+    padding: 0.5rem;
+}
+
+.informacion-texto-pelicula {
+    display: flex;
+    width: 100%;
+    height: 20%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.informacion-span {
+    display: flex;
+    width: 100%;
+    height: 80%;
+    justify-content: center;
+    padding-top: 0.6rem;
+}
+
+.span {
+    display: inline-block;
+    width: 0.625rem;
+    height: 0.625rem;
+    margin: 0 5px;
+    background-color: #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.span.active {
+    width: 1.5rem;
+    height: 0.625rem;
+    background-color: red;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.pelicula-pronto-main {
+    display: flex;
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    overflow: hidden;
+    margin-top: 1.5rem;
+}
+
+.informacion-pelicula_pronto-main {
+    display: flex;
+    width: 100%;
+    height: 10%;
+    justify-content: space-around;
+    gap: 6rem;
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+}
+
+.informacion-pelicula_pronto-main p {
+    font-size: 1.3rem;
+}
+
+.informacion-pelicula_pronto-main button {
+    text-decoration: none;
+    font-size: 1.1rem;
+    border: none;
+    color: red;
+    background: transparent;
+}
+
+.carrusel-pronto {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column; 
+    gap: 1rem;
+    padding: 0 2rem;
+    margin-bottom: 6.5rem;
+}
+
+/* .carrusel-pronto::-webkit-scrollbar {
+    display: none;
+} */
+
+.pelicula_pronto-caratula-main {
+    display: flex;
+    width: 100%;
+    /* max-width: 21.875rem; */
+    align-items: center;
+    padding: 0.625rem; 
+    gap: 0.938rem;
+    border-radius: 0.938rem; 
+    background: #1C1C1E;
+    margin-right: 1rem;
+}
+
+.pelicula_pronto-caratula-main img {
+    width: 5rem;
+    height: 5rem; 
+    border-radius: 0.625rem; 
+    object-fit: cover; 
+}
+
+.pelicula-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: #1C1C1E;
+    color: #fff;
+}
+
+.pelicula-info h3 {
+    margin: 0;
+    background: #1C1C1E;
+    font-size: 1rem;
+}
+
+.pelicula-info p {
+    margin: 5px 0 0 0;
+    font-size: 0.9rem;
+    background: #1C1C1E;
+    color: #A9A9A9;
+}
+
+
+
+/* -------------------------------------------- */
+
+footer {
+    position: fixed;
+    width: 100%;
+    height: 10%;
+    background-color: #000;
+    padding-top: 1.4rem;
+    bottom: 0;
+    border-radius: 1rem 1rem 0 0;
+    border-top: 2px solid #5f5c5c
+}
+
+footer ul {
+    background-color: #000;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+    margin: 0;
+    padding: 0;
+}
+
+footer li {
+    text-align: center;
+}
+
+footer a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    font-size: 1rem;
+    background-color: #000;
+}
+
+footer i {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    background-color: #000;
+}
+
+footer .li-rojo, footer .li-rojo i {
+    color: red;
+}
+
+.nav-link,
+.nav-link i {
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.active-nav {
+    color: red;
+}
+
+.active-nav i {
+    color: red;
+}

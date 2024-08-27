@@ -1,0 +1,302 @@
+[
+  {
+    "_id": "66b3b0ea82f2026c4fd97363",
+    "id": 1,
+    "titulo": "Dune: Parte Dos",
+    "genero": [
+      "Aventura",
+      "Comedia"
+    ],
+    "duracion": 120,
+    "sinopsis": "Paul Atreides lidera a los Fremen en una guerra contra los Harkonnen para tomar control de Arrakis y su especia, enfrentando traiciones y desafíos en el desértico planeta.",
+    "url": "https://i.postimg.cc/1zSTkFrp/Dune.png",
+    "video": "https://www.youtube.com/embed/esezQhsrix0",
+    "actores": [
+      {
+        "imagen": "https://i.postimg.cc/DzSk1GfT/timothee-chalamet.webp",
+        "nombre": "Timothée Chalamet",
+        "personaje": "Paul Atreides"
+      },
+      {
+        "nombre": "Zendaya",
+        "personaje": "Chani",
+        "imagen": "https://i.postimg.cc/jSV8dkCP/Zendaya.webp"
+      },
+      {
+        "nombre": "Rebecca Ferguson",
+        "personaje": "Lady Jessica",
+        "imagen": "https://i.postimg.cc/Nj1dy7rV/rebecca-ferguson.webp"
+      }
+    ]
+  },
+  {
+    "_id": "66b3b0ea82f2026c4fd97364",
+    "id": 2,
+    "titulo": "The Marvels",
+    "genero": [
+      "Ciencia Ficción",
+      "Misterio"
+    ],
+    "duracion": 145,
+    "sinopsis": "Carol Danvers, Kamala Khan y Monica Rambeau unen fuerzas para enfrentar una amenaza cósmica que pone en riesgo el universo.",
+    "url": "https://i.postimg.cc/SKzsvwVX/file.png",
+    "video": "https://www.youtube.com/embed/_8ylSrn3SJY",
+    "actores": [
+      {
+        "imagen": "https://i.postimg.cc/gJBCMqss/Brie-Larson.webp",
+        "nombre": "Brie Larson",
+        "personaje": "Captain Marvel"
+      },
+      {
+        "nombre": "Iman Vellani",
+        "personaje": "Ms. Marvel",
+        "imagen": "https://i.postimg.cc/HncfFcPg/Iman-Vellani.webp"
+      },
+      {
+        "nombre": "Teyonah Parris",
+        "personaje": "Monica Rambeau",
+        "imagen": "https://i.postimg.cc/DZZVdYrm/Teyonah-Parris.jpg"
+      }
+    ]
+  },
+  {
+    "_id": "66b3b0ea82f2026c4fd97365",
+    "id": 3,
+    "titulo": "Killers of the Flower Moon",
+    "genero": [
+      "Romance",
+      "Drama"
+    ],
+    "duracion": 110,
+    "sinopsis": "En la década de 1920, una serie de asesinatos contra la tribu Osage desencadena una investigación del FBI sobre la corrupción y la codicia en los Estados Unidos.",
+    "url": "https://i.postimg.cc/htT6ZsTD/Killer.jpg",
+    "video": "https://www.youtube.com/embed/7cx9nCHsemc",
+    "actores": [
+      {
+        "nombre": "Leonardo DiCaprio",
+        "personaje": "Ernest Burkhart",
+        "imagen": "https://i.postimg.cc/mgH7hbKg/Leonardo-Di-Caprio.jpg"
+      },
+      {
+        "nombre": "Robert De Niro",
+        "personaje": "William Hale",
+        "imagen": "https://i.postimg.cc/QxPpXB4z/Lily-Gladstone.webp"
+      },
+      {
+        "nombre": "Lily Gladstone",
+        "personaje": "Mollie Burkhart",
+        "imagen": "https://i.postimg.cc/Xv6dCR0c/Robert-De-Niro.jpg"
+      }
+    ]
+  },
+  {
+    "_id": "66b3b0ea82f2026c4fd97366",
+    "id": 4,
+    "titulo": "The Hunger Games: Ballad of Songbirds & Snakes",
+    "genero": [
+      "Accion",
+      "Ciencia Ficción"
+    ],
+    "duracion": 135,
+    "sinopsis": "La precuela explora los orígenes de Coriolanus Snow y su rol como mentor en los décimos Juegos del Hambre, mostrando la formación del futuro tirano de Panem.",
+    "url": "https://i.postimg.cc/bNK4RWGV/Juegos.jpg",
+    "video": "https://www.youtube.com/embed/NxW_X4kzeus",
+    "actores": [
+      {
+        "nombre": "Tom Blyth",
+        "personaje": "Coriolanus Snow",
+        "imagen": "https://i.postimg.cc/C5Xm31ff/Peter-Dinklage.webp"
+      },
+      {
+        "nombre": "Rachel Zegler",
+        "personaje": "Lucy Gray Baird",
+        "imagen": "https://i.postimg.cc/c4tDQQV7/Rachel-Zegler.webp"
+      },
+      {
+        "nombre": "Peter Dinklagee",
+        "personaje": "Casca Highbottom",
+        "imagen": "https://i.postimg.cc/9Xn8RxNF/Tom-Blyth.jpg"
+      }
+    ]
+  },
+  {
+    "_id": "66b3b0ea82f2026c4fd97367",
+    "id": 5,
+    "titulo": "Avatar 3",
+    "genero": [
+      "Fantasia",
+      "Aventura"
+    ],
+    "duracion": 115,
+    "sinopsis": "Jake Sully y Neytiri enfrentan nuevas amenazas en Pandora, explorando el mundo subacuático mientras defienden su hogar y su familia.",
+    "url": "https://i.postimg.cc/jdWGPtjJ/Avatar-3.jpg",
+    "video": "https://www.youtube.com/embed/knV6GlCeWCs",
+    "actores": [
+      {
+        "nombre": "Sam Worthington",
+        "personaje": "Jake Sully",
+        "imagen": "https://i.postimg.cc/y6ZQRhqm/Sam-Worthington.jpg"
+      },
+      {
+        "nombre": "Zoe Saldaña",
+        "personaje": "Neytiri",
+        "imagen": "https://i.postimg.cc/pTgs7rj5/Zoe-Salda-a.webp"
+      },
+      {
+        "nombre": "Sigourney Weaver",
+        "personaje": "Kiri",
+        "imagen": "https://i.postimg.cc/x8M6SQGx/Sigourney-Weaver.webp"
+      }
+    ]
+  },
+  {
+    "_id": "66b3b0ea82f2026c4fd97368",
+    "id": 6,
+    "titulo": "Wonka",
+    "genero": [
+      "Comedia",
+      "Crimen"
+    ],
+    "duracion": 105,
+    "sinopsis": "La película narra la juventud de Willy Wonka y sus aventuras para abrir su primera tienda de chocolates, revelando el inicio de su icónica carrera.",
+    "url": "https://i.postimg.cc/pVcwmpPH/Wonka.jpg",
+    "video": "https://www.youtube.com/embed/-YRw-3dgsjo",
+    "actores": [
+      {
+        "nombre": "Timothée Chalamet",
+        "personaje": "Willy Wonka",
+        "imagen": "https://i.postimg.cc/139JbL8B/Timoth-e-Chalamet.webp"
+      },
+      {
+        "nombre": "Hugh Grant",
+        "personaje": "Lofty",
+        "imagen": "https://i.postimg.cc/zG00N0Wr/Hugh-Grant.webp"
+      },
+      {
+        "nombre": "Sally Hawkins",
+        "personaje": "Madre de Willy Wonka",
+        "imagen": "https://i.postimg.cc/MGHtpVbj/Sally-Hawkins.jpg"
+      }
+    ]
+  },
+  {
+    "_id": "66b3b0ea82f2026c4fd97369",
+    "id": 7,
+    "titulo": "Mission: Impossible – Dead Reckoning Part Two",
+    "genero": [
+      "Drama",
+      "Romance"
+    ],
+    "duracion": 130,
+    "sinopsis": "Ethan Hunt y su equipo enfrentan su misión más peligrosa mientras luchan contra un enemigo global que amenaza con cambiar el curso de la historia.",
+    "url": "https://i.postimg.cc/50nZqtv8/Mission.jpg",
+    "video": "https://www.youtube.com/embed/8jRMVhGwy0M",
+    "actores": [
+      {
+        "nombre": "Tom Cruise",
+        "personaje": "Ethan Hunt",
+        "imagen": "https://i.postimg.cc/y6cjxV9n/Tom-Cruise.webp"
+      },
+      {
+        "nombre": "Hayley Atwell",
+        "personaje": "Grace",
+        "imagen": "https://i.postimg.cc/15KK0Jvq/Hayley-Atwell.jpg"
+      },
+      {
+        "nombre": "Ving Rhames",
+        "personaje": "Luther Stickell",
+        "imagen": "https://i.postimg.cc/15SHNLrS/Ving-Rhames.webp"
+      }
+    ]
+  },
+  {
+    "_id": "66b3b0ea82f2026c4fd9736a",
+    "id": 8,
+    "titulo": "The Exorcist: Believe",
+    "genero": [
+      "Terror",
+      "Misterio"
+    ],
+    "duracion": 95,
+    "sinopsis": "Una familia busca ayuda cuando su hija y una amiga muestran signos de posesión demoníaca, desafiando a exorcistas a enfrentar un antiguo mal.",
+    "url": "https://i.postimg.cc/gj7QQBgJ/Exorcismo.jpg",
+    "video": "https://www.youtube.com/embed/PIxpPMyGcpU",
+    "actores": [
+      {
+        "nombre": "Leslie Odom Jr.",
+        "personaje": "\tVictor Fielding",
+        "imagen": "https://i.postimg.cc/rmPpLXyr/Leslie-Odom-Jr.webp"
+      },
+      {
+        "nombre": "Ann Dowd",
+        "personaje": "Angela Rance",
+        "imagen": "https://i.postimg.cc/6Ts5yrv6/Ann-Dowd.jpgg"
+      },
+      {
+        "nombre": "Olivia Grace Applegate",
+        "personaje": "Katherine (Katie) Fielding",
+        "imagen": "https://i.postimg.cc/qq6vJbgZ/Olivia-Grace-Applegate.jpg"
+      }
+    ]
+  },
+  {
+    "_id": "66b3b0ea82f2026c4fd9736b",
+    "id": 9,
+    "titulo": "Barbie",
+    "genero": [
+      "Crimen",
+      "Comedia"
+    ],
+    "duracion": 125,
+    "sinopsis": "Barbie deja su mundo de plástico para enfrentarse a la realidad, descubriendo nuevas lecciones sobre identidad y felicidad en el proceso.",
+    "url": "https://i.postimg.cc/FzzwPQg8/Barbie.jpg",
+    "video": "https://www.youtube.com/embed/zh4KhVSMwtQ",
+    "actores": [
+      {
+        "nombre": "Margot Robbie",
+        "personaje": "Barbie",
+        "imagen": "https://i.postimg.cc/sgr7LSNR/Margot-Robbie.jpg"
+      },
+      {
+        "nombre": "Ryan Gosling",
+        "personaje": "Ken",
+        "imagen": "https://i.postimg.cc/rwNx2mBR/Ryan-Gosling.jpg"
+      },
+      {
+        "nombre": "America Ferrera",
+        "personaje": "Gloria",
+        "imagen": "https://i.postimg.cc/vH95XXXz/America-Ferrera.jpg"
+      }
+    ]
+  },
+  {
+    "_id": "66b3b0ea82f2026c4fd9736c",
+    "id": 10,
+    "titulo": "Furiosa: de la saga Mad Max",
+    "genero": [
+      "Ciencia Ficción",
+      "Aventura"
+    ],
+    "duracion": 150,
+    "sinopsis": "El spin-off de \"Mad Max\" sigue a una joven Furiosa mientras lucha por sobrevivir en un mundo post-apocalíptico y busca redención en el desierto.",
+    "url": "https://i.postimg.cc/QtX2T7BX/Furiosa.jpg",
+    "video": "https://www.youtube.com/embed/GgerHF86Rv4",
+    "actores": [
+      {
+        "nombre": "Anya Taylor-Joy",
+        "personaje": "Furiosa",
+        "imagen": "https://i.postimg.cc/vHW65TH2/Anya-Taylor-Joy.webp"
+      },
+      {
+        "nombre": "Chris Hemsworth",
+        "personaje": "Dr. Dementus",
+        "imagen": "https://i.postimg.cc/dV6kSfC8/Chris-Hemsw-orth.jpg"
+      },
+      {
+        "nombre": "Tom Burke",
+        "personaje": "Praetorian Jack",
+        "imagen": "https://i.postimg.cc/LssYdVkG/Tom-Burke.jpg"
+      }
+    ]
+  }
+]

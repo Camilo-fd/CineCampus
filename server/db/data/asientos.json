@@ -1,0 +1,2018 @@
+[
+  {
+    "_id": "66c7728461e5ed988719a0c7",
+    "id": 1,
+    "proyeccion_id": 1,
+    "numero": "A1",
+    "estado": "ocupado"
+  },
+  {
+    "_id": "66c7728461e5ed988719a0c8",
+    "id": 2,
+    "proyeccion_id": 1,
+    "numero": "A2",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a0c9",
+    "id": 3,
+    "proyeccion_id": 1,
+    "numero": "A3",
+    "estado": "ocupado"
+  },
+  {
+    "_id": "66c7728461e5ed988719a0ca",
+    "id": 4,
+    "proyeccion_id": 1,
+    "numero": "A4",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a0cb",
+    "id": 5,
+    "proyeccion_id": 1,
+    "numero": "A5",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a0cc",
+    "id": 6,
+    "proyeccion_id": 1,
+    "numero": "B1",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a0cd",
+    "id": 7,
+    "proyeccion_id": 1,
+    "numero": "B2",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a0ce",
+    "id": 8,
+    "proyeccion_id": 1,
+    "numero": "B3",
+    "estado": "ocupado"
+  },
+  {
+    "_id": "66c7728461e5ed988719a0cf",
+    "id": 9,
+    "proyeccion_id": 1,
+    "numero": "B4",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a0d0",
+    "id": 10,
+    "proyeccion_id": 1,
+    "numero": "B5",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a0d1",
+    "id": 11,
+    "proyeccion_id": 1,
+    "numero": "B6",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a0d2",
+    "id": 12,
+    "proyeccion_id": 1,
+    "numero": "B7",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a0d3",
+    "id": 13,
+    "proyeccion_id": 1,
+    "numero": "C1",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a0d4",
+    "id": 14,
+    "proyeccion_id": 1,
+    "numero": "C2",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a0d5",
+    "id": 15,
+    "proyeccion_id": 1,
+    "numero": "C3",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a0d6",
+    "id": 16,
+    "proyeccion_id": 1,
+    "numero": "C4",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a0d7",
+    "id": 17,
+    "proyeccion_id": 1,
+    "numero": "C5",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a0d8",
+    "id": 18,
+    "proyeccion_id": 1,
+    "numero": "C6",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a0d9",
+    "id": 19,
+    "proyeccion_id": 1,
+    "numero": "C7",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a0da",
+    "id": 20,
+    "proyeccion_id": 1,
+    "numero": "C8",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a0db",
+    "id": 21,
+    "proyeccion_id": 1,
+    "numero": "C9",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a0dc",
+    "id": 22,
+    "proyeccion_id": 1,
+    "numero": "D1",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a0dd",
+    "id": 23,
+    "proyeccion_id": 1,
+    "numero": "D2",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a0de",
+    "id": 24,
+    "proyeccion_id": 1,
+    "numero": "D3",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a0df",
+    "id": 25,
+    "proyeccion_id": 1,
+    "numero": "D4",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a0e0",
+    "id": 26,
+    "proyeccion_id": 1,
+    "numero": "D5",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a0e1",
+    "id": 27,
+    "proyeccion_id": 1,
+    "numero": "D6",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a0e2",
+    "id": 28,
+    "proyeccion_id": 1,
+    "numero": "D7",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a0e3",
+    "id": 29,
+    "proyeccion_id": 1,
+    "numero": "D8",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a0e4",
+    "id": 30,
+    "proyeccion_id": 1,
+    "numero": "D9",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a0e5",
+    "id": 31,
+    "proyeccion_id": 1,
+    "numero": "E1",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a0e6",
+    "id": 32,
+    "proyeccion_id": 1,
+    "numero": "E2",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a0e7",
+    "id": 33,
+    "proyeccion_id": 1,
+    "numero": "E3",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a0e8",
+    "id": 34,
+    "proyeccion_id": 1,
+    "numero": "E4",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a0e9",
+    "id": 35,
+    "proyeccion_id": 1,
+    "numero": "E5",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a0ea",
+    "id": 36,
+    "proyeccion_id": 1,
+    "numero": "E6",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a0eb",
+    "id": 37,
+    "proyeccion_id": 1,
+    "numero": "E7",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a0ec",
+    "id": 38,
+    "proyeccion_id": 1,
+    "numero": "E8",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a0ed",
+    "id": 39,
+    "proyeccion_id": 1,
+    "numero": "E9",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a0ee",
+    "id": 40,
+    "proyeccion_id": 1,
+    "numero": "F1",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a0ef",
+    "id": 41,
+    "proyeccion_id": 1,
+    "numero": "F2",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a0f0",
+    "id": 42,
+    "proyeccion_id": 1,
+    "numero": "F3",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a0f1",
+    "id": 43,
+    "proyeccion_id": 1,
+    "numero": "F4",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a0f2",
+    "id": 44,
+    "proyeccion_id": 1,
+    "numero": "F5",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a0f3",
+    "id": 45,
+    "proyeccion_id": 1,
+    "numero": "F6",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a0f4",
+    "id": 46,
+    "proyeccion_id": 1,
+    "numero": "F7",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a0f5",
+    "id": 47,
+    "proyeccion_id": 1,
+    "numero": "F8",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a0f6",
+    "id": 48,
+    "proyeccion_id": 1,
+    "numero": "F9",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a0f7",
+    "id": 49,
+    "proyeccion_id": 2,
+    "numero": "A1",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a0f8",
+    "id": 50,
+    "proyeccion_id": 2,
+    "numero": "A2",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a0f9",
+    "id": 51,
+    "proyeccion_id": 2,
+    "numero": "A3",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a0fa",
+    "id": 52,
+    "proyeccion_id": 2,
+    "numero": "A4",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a0fb",
+    "id": 53,
+    "proyeccion_id": 2,
+    "numero": "A5",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a0fc",
+    "id": 54,
+    "proyeccion_id": 2,
+    "numero": "B1",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a0fd",
+    "id": 55,
+    "proyeccion_id": 2,
+    "numero": "B2",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a0fe",
+    "id": 56,
+    "proyeccion_id": 2,
+    "numero": "B3",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a0ff",
+    "id": 57,
+    "proyeccion_id": 2,
+    "numero": "B4",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a100",
+    "id": 58,
+    "proyeccion_id": 2,
+    "numero": "B5",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a101",
+    "id": 59,
+    "proyeccion_id": 2,
+    "numero": "B6",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a102",
+    "id": 60,
+    "proyeccion_id": 2,
+    "numero": "B7",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a103",
+    "id": 61,
+    "proyeccion_id": 2,
+    "numero": "C1",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a104",
+    "id": 62,
+    "proyeccion_id": 2,
+    "numero": "C2",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a105",
+    "id": 63,
+    "proyeccion_id": 2,
+    "numero": "C3",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a106",
+    "id": 64,
+    "proyeccion_id": 2,
+    "numero": "C4",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a107",
+    "id": 65,
+    "proyeccion_id": 2,
+    "numero": "C5",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a108",
+    "id": 66,
+    "proyeccion_id": 2,
+    "numero": "C6",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a109",
+    "id": 67,
+    "proyeccion_id": 2,
+    "numero": "C7",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a10a",
+    "id": 68,
+    "proyeccion_id": 2,
+    "numero": "C8",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a10b",
+    "id": 69,
+    "proyeccion_id": 2,
+    "numero": "C9",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a10c",
+    "id": 70,
+    "proyeccion_id": 2,
+    "numero": "D1",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a10d",
+    "id": 71,
+    "proyeccion_id": 2,
+    "numero": "D2",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a10e",
+    "id": 72,
+    "proyeccion_id": 2,
+    "numero": "D3",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a10f",
+    "id": 73,
+    "proyeccion_id": 2,
+    "numero": "D4",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a110",
+    "id": 74,
+    "proyeccion_id": 2,
+    "numero": "D5",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a111",
+    "id": 75,
+    "proyeccion_id": 2,
+    "numero": "D6",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a112",
+    "id": 76,
+    "proyeccion_id": 2,
+    "numero": "D7",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a113",
+    "id": 77,
+    "proyeccion_id": 2,
+    "numero": "D8",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a114",
+    "id": 78,
+    "proyeccion_id": 2,
+    "numero": "D9",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a115",
+    "id": 79,
+    "proyeccion_id": 2,
+    "numero": "E1",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a116",
+    "id": 80,
+    "proyeccion_id": 2,
+    "numero": "E2",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a117",
+    "id": 81,
+    "proyeccion_id": 2,
+    "numero": "E3",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a118",
+    "id": 82,
+    "proyeccion_id": 2,
+    "numero": "E4",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a119",
+    "id": 83,
+    "proyeccion_id": 2,
+    "numero": "E5",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a11a",
+    "id": 84,
+    "proyeccion_id": 2,
+    "numero": "E6",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a11b",
+    "id": 85,
+    "proyeccion_id": 2,
+    "numero": "E7",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a11c",
+    "id": 86,
+    "proyeccion_id": 2,
+    "numero": "E8",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a11d",
+    "id": 87,
+    "proyeccion_id": 2,
+    "numero": "E9",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a11e",
+    "id": 88,
+    "proyeccion_id": 2,
+    "numero": "F1",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a11f",
+    "id": 89,
+    "proyeccion_id": 2,
+    "numero": "F2",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a120",
+    "id": 90,
+    "proyeccion_id": 2,
+    "numero": "F3",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a121",
+    "id": 91,
+    "proyeccion_id": 2,
+    "numero": "F4",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a122",
+    "id": 92,
+    "proyeccion_id": 2,
+    "numero": "F5",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a123",
+    "id": 93,
+    "proyeccion_id": 2,
+    "numero": "F6",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a124",
+    "id": 94,
+    "proyeccion_id": 2,
+    "numero": "F7",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a125",
+    "id": 95,
+    "proyeccion_id": 2,
+    "numero": "F8",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a126",
+    "id": 96,
+    "proyeccion_id": 2,
+    "numero": "F9",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a127",
+    "id": 97,
+    "proyeccion_id": 3,
+    "numero": "A1",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a128",
+    "id": 98,
+    "proyeccion_id": 3,
+    "numero": "A2",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a129",
+    "id": 99,
+    "proyeccion_id": 3,
+    "numero": "A3",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a12a",
+    "id": 100,
+    "proyeccion_id": 3,
+    "numero": "A4",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a12b",
+    "id": 101,
+    "proyeccion_id": 3,
+    "numero": "A5",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a12c",
+    "id": 102,
+    "proyeccion_id": 3,
+    "numero": "B1",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a12d",
+    "id": 103,
+    "proyeccion_id": 3,
+    "numero": "B2",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a12e",
+    "id": 104,
+    "proyeccion_id": 3,
+    "numero": "B3",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a12f",
+    "id": 105,
+    "proyeccion_id": 3,
+    "numero": "B4",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a130",
+    "id": 106,
+    "proyeccion_id": 3,
+    "numero": "B5",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a131",
+    "id": 107,
+    "proyeccion_id": 3,
+    "numero": "B6",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a132",
+    "id": 108,
+    "proyeccion_id": 3,
+    "numero": "B7",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a133",
+    "id": 109,
+    "proyeccion_id": 3,
+    "numero": "C1",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a134",
+    "id": 110,
+    "proyeccion_id": 3,
+    "numero": "C2",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a135",
+    "id": 111,
+    "proyeccion_id": 3,
+    "numero": "C3",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a136",
+    "id": 112,
+    "proyeccion_id": 3,
+    "numero": "C4",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a137",
+    "id": 113,
+    "proyeccion_id": 3,
+    "numero": "C5",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a138",
+    "id": 114,
+    "proyeccion_id": 3,
+    "numero": "C6",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a139",
+    "id": 115,
+    "proyeccion_id": 3,
+    "numero": "C7",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a13a",
+    "id": 116,
+    "proyeccion_id": 3,
+    "numero": "C8",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a13b",
+    "id": 117,
+    "proyeccion_id": 3,
+    "numero": "C9",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a13c",
+    "id": 118,
+    "proyeccion_id": 3,
+    "numero": "D1",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a13d",
+    "id": 119,
+    "proyeccion_id": 3,
+    "numero": "D2",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a13e",
+    "id": 120,
+    "proyeccion_id": 3,
+    "numero": "D3",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a13f",
+    "id": 121,
+    "proyeccion_id": 3,
+    "numero": "D4",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a140",
+    "id": 122,
+    "proyeccion_id": 3,
+    "numero": "D5",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a141",
+    "id": 123,
+    "proyeccion_id": 3,
+    "numero": "D6",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a142",
+    "id": 124,
+    "proyeccion_id": 3,
+    "numero": "D7",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a143",
+    "id": 125,
+    "proyeccion_id": 3,
+    "numero": "D8",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a144",
+    "id": 126,
+    "proyeccion_id": 3,
+    "numero": "D9",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a145",
+    "id": 127,
+    "proyeccion_id": 3,
+    "numero": "E1",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a146",
+    "id": 128,
+    "proyeccion_id": 3,
+    "numero": "E2",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a147",
+    "id": 129,
+    "proyeccion_id": 3,
+    "numero": "E3",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a148",
+    "id": 130,
+    "proyeccion_id": 3,
+    "numero": "E4",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a149",
+    "id": 131,
+    "proyeccion_id": 3,
+    "numero": "E5",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a14a",
+    "id": 132,
+    "proyeccion_id": 3,
+    "numero": "E6",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a14b",
+    "id": 133,
+    "proyeccion_id": 3,
+    "numero": "E7",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a14c",
+    "id": 134,
+    "proyeccion_id": 3,
+    "numero": "E8",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a14d",
+    "id": 135,
+    "proyeccion_id": 3,
+    "numero": "E9",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a14e",
+    "id": 136,
+    "proyeccion_id": 3,
+    "numero": "F1",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a14f",
+    "id": 137,
+    "proyeccion_id": 3,
+    "numero": "F2",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a150",
+    "id": 138,
+    "proyeccion_id": 3,
+    "numero": "F3",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a151",
+    "id": 139,
+    "proyeccion_id": 3,
+    "numero": "F4",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a152",
+    "id": 140,
+    "proyeccion_id": 3,
+    "numero": "F5",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a153",
+    "id": 141,
+    "proyeccion_id": 3,
+    "numero": "F6",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a154",
+    "id": 142,
+    "proyeccion_id": 3,
+    "numero": "F7",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a155",
+    "id": 143,
+    "proyeccion_id": 3,
+    "numero": "F8",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a156",
+    "id": 144,
+    "proyeccion_id": 3,
+    "numero": "F9",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a157",
+    "id": 145,
+    "proyeccion_id": 4,
+    "numero": "A1",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a158",
+    "id": 146,
+    "proyeccion_id": 4,
+    "numero": "A2",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a159",
+    "id": 147,
+    "proyeccion_id": 4,
+    "numero": "A3",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a15a",
+    "id": 148,
+    "proyeccion_id": 4,
+    "numero": "A4",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a15b",
+    "id": 149,
+    "proyeccion_id": 4,
+    "numero": "A5",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a15c",
+    "id": 150,
+    "proyeccion_id": 4,
+    "numero": "B1",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a15d",
+    "id": 151,
+    "proyeccion_id": 4,
+    "numero": "B2",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a15e",
+    "id": 152,
+    "proyeccion_id": 4,
+    "numero": "B3",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a15f",
+    "id": 153,
+    "proyeccion_id": 4,
+    "numero": "B4",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a160",
+    "id": 154,
+    "proyeccion_id": 4,
+    "numero": "B5",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a161",
+    "id": 155,
+    "proyeccion_id": 4,
+    "numero": "B6",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a162",
+    "id": 156,
+    "proyeccion_id": 4,
+    "numero": "B7",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a163",
+    "id": 157,
+    "proyeccion_id": 4,
+    "numero": "C1",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a164",
+    "id": 158,
+    "proyeccion_id": 4,
+    "numero": "C2",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a165",
+    "id": 159,
+    "proyeccion_id": 4,
+    "numero": "C3",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a166",
+    "id": 160,
+    "proyeccion_id": 4,
+    "numero": "C4",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a167",
+    "id": 161,
+    "proyeccion_id": 4,
+    "numero": "C5",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a168",
+    "id": 162,
+    "proyeccion_id": 4,
+    "numero": "C6",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a169",
+    "id": 163,
+    "proyeccion_id": 4,
+    "numero": "C7",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a16a",
+    "id": 164,
+    "proyeccion_id": 4,
+    "numero": "C8",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a16b",
+    "id": 165,
+    "proyeccion_id": 4,
+    "numero": "C9",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a16c",
+    "id": 166,
+    "proyeccion_id": 4,
+    "numero": "D1",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a16d",
+    "id": 167,
+    "proyeccion_id": 4,
+    "numero": "D2",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a16e",
+    "id": 168,
+    "proyeccion_id": 4,
+    "numero": "D3",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a16f",
+    "id": 169,
+    "proyeccion_id": 4,
+    "numero": "D4",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a170",
+    "id": 170,
+    "proyeccion_id": 4,
+    "numero": "D5",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a171",
+    "id": 171,
+    "proyeccion_id": 4,
+    "numero": "D6",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a172",
+    "id": 172,
+    "proyeccion_id": 4,
+    "numero": "D7",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a173",
+    "id": 173,
+    "proyeccion_id": 4,
+    "numero": "D8",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a174",
+    "id": 174,
+    "proyeccion_id": 4,
+    "numero": "D9",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a175",
+    "id": 175,
+    "proyeccion_id": 4,
+    "numero": "E1",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a176",
+    "id": 176,
+    "proyeccion_id": 4,
+    "numero": "E2",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a177",
+    "id": 177,
+    "proyeccion_id": 4,
+    "numero": "E3",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a178",
+    "id": 178,
+    "proyeccion_id": 4,
+    "numero": "E4",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a179",
+    "id": 179,
+    "proyeccion_id": 4,
+    "numero": "E5",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a17a",
+    "id": 180,
+    "proyeccion_id": 4,
+    "numero": "E6",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a17b",
+    "id": 181,
+    "proyeccion_id": 4,
+    "numero": "E7",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a17c",
+    "id": 182,
+    "proyeccion_id": 4,
+    "numero": "E8",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a17d",
+    "id": 183,
+    "proyeccion_id": 4,
+    "numero": "E9",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a17e",
+    "id": 184,
+    "proyeccion_id": 4,
+    "numero": "F1",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a17f",
+    "id": 185,
+    "proyeccion_id": 4,
+    "numero": "F2",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a180",
+    "id": 186,
+    "proyeccion_id": 4,
+    "numero": "F3",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a181",
+    "id": 187,
+    "proyeccion_id": 4,
+    "numero": "F4",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a182",
+    "id": 188,
+    "proyeccion_id": 4,
+    "numero": "F5",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a183",
+    "id": 189,
+    "proyeccion_id": 4,
+    "numero": "F6",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a184",
+    "id": 190,
+    "proyeccion_id": 4,
+    "numero": "F7",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a185",
+    "id": 191,
+    "proyeccion_id": 4,
+    "numero": "F8",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a186",
+    "id": 192,
+    "proyeccion_id": 4,
+    "numero": "F9",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a187",
+    "id": 193,
+    "proyeccion_id": 5,
+    "numero": "A1",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a188",
+    "id": 194,
+    "proyeccion_id": 5,
+    "numero": "A2",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a189",
+    "id": 195,
+    "proyeccion_id": 5,
+    "numero": "A3",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a18a",
+    "id": 196,
+    "proyeccion_id": 5,
+    "numero": "A4",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a18b",
+    "id": 197,
+    "proyeccion_id": 5,
+    "numero": "A5",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a18c",
+    "id": 198,
+    "proyeccion_id": 5,
+    "numero": "B1",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a18d",
+    "id": 199,
+    "proyeccion_id": 5,
+    "numero": "B2",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a18e",
+    "id": 200,
+    "proyeccion_id": 5,
+    "numero": "B3",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a18f",
+    "id": 201,
+    "proyeccion_id": 5,
+    "numero": "B4",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a190",
+    "id": 202,
+    "proyeccion_id": 5,
+    "numero": "B5",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a191",
+    "id": 203,
+    "proyeccion_id": 5,
+    "numero": "B6",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a192",
+    "id": 204,
+    "proyeccion_id": 5,
+    "numero": "B7",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a193",
+    "id": 205,
+    "proyeccion_id": 5,
+    "numero": "C1",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a194",
+    "id": 206,
+    "proyeccion_id": 5,
+    "numero": "C2",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a195",
+    "id": 207,
+    "proyeccion_id": 5,
+    "numero": "C3",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a196",
+    "id": 208,
+    "proyeccion_id": 5,
+    "numero": "C4",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a197",
+    "id": 209,
+    "proyeccion_id": 5,
+    "numero": "C5",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a198",
+    "id": 210,
+    "proyeccion_id": 5,
+    "numero": "C6",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a199",
+    "id": 211,
+    "proyeccion_id": 5,
+    "numero": "C7",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a19a",
+    "id": 212,
+    "proyeccion_id": 5,
+    "numero": "C8",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a19b",
+    "id": 213,
+    "proyeccion_id": 5,
+    "numero": "C9",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a19c",
+    "id": 214,
+    "proyeccion_id": 5,
+    "numero": "D1",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a19d",
+    "id": 215,
+    "proyeccion_id": 5,
+    "numero": "D2",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a19e",
+    "id": 216,
+    "proyeccion_id": 5,
+    "numero": "D3",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a19f",
+    "id": 217,
+    "proyeccion_id": 5,
+    "numero": "D4",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1a0",
+    "id": 218,
+    "proyeccion_id": 5,
+    "numero": "D5",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1a1",
+    "id": 219,
+    "proyeccion_id": 5,
+    "numero": "D6",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1a2",
+    "id": 220,
+    "proyeccion_id": 5,
+    "numero": "D7",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1a3",
+    "id": 221,
+    "proyeccion_id": 5,
+    "numero": "D8",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1a4",
+    "id": 222,
+    "proyeccion_id": 5,
+    "numero": "D9",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1a5",
+    "id": 223,
+    "proyeccion_id": 5,
+    "numero": "E1",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1a6",
+    "id": 224,
+    "proyeccion_id": 5,
+    "numero": "E2",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1a7",
+    "id": 225,
+    "proyeccion_id": 5,
+    "numero": "E3",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1a8",
+    "id": 226,
+    "proyeccion_id": 5,
+    "numero": "E4",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1a9",
+    "id": 227,
+    "proyeccion_id": 5,
+    "numero": "E5",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1aa",
+    "id": 228,
+    "proyeccion_id": 5,
+    "numero": "E6",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1ab",
+    "id": 229,
+    "proyeccion_id": 5,
+    "numero": "E7",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1ac",
+    "id": 230,
+    "proyeccion_id": 5,
+    "numero": "E8",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1ad",
+    "id": 231,
+    "proyeccion_id": 5,
+    "numero": "E9",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1ae",
+    "id": 232,
+    "proyeccion_id": 5,
+    "numero": "F1",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1af",
+    "id": 233,
+    "proyeccion_id": 5,
+    "numero": "F2",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1b0",
+    "id": 234,
+    "proyeccion_id": 5,
+    "numero": "F3",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1b1",
+    "id": 235,
+    "proyeccion_id": 5,
+    "numero": "F4",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1b2",
+    "id": 236,
+    "proyeccion_id": 5,
+    "numero": "F5",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1b3",
+    "id": 237,
+    "proyeccion_id": 5,
+    "numero": "F6",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1b4",
+    "id": 238,
+    "proyeccion_id": 5,
+    "numero": "F7",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1b5",
+    "id": 239,
+    "proyeccion_id": 5,
+    "numero": "F8",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1b6",
+    "id": 240,
+    "proyeccion_id": 5,
+    "numero": "F9",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1b7",
+    "id": 241,
+    "proyeccion_id": 6,
+    "numero": "A1",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1b8",
+    "id": 242,
+    "proyeccion_id": 6,
+    "numero": "A2",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1b9",
+    "id": 243,
+    "proyeccion_id": 6,
+    "numero": "A3",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1ba",
+    "id": 244,
+    "proyeccion_id": 6,
+    "numero": "A4",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1bb",
+    "id": 245,
+    "proyeccion_id": 6,
+    "numero": "A5",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1bc",
+    "id": 246,
+    "proyeccion_id": 6,
+    "numero": "B1",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1bd",
+    "id": 247,
+    "proyeccion_id": 6,
+    "numero": "B2",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1be",
+    "id": 248,
+    "proyeccion_id": 6,
+    "numero": "B3",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1bf",
+    "id": 249,
+    "proyeccion_id": 6,
+    "numero": "B4",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1c0",
+    "id": 250,
+    "proyeccion_id": 6,
+    "numero": "B5",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1c1",
+    "id": 251,
+    "proyeccion_id": 6,
+    "numero": "B6",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1c2",
+    "id": 252,
+    "proyeccion_id": 6,
+    "numero": "B7",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1c3",
+    "id": 253,
+    "proyeccion_id": 6,
+    "numero": "C1",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1c4",
+    "id": 254,
+    "proyeccion_id": 6,
+    "numero": "C2",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1c5",
+    "id": 255,
+    "proyeccion_id": 6,
+    "numero": "C3",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1c6",
+    "id": 256,
+    "proyeccion_id": 6,
+    "numero": "C4",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1c7",
+    "id": 257,
+    "proyeccion_id": 6,
+    "numero": "C5",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1c8",
+    "id": 258,
+    "proyeccion_id": 6,
+    "numero": "C6",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1c9",
+    "id": 259,
+    "proyeccion_id": 6,
+    "numero": "C7",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1ca",
+    "id": 260,
+    "proyeccion_id": 6,
+    "numero": "C8",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1cb",
+    "id": 261,
+    "proyeccion_id": 6,
+    "numero": "C9",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1cc",
+    "id": 262,
+    "proyeccion_id": 6,
+    "numero": "D1",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1cd",
+    "id": 263,
+    "proyeccion_id": 6,
+    "numero": "D2",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1ce",
+    "id": 264,
+    "proyeccion_id": 6,
+    "numero": "D3",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1cf",
+    "id": 265,
+    "proyeccion_id": 6,
+    "numero": "D4",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1d0",
+    "id": 266,
+    "proyeccion_id": 6,
+    "numero": "D5",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1d1",
+    "id": 267,
+    "proyeccion_id": 6,
+    "numero": "D6",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1d2",
+    "id": 268,
+    "proyeccion_id": 6,
+    "numero": "D7",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1d3",
+    "id": 269,
+    "proyeccion_id": 6,
+    "numero": "D8",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1d4",
+    "id": 270,
+    "proyeccion_id": 6,
+    "numero": "D9",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1d5",
+    "id": 271,
+    "proyeccion_id": 6,
+    "numero": "E1",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1d6",
+    "id": 272,
+    "proyeccion_id": 6,
+    "numero": "E2",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1d7",
+    "id": 273,
+    "proyeccion_id": 6,
+    "numero": "E3",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1d8",
+    "id": 274,
+    "proyeccion_id": 6,
+    "numero": "E4",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1d9",
+    "id": 275,
+    "proyeccion_id": 6,
+    "numero": "E5",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1da",
+    "id": 276,
+    "proyeccion_id": 6,
+    "numero": "E6",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1db",
+    "id": 277,
+    "proyeccion_id": 6,
+    "numero": "E7",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1dc",
+    "id": 278,
+    "proyeccion_id": 6,
+    "numero": "E8",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1dd",
+    "id": 279,
+    "proyeccion_id": 6,
+    "numero": "E9",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1de",
+    "id": 280,
+    "proyeccion_id": 6,
+    "numero": "F1",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1df",
+    "id": 281,
+    "proyeccion_id": 6,
+    "numero": "F2",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1e0",
+    "id": 282,
+    "proyeccion_id": 6,
+    "numero": "F3",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1e1",
+    "id": 283,
+    "proyeccion_id": 6,
+    "numero": "F4",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1e2",
+    "id": 284,
+    "proyeccion_id": 6,
+    "numero": "F5",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1e3",
+    "id": 285,
+    "proyeccion_id": 6,
+    "numero": "F6",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1e4",
+    "id": 286,
+    "proyeccion_id": 6,
+    "numero": "F7",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1e5",
+    "id": 287,
+    "proyeccion_id": 6,
+    "numero": "F8",
+    "estado": "disponible"
+  },
+  {
+    "_id": "66c7728461e5ed988719a1e6",
+    "id": 288,
+    "proyeccion_id": 6,
+    "numero": "F9",
+    "estado": "disponible"
+  }
+]

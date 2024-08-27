@@ -1,0 +1,28 @@
+[
+  {
+    "_id": "66c53bf965323c74d490010b",
+    "id": 1,
+    "nombre": "Miguel",
+    "email": "miguel@gmail.com",
+    "contrasena": "miguel123",
+    "rol": "vip",
+    "tarjeta_VIP": {
+      "fecha_expiracion": "2024-09-12T00:00:00.000Z",
+      "numero": 1,
+      "descuento": 10
+    }
+  },
+  {
+    "_id": "66c5f5ea092f258fb95d0e34",
+    "id": 2,
+    "nombre": "danna",
+    "email": "danna@gmail.com",
+    "contrasena": "123456",
+    "rol": "vip",
+    "tarjeta_VIP": {
+      "fecha_expiracion": "2025-08-21T14:12:58.255Z",
+      "numero": 2,
+      "descuento": 10
+    }
+  }
+]
