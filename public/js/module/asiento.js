@@ -244,7 +244,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                 const dataAll = {
                     pelicula_id: parseInt(id),
                     proyeccion_id: proyeccion.id,
-                    fecha: new Date(),
+                    fecha: proyecciones[0].fecha,
                     usuario_id: parseInt(usuarioId),
                     asientos: selectedSeatData,
                     total: totalPrice,

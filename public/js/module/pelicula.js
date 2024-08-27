@@ -47,33 +47,30 @@ document.addEventListener('DOMContentLoaded', async () => {
             if (icon) {
                 icon.classList.add('active-nav');
             }
-        });
+    });
 
         const ticketsButton = document.getElementById('tickets');
         const dataBoleto = localStorage.getItem('nombre');
-        console.log(dataBoleto);
         
         ticketsButton.addEventListener('click', async (event) => {
-            // event.preventDefault();
-            // const userId = dataBoleto
+            event.preventDefault();
+            const nombre = dataBoleto
             
-            // try {
-            //     const response = await fetch(`/getBoleto/${userId}`);
-            //     if (!response.ok) throw new Error('Error al obtener los tickets');
+            try {
+                const response = await fetch(`/boleto/getBoleto/${nombre}`);
+                if (!response.ok) throw new Error('Error al obtener los tickets');
 
-            //     const tickets = await response.json();
-            //     if (tickets.error) throw new Error(tickets.error);
-            //     console.log(tickets);
-                
+                const tickets = await response.json();
+                if (tickets.error) throw new Error(tickets.error);
 
-            //     localStorage.setItem('tickets', JSON.stringify(tickets));
+                localStorage.setItem('tickets', JSON.stringify(tickets));
 
                 // Redirigir a la página de confirmación
-                // window.location.href = "/boleto";
+                window.location.href = "/boletoComprado";
 
-            // } catch (error) {
-            //     console.error('Error al obtener los tickets:', error);
-            // }
+            } catch (error) {
+                console.error('Error al obtener los tickets:', error);
+            }
         });
     });
 });

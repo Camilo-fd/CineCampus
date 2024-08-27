@@ -15,6 +15,7 @@ appUsuario.get("/getUserId/:id", async (req, res) => {
     let objUsuario = new usuario();
     const idObject = { id: parseInt(req.params.id) };
     res.status(200).send(await objUsuario.getUserById(idObject))
+    objUsuario.destructor()
 });
 
 appUsuario.post("/updateRol", async (req, res) => {

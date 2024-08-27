@@ -33,6 +33,7 @@ appBoleto.get("/getBoleto/:nombre", async(req, res) => {
     let objBoleto = new boleto();
     const idObject = { nombre: req.params.nombre };
     res.status(200).send(await objBoleto.getBoleto(idObject))
+    objBoleto.destructor()
 })
 
 module.exports = appBoleto;

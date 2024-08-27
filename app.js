@@ -50,6 +50,10 @@ app.get("/boleto", (req, res) => {
     res.sendFile(`${process.env.EXPRESS_STATIC}/views/boleto.html`, {root: __dirname});
 });
 
+app.get("/boletoComprado", (req, res) => {
+    res.sendFile(`${process.env.EXPRESS_STATIC}/views/boletoComprado.html`, {root: __dirname});
+});
+
 app.get("/asiento", (req, res) => {
     res.sendFile(`${process.env.EXPRESS_STATIC}/views/asiento.html`, {root: __dirname});
 });

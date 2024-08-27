@@ -337,15 +337,70 @@ module.exports = class boleto extends connect{
     async getBoleto(objecto) {
         try {
             await this.conexion.connect()
-            const dataUsuario = await this.db.collection("usuarios").findOne({ nombre: objecto.nombre});
-            if (!dataUsuario) {
-                return { error: "No existe usuario" }
-            }
 
-            const data = await this.collection.find({usuario_id: dataUsuario.id}).toArray()
-            if (!data) {
-                return { error: "No existen boletos" }
-            }
+            const dataUsuario = await this.db.collection("usuarios").findOne({nombre: objecto.nombre})
+
+            const data = await this.collection.aggregate(
+                [
+                    {
+                      $match: {
+                        usuario_id: dataUsuario.id // Cambia este valor según sea necesario
+                      }
+                    },
+                    {
+                      $lookup: {
+                        from: "proyecciones",
+                        localField: "proyeccion_id",
+                        foreignField: "id",
+                        as: "proyeccion"
+                      }
+                    },
+                    {
+                      $unwind: "$proyeccion"
+                    },
+                    {
+                      $lookup: {
+                        from: "asientos",
+                        localField: "proyeccion.id",
+                        foreignField: "proyeccion_id",
+                        as: "asiento"
+                      }
+                    },
+                    {
+                      $addFields: {
+                        asientos_filtrados: {
+                          $filter: {
+                            input: "$asiento",
+                            as: "a",
+                            cond: {
+                              $in: ["$$a.id", "$asientos"]
+                            }
+                          }
+                        }
+                      }
+                    },
+                    {
+                      $lookup: {
+                        from: "peliculas",
+                        localField: "proyeccion.pelicula_id",
+                        foreignField: "id",
+                        as: "pelicula"
+                      }
+                    },
+                    {
+                      $unwind: "$pelicula"
+                    },
+                    {
+                      $project: {
+                        usuario_id: 1,
+                        proyeccion: 1,
+                        asientos_filtrados: 1,
+                        pelicula: 1
+                      }
+                    }
+                  ]
+                  
+            ).toArray()
 
             return data
         } catch (error) {
